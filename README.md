@@ -1,6 +1,7 @@
 # BkShKeyCode
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2,
+following the Tutorial [ANGULAR 7 einfach lernen](https://www.youtube.com/watch?v=yS6QKQkfw_w&list=PLwG0hu96Rc0oK1MJ3zfFRPqpmMJJ7Bn_g)
 
 ## Development server
 

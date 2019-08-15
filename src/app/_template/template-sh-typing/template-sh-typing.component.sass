@@ -1,0 +1,80 @@
+@import '../../../sass/var'
+
+/* --------------- Component-Styles --------------- */
+
+.sh-typing
+  height: 100%
+  width: 100%
+  background-color: $white
+  margin: 0 0 $space 0
+  display: flex
+  flex-flow: row
+  justify-content: space-between
+  align-items: stretch
+  .sh-typing-content
+    width: 100%
+    display: flex
+    flex-flow: row
+    justify-content: flex-start
+    align-items: center
+    .handle
+      height: 100%
+      background-color: $primary
+      display: flex
+      flex-flow: row
+      padding: 0 $space 0 $space //padding links und rechts
+      justify-content: center
+      align-items: center
+      cursor: grab
+      img
+        width: $space*2
+        height: $space*2
+    .sh-typing-content-check
+      display: flex
+      flex-flow: row
+      margin: $space*2
+      justify-content: center
+      align-items: center
+      cursor: pointer
+      img
+        width: $space*1.5
+        height: $space*1.5
+    .sh-typing-content-title
+      width: 100%
+      input
+        witdh: 100%
+        font-family: $gt-condensed
+        font-weight: $medium-weight
+        font-size: $space*2
+        padding: $space*2
+        color: $secondary
+        border: none
+        word-break: break-word
+      input::placeholder
+        opacity: 0.5
+        font-style: italic
+      input:focus
+        outline: none
+  .delete
+    background-color: $red
+    color: $white
+    font-family: $gt-condensed
+    font-weight: $medium-weight
+    font-size: $space*2
+    padding: $space*2
+    cursor: pointer
+    span
+      height: 100%
+      width: 100%
+      display: flex
+      flex-flow: row
+      justify-content: center
+      align-items: center
+.sh-typing-coded
+  .sh-typing-content
+    .handle
+      display: none
+    .sh-typing-content-title
+      input
+        opacity: 0.3
+        text-decoration: line-through
