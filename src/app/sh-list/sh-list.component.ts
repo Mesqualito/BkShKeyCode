@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {StrappingHead} from "../_interface/strapping-head";
 import {Announcement} from "../_interface/announcement";
+import {DataService} from "../_service/data.service";
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-sh-list',
@@ -14,33 +16,43 @@ export class ShListComponent implements OnInit {
   public $decoded: StrappingHead[];
   public $encoded: StrappingHead[];
 
-  constructor() {
+  constructor(
+    public _dataService: DataService
+  ) {
     this.showDecoded = true;
     this.showEncoded = false;
-
-    this.$decoded = [
-      {
-        id: 0,
-        label: 'test',
-        status: false,
-        position: 1
-      },
-      {
-        id: 1,
-        label: 'test 2',
-        status: false,
-        position: 2
-      }
-    ];
+    this.$decoded = [];
     this.$encoded = [];
+    this.loadData();
   }
 
   ngOnInit() {
   }
 
+  public loadData(): void {
+    this.$decoded = [];
+    this.$encoded = [];
+    this._dataService.getStrappingHead().subscribe((data: StrappingHead[]) => {
+      data.forEach((strappingHead: StrappingHead) => {
+        if(strappingHead.status === true) {
+          this.$encoded.push(strappingHead);
+        } else {
+          this.$decoded.push(strappingHead);
+        }
+      });
+    }, error => {
+      console.log(`%cERROR: ${error.message}`, `color:red; font-size: 12px;`);
+    });
+  }
+
   public decode(event: StrappingHead): void {
     event.position = this.$decoded.length + 1;
-    this.$decoded.push(event);
+    this._dataService.postStrappingHead(event).subscribe((data: StrappingHead) => {
+      console.log(`%SUC: "${data.label}" wurde erfolgreich erstellt.`, `color:green`);
+      this.$decoded.push(data);
+    }, error => {
+      console.log(`%cERROR: ${error.message}`, `color: red; font-size: 12px;`);
+    });
   }
 
   public update(event: Announcement): void {
