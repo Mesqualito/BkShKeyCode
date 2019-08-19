@@ -1,18 +1,13 @@
 <app-template-header></app-template-header>
 <div class="list-view">
-  <h4 (click)="showEncoded=!showEncoded">Bezeichnung dekodieren ( 5 )</h4>
-  <div *ngIf="showEncoded" class="sh-elements">
-    <app-template-sh-typing></app-template-sh-typing>
-    <app-template-sh-typing></app-template-sh-typing>
-    <app-template-sh-typing></app-template-sh-typing>
-    <app-template-sh-typing></app-template-sh-typing>
-    <app-template-sh-typing></app-template-sh-typing>
-  </div>
-  <app-template-sh-typing-form></app-template-sh-typing-form>
-  <h4 (click)="showDecoded=!showDecoded">Sortierschlüssel ( 2 )</h4>
+  <h4 (click)="showDecoded=!showDecoded">Bezeichnung dekodieren ( {{ $decoded.length }} )</h4>
   <div *ngIf="showDecoded" class="sh-elements">
-    <app-template-sh-typing></app-template-sh-typing>
-    <app-template-sh-typing></app-template-sh-typing>
+    <app-template-sh-typing (announce)="update($event)" [strappingHead$]="strappingHead" *ngFor="let strappingHead of $decoded"></app-template-sh-typing>
+  </div>
+  <app-template-sh-typing-form (announce)="decode($event)"></app-template-sh-typing-form>
+  <h4 (click)="showEncoded=!showEncoded">Sortierschlüssel ( {{ $encoded.length }} )</h4>
+  <div *ngIf="showEncoded" class="sh-elements">
+    <app-template-sh-typing (announce)="update($event)" [strappingHead$]="strappingHead" *ngFor="let strappingHead of $encoded"></app-template-sh-typing>
   </div>
 </div>
 

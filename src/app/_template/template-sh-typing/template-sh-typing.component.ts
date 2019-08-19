@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {StrappingHead} from "../../_interface/strapping-head";
+import {Announcement} from "../../_interface/announcement";
 
 @Component({
   selector: 'app-template-sh-typing',
@@ -8,19 +9,14 @@ import {StrappingHead} from "../../_interface/strapping-head";
 })
 export class TemplateShTypingComponent implements OnInit {
 
-  // bei einzelnem Datenobjekt, formale Ebene: $ am Ende;
-  // Überprüfung auf Datenobjekt
-  public strappingHead$: StrappingHead;
+  // Objekte empfangen:
+  // diese Komponente hört darauf, ob Objekte beim Kombinieren der Angular-Komponenten an sie übergeben werden
+  @Input() strappingHead$: StrappingHead;
+
+  // Output-Variable und EventEmitter hinzu fügen
+  @Output() announce: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
-
-    this.strappingHead$ = {
-      id: 1,
-      label: 'SSH32 PEAR',
-      status: false,
-      position: 1
-    }
-
   }
 
   ngOnInit() {
@@ -31,14 +27,27 @@ export class TemplateShTypingComponent implements OnInit {
   // 'void': die Methode hat keinen Rückgabewert
   public changeCheck(event?: any): void {
     this.strappingHead$.status = !this.strappingHead$.status;
+    const eventObject: Announcement = {
+      label: 'check',
+      object: this.strappingHead$
+    };
+    this.announce.emit(eventObject);
   }
 
   public changeLabel(event?: any): void {
-    console.log(this.strappingHead$.label)
+    const eventObject: Announcement = {
+      label: 'label',
+      object: this.strappingHead$
+    };
+    this.announce.emit(eventObject);
   }
 
   public deleteStrappingHead(event?: any): void {
-  console.log(this.strappingHead$.id);
+    const eventObject: Announcement = {
+      label: 'delete',
+      object: this.strappingHead$
+    };
+    this.announce.emit(eventObject);
   }
 
 }
