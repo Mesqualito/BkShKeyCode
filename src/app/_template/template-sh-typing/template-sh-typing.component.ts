@@ -33,4 +33,12 @@ export class TemplateShTypingComponent implements OnInit {
     this.strappingHead$.status = !this.strappingHead$.status;
   }
 
+  public changeLabel(event?: any): void {
+    console.log(this.strappingHead$.label)
+  }
+
+  public deleteStrappingHead(event?: any): void {
+  console.log(this.strappingHead$.id);
+  }
+
 }

@@ -8,10 +8,10 @@
       <img *ngIf="strappingHead$.status" src="../../../assets/img/chkbox-true.svg">
     </div>
     <div class="sh-typing-content-title">
-      <input type="text" placeholder="Umreifungskopf Bezeichnung">
+      <input (blur)="changeLabel($event)" type="text" [(ngModel)]="strappingHead$.label" placeholder="Umreifungskopf Bezeichnung">
     </div>
   </div>
-  <div class="delete">
+  <div class="delete" (click)="deleteStrappingHead($event)">
     <span>Löschen</span>
   </div>
 </div>
