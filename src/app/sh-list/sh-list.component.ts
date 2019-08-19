@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-sh-list',
@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShListComponent implements OnInit {
 
-  constructor() { }
+  public showEncoded: boolean;
+  public showDecoded: boolean;
+
+  constructor() {
+    this.showEncoded = true;
+    this.showDecoded = false;
+  }
 
   ngOnInit() {
   }
