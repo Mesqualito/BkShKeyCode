@@ -1,17 +1,17 @@
-<div class="sh-typing">
+<div class="sh-typing" [class.sh-typing-coded]="strappingHead$.status">
   <div class="sh-typing-content">
     <div class="handle">
       <img src="../../../assets/img/dots.svg">
     </div>
     <div class="sh-typing-content-check">
-      <img src="../../../assets/img/chkbox-false.svg">
-      <img src="../../../assets/img/chkbox-true.svg">
+      <img *ngIf="!strappingHead$.status" (click)="changeCheck($event)" src="../../../assets/img/chkbox-false.svg">
+      <img *ngIf="strappingHead$.status" src="../../../assets/img/chkbox-true.svg">
     </div>
     <div class="sh-typing-content-title">
-      <input type="text" placeholder="Umreifungskopf Bezeichnung">
+      <input (blur)="changeLabel($event)" type="text" [(ngModel)]="strappingHead$.label" placeholder="Umreifungskopf Bezeichnung">
     </div>
   </div>
-  <div class="delete">
+  <div class="delete" (click)="deleteStrappingHead($event)">
     <span>Löschen</span>
   </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {StrappingHead} from "../../_interface/strapping-head";
 
 @Component({
   selector: 'app-template-sh-typing-form',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateShTypingFormComponent implements OnInit {
 
-  constructor() { }
+  public strappingHead$: StrappingHead;
+
+  constructor() {
+    this.strappingHead$ = {
+      id: undefined,
+      label: undefined,
+      status: false,
+      position: undefined
+    };
+  }
 
   ngOnInit() {
   }
 
+  public encodeStrappingHead(event?: any): void {
+
+    console.log(this.strappingHead$);
+  }
 }

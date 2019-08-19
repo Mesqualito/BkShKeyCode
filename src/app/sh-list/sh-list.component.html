@@ -1,7 +1,7 @@
 <app-template-header></app-template-header>
 <div class="list-view">
-  <h4>Bezeichnung dekodieren ( 5 )</h4>
-  <div class="sh-elements">
+  <h4 (click)="showEncoded=!showEncoded">Bezeichnung dekodieren ( 5 )</h4>
+  <div *ngIf="showEncoded" class="sh-elements">
     <app-template-sh-typing></app-template-sh-typing>
     <app-template-sh-typing></app-template-sh-typing>
     <app-template-sh-typing></app-template-sh-typing>
@@ -9,9 +9,10 @@
     <app-template-sh-typing></app-template-sh-typing>
   </div>
   <app-template-sh-typing-form></app-template-sh-typing-form>
-  <h4>Sortierschlüssel ( 2 )</h4>
-  <div class="sh-elements">
-
+  <h4 (click)="showDecoded=!showDecoded">Sortierschlüssel ( 2 )</h4>
+  <div *ngIf="showDecoded" class="sh-elements">
+    <app-template-sh-typing></app-template-sh-typing>
+    <app-template-sh-typing></app-template-sh-typing>
   </div>
 </div>
 
