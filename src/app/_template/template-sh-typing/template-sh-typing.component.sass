@@ -7,7 +7,10 @@
   background-color: $white
   margin: 0 0 $space 0
   display: flex
-  flex-flow: row
+  // flex-direction property's default: row
+  // flex-wrap property's default: nowrap
+  // flex-flow combines both:
+  flex-flow: row nowrap
   justify-content: space-between
   align-items: stretch
   .sh-typing-content

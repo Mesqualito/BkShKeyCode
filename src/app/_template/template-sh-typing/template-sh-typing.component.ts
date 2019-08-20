@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {StrappingHead} from "../../_interface/strapping-head";
+import {Announcement} from "../../_interface/announcement";
+import { DataService } from "../../_service/data.service";
 
 @Component({
   selector: 'app-template-sh-typing',
@@ -8,19 +10,16 @@ import {StrappingHead} from "../../_interface/strapping-head";
 })
 export class TemplateShTypingComponent implements OnInit {
 
-  // bei einzelnem Datenobjekt, formale Ebene: $ am Ende;
-  // Überprüfung auf Datenobjekt
-  public strappingHead$: StrappingHead;
+  // Objekte empfangen:
+  // diese Komponente hört darauf, ob Objekte beim Kombinieren der Angular-Komponenten an sie übergeben werden
+  @Input() strappingHead$: StrappingHead;
 
-  constructor() {
+  // Output-Variable und EventEmitter hinzu fügen
+  @Output() announce: EventEmitter<any> = new EventEmitter<any>();
 
-    this.strappingHead$ = {
-      id: 1,
-      label: 'SSH32 PEAR',
-      status: false,
-      position: 1
-    }
-
+  constructor(
+    public _dataService: DataService
+  ) {
   }
 
   ngOnInit() {
@@ -31,14 +30,38 @@ export class TemplateShTypingComponent implements OnInit {
   // 'void': die Methode hat keinen Rückgabewert
   public changeCheck(event?: any): void {
     this.strappingHead$.status = !this.strappingHead$.status;
+    this._dataService.putStrappingHead(this.strappingHead$).subscribe((data: StrappingHead) => {
+      const eventObject: Announcement = {
+        label: 'check',
+        object: this.strappingHead$
+      };
+      this.announce.emit(eventObject);
+    }, error => {
+      console.log(`%cERROR: ${error.message}`, `color: red; font-size: 12px;`);
+    });
   }
 
   public changeLabel(event?: any): void {
-    console.log(this.strappingHead$.label)
+    this._dataService.putStrappingHead(this.strappingHead$).subscribe((data: StrappingHead) => {
+      const eventObject: Announcement = {
+        label: 'label',
+        object: this.strappingHead$
+      };
+      this.announce.emit(eventObject);
+    }, error => {
+      console.log(`%cERROR: ${error.message}`, `color: red; font-size: 12px;`);
+    });
   }
 
   public deleteStrappingHead(event?: any): void {
-  console.log(this.strappingHead$.id);
+    this._dataService.deleteStrappingHead(this.strappingHead$).subscribe((data: StrappingHead) => {
+    const eventObject: Announcement = {
+    label: 'delete',
+    object: this.strappingHead$
+    };
+    this.announce.emit(eventObject);
+    }, error => {
+      console.log(`%cERROR: ${error.message}`, `color: red; font-size: 12px;`);
+    });
   }
-
 }
