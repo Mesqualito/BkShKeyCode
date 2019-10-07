@@ -5,10 +5,11 @@
     </div>
     <div class="sh-typing-content-check">
       <img *ngIf="!strappingHead$.status" (click)="changeCheck($event)" src="../../../assets/img/chkbox-false.svg">
-      <img *ngIf="strappingHead$.status" src="../../../assets/img/chkbox-true.svg">
+      <img *ngIf="strappingHead$.status" (click)="changeCheck($event)" src="../../../assets/img/chkbox-true.svg">
     </div>
     <div class="sh-typing-content-title">
-      <input (blur)="changeLabel($event)" type="text" [(ngModel)]="strappingHead$.label" placeholder="Umreifungskopf Bezeichnung">
+      <input (blur)="changeLabel($event)" [(ngModel)]="strappingHead$.label" placeholder="Umreifungskopf Bezeichnung"
+             type="text">
     </div>
   </div>
   <div class="delete" (click)="deleteStrappingHead($event)">

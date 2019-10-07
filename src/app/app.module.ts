@@ -10,6 +10,8 @@ import { TemplateShKeycodeComponent } from './_template/template-sh-keycode/temp
 import { TemplateShTypingFormComponent } from './_template/template-sh-typing-form/template-sh-typing-form.component';
 import { TemplateHeaderComponent } from './_template/template-header/template-header.component';
 
+import {DragulaModule} from "ng2-dragula";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,8 @@ import { TemplateHeaderComponent } from './_template/template-header/template-he
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragulaModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
