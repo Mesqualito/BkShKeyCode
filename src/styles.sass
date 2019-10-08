@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* --------------- Imports --------------- */
+@import './sass/var'
+
+/* --------------- Fonts --------------- */
+// Order matters: normal, bold, italic, bold+italic !!
+
+/* Gotham Rounded */
+
+@font-face
+  font-family: "Gotham Rounded"
+  src: url('./assets/font/gotham-rounded/GothamRounded-Light.otf') format('opentype')
+  font-weight: $light-weight
+
+@font-face
+  font-family: "Gotham Rounded"
+  src: url('./assets/font/gotham-rounded/GothamRounded-LightItalic.otf') format('opentype')
+  font-weight: $light-weight
+  font-style: italic
+
+@font-face
+  font-family: "Gotham Rounded"
+  src: url('./assets/font/gotham-rounded/GothamRounded-Book.otf') format('opentype')
+  font-weight: $normal-weight
+
+@font-face
+  font-family: "Gotham Rounded"
+  src: url('./assets/font/gotham-rounded/GothamRounded-BookItalic.otf') format('opentype')
+  font-weight: $normal-weight
+  font-style: italic
+
+@font-face
+  font-family: "Gotham Rounded"
+  src: url('./assets/font/gotham-rounded/GothamRounded-Medium.otf') format('opentype')
+  font-weight: $medium-weight
+
+@font-face
+  font-family: "Gotham Rounded"
+  src: url('./assets/font/gotham-rounded/GothamRounded-MediumItalic.otf') format('opentype')
+  font-weight: $medium-weight
+  font-style: italic
+
+@font-face
+  font-family: "Gotham Rounded"
+  src: url('./assets/font/gotham-rounded/GothamRounded-Bold.otf') format('opentype')
+  font-weight: $bold-weight
+
+@font-face
+  font-family: "Gotham Rounded"
+  src: url('./assets/font/gotham-rounded/GothamRounded-BoldItalic.otf') format('opentype')
+  font-weight: $bold-weight
+  font-style: italic
+
+/* Gotham Condensed */
+
+@font-face
+  font-family: "Gotham Condensed"
+  src: url('./assets/font/gotham-condensed/GothamCondensed-Light.otf') format('opentype')
+  font-weight: $light-weight
+
+@font-face
+  font-family: "Gotham Condensed"
+  src: url('./assets/font/gotham-condensed/GothamCondensed-Book.otf') format('opentype')
+  font-weight: $normal-weight
+
+@font-face
+  font-family: "Gotham Condensed"
+  src: url('./assets/font/gotham-condensed/GothamCondensed-Medium.otf') format('opentype')
+  font-weight: $medium-weight
+
+@font-face
+  font-family: "Gotham Condensed"
+  src: url('./assets/font/gotham-condensed/GothamCondensed-Bold.otf') format('opentype')
+  font-weight: $bold-weight
+
+/* --------------- Tuning --------------- */
+::selection
+  background-color: $marked
+  color: $white
+
+/* --------------- General --------------- */
+*
+  box-sizing: border-box
+
+body, html
+  margin: 0
+  padding: 0
+  font-size: 10px // to be able to work with 'rem'
+  background-color: $primary-dark
+
+.gu-mirror
+  position: fixed !important
+  margin: 0 !important
+  z-index: 9999 !important
+  opacity: 0.8
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
+  filter: alpha(opacity=80)
+  pointer-events: none
+
+.gu-hide
+  left: -9999px !important
+
+.gu-unselectable
+  -webkit-user-select: none !important
+  -moz-user-select: none !important
+  -ms-user-select: none !important
+  user-select: none !important
+
+.gu-transit
+  opacity: 0.2
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)"
+  filter: alpha(opacity=20)
