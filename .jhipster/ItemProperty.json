@@ -37,7 +37,7 @@
             "otherEntityName": "rank",
             "otherEntityRelationshipName": "shcodeRank",
             "relationshipName": "itemproperty",
-            "otherEntityField": "propertyNo",
+            "otherEntityField": "prioValue",
             "ownerSide": true
         }
     ],

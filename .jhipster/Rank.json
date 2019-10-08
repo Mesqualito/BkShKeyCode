@@ -12,6 +12,7 @@
             "fieldName": "prioValue",
             "fieldType": "Integer",
             "fieldValidateRules": [
+                "unique",
                 "min",
                 "max",
                 "required"

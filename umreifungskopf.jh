@@ -99,7 +99,7 @@ entity ItemProperty {
 
 entity Rank {
     timestamp Instant required,
-    prioValue Integer min(1) max(10) required
+    prioValue Integer unique min(1) max(10) required
 }
 
 entity Language {
@@ -166,7 +166,7 @@ relationship OneToMany {
 relationship OneToOne {
     ItemSubstitution{substitution(substituteNo)} to Rank{subsRank},
     ItemReference{reference(crossReferenceNo)} to Rank{refRank},
-    ItemProperty{itemproperty(propertyNo)} to Rank{shcodeRank}
+    ItemProperty{itemproperty(prioValue)} to Rank{shcodeRank}
 }
 
 paginate * with pagination

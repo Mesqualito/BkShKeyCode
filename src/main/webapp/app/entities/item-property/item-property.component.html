@@ -23,7 +23,7 @@
             <th jhiSortBy="code"><span jhiTranslate="bkShKeyCodeApp.itemProperty.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="description"><span jhiTranslate="bkShKeyCodeApp.itemProperty.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="uom"><span jhiTranslate="bkShKeyCodeApp.itemProperty.uom">Uom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="itemproperty.propertyNo"><span jhiTranslate="bkShKeyCodeApp.itemProperty.itemproperty">Itemproperty</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="itemproperty.prioValue"><span jhiTranslate="bkShKeyCodeApp.itemProperty.itemproperty">Itemproperty</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -37,7 +37,7 @@
                 <td>{{itemProperty.uom}}</td>
                 <td>
                     <div *ngIf="itemProperty.itemproperty">
-                        <a [routerLink]="['/rank', itemProperty.itemproperty?.id, 'view' ]" >{{itemProperty.itemproperty?.propertyNo}}</a>
+                        <a [routerLink]="['/rank', itemProperty.itemproperty?.id, 'view' ]" >{{itemProperty.itemproperty?.prioValue}}</a>
                     </div>
                 </td>
                 <td class="text-right">

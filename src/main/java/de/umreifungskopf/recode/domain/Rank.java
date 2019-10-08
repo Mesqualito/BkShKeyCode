@@ -33,7 +33,7 @@ public class Rank implements Serializable {
     @NotNull
     @Min(value = 1)
     @Max(value = 10)
-    @Column(name = "prio_value", nullable = false)
+    @Column(name = "prio_value", nullable = false, unique = true)
     private Integer prioValue;
 
     @OneToOne(mappedBy = "substitution")

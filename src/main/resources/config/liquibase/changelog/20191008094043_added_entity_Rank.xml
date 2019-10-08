@@ -17,7 +17,7 @@
                 <constraints nullable="false" />
             </column>
             <column name="prio_value" type="integer">
-                <constraints nullable="false" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_rank_prio_value" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>

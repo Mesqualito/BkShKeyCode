@@ -63,7 +63,7 @@
                     <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemProperty.itemproperty" for="field_itemproperty">Itemproperty</label>
                     <select class="form-control" id="field_itemproperty" name="itemproperty" formControlName="itemproperty">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="rankOption.id === editForm.get('itemproperty').value?.id ? editForm.get('itemproperty').value : rankOption" *ngFor="let rankOption of itemproperties; trackBy: trackRankById">{{rankOption.propertyNo}}</option>
+                        <option [ngValue]="rankOption.id === editForm.get('itemproperty').value?.id ? editForm.get('itemproperty').value : rankOption" *ngFor="let rankOption of itemproperties; trackBy: trackRankById">{{rankOption.prioValue}}</option>
                     </select>
                 </div>
             </div>
