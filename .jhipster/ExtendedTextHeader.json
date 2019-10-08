@@ -64,7 +64,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20191008094045",
+    "changelogDate": "20191008110038",
     "entityTableName": "extended_text_header",
     "dto": "no",
     "pagination": "pagination",

@@ -57,10 +57,6 @@ public class ItemSubstitution implements Serializable {
     @Column(name = "orig_check_date")
     private Instant origCheckDate;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Rank substitution;
-
     @ManyToMany(mappedBy = "substNos")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JsonIgnore
@@ -190,19 +186,6 @@ public class ItemSubstitution implements Serializable {
 
     public void setOrigCheckDate(Instant origCheckDate) {
         this.origCheckDate = origCheckDate;
-    }
-
-    public Rank getSubstitution() {
-        return substitution;
-    }
-
-    public ItemSubstitution substitution(Rank rank) {
-        this.substitution = rank;
-        return this;
-    }
-
-    public void setSubstitution(Rank rank) {
-        this.substitution = rank;
     }
 
     public Set<Item> getItems() {

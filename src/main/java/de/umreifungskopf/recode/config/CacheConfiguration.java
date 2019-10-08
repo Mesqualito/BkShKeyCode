@@ -1,17 +1,18 @@
 package de.umreifungskopf.recode.config;
 
-import java.time.Duration;
-
-import org.ehcache.config.builders.*;
-import org.ehcache.jsr107.Eh107Configuration;
-
-import org.hibernate.cache.jcache.ConfigSettings;
 import io.github.jhipster.config.JHipsterProperties;
-
+import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.ExpiryPolicyBuilder;
+import org.ehcache.config.builders.ResourcePoolsBuilder;
+import org.ehcache.jsr107.Eh107Configuration;
+import org.hibernate.cache.jcache.ConfigSettings;
 import org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.time.Duration;
 
 @Configuration
 @EnableCaching
@@ -49,7 +50,7 @@ public class CacheConfiguration {
             createCache(cm, de.umreifungskopf.recode.domain.Item.class.getName() + ".extendedTextHeaders");
             createCache(cm, de.umreifungskopf.recode.domain.Item.class.getName() + ".substNos");
             createCache(cm, de.umreifungskopf.recode.domain.ItemProperty.class.getName());
-            createCache(cm, de.umreifungskopf.recode.domain.Rank.class.getName());
+            createCache(cm, de.umreifungskopf.recode.domain.PropPosition.class.getName());
             createCache(cm, de.umreifungskopf.recode.domain.Language.class.getName());
             createCache(cm, de.umreifungskopf.recode.domain.Language.class.getName() + ".languages");
             createCache(cm, de.umreifungskopf.recode.domain.ExtendedTextHeader.class.getName());

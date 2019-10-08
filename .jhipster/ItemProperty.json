@@ -33,15 +33,14 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "rank",
-            "otherEntityRelationshipName": "shcodeRank",
+            "relationshipType": "many-to-one",
+            "otherEntityName": "propPosition",
+            "otherEntityRelationshipName": "itemProperty",
             "relationshipName": "itemproperty",
-            "otherEntityField": "prioValue",
-            "ownerSide": true
+            "otherEntityField": "description"
         }
     ],
-    "changelogDate": "20191008094042",
+    "changelogDate": "20191008110035",
     "entityTableName": "item_property",
     "dto": "no",
     "pagination": "pagination",

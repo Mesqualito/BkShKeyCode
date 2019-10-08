@@ -1,5 +1,6 @@
 package de.umreifungskopf.recode.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -41,9 +42,9 @@ public class ItemProperty implements Serializable {
     @Column(name = "uom")
     private String uom;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Rank itemproperty;
+    @ManyToOne
+    @JsonIgnoreProperties("itemProperties")
+    private PropPosition itemproperty;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -119,17 +120,17 @@ public class ItemProperty implements Serializable {
         this.uom = uom;
     }
 
-    public Rank getItemproperty() {
+    public PropPosition getItemproperty() {
         return itemproperty;
     }
 
-    public ItemProperty itemproperty(Rank rank) {
-        this.itemproperty = rank;
+    public ItemProperty itemproperty(PropPosition propPosition) {
+        this.itemproperty = propPosition;
         return this;
     }
 
-    public void setItemproperty(Rank rank) {
-        this.itemproperty = rank;
+    public void setItemproperty(PropPosition propPosition) {
+        this.itemproperty = propPosition;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

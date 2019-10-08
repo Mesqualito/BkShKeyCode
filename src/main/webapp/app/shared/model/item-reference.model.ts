@@ -1,5 +1,4 @@
 import { Moment } from 'moment';
-import { IRank } from 'app/shared/model/rank.model';
 import { IItem } from 'app/shared/model/item.model';
 
 export interface IItemReference {
@@ -11,7 +10,6 @@ export interface IItemReference {
   crossReferenceNo?: string;
   description?: string;
   qualifier?: string;
-  reference?: IRank;
   item?: IItem;
 }
 
@@ -25,7 +23,6 @@ export class ItemReference implements IItemReference {
     public crossReferenceNo?: string,
     public description?: string,
     public qualifier?: string,
-    public reference?: IRank,
     public item?: IItem
   ) {}
 }

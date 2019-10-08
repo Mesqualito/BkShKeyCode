@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class ItemSubstitutionComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -35,7 +35,6 @@ export class ItemSubstitutionUpdatePage {
   relationsLevelInput = element(by.id('field_relationsLevel'));
   isCheckedToOriginalInput = element(by.id('field_isCheckedToOriginal'));
   origCheckDateInput = element(by.id('field_origCheckDate'));
-  substitutionSelect = element(by.id('field_substitution'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -101,25 +100,6 @@ export class ItemSubstitutionUpdatePage {
 
   async getOrigCheckDateInput() {
     return await this.origCheckDateInput.getAttribute('value');
-  }
-
-  async substitutionSelectLastOption(timeout?: number) {
-    await this.substitutionSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async substitutionSelectOption(option) {
-    await this.substitutionSelect.sendKeys(option);
-  }
-
-  getSubstitutionSelect(): ElementFinder {
-    return this.substitutionSelect;
-  }
-
-  async getSubstitutionSelectedOption() {
-    return await this.substitutionSelect.element(by.css('option:checked')).getText();
   }
 
   async save(timeout?: number) {

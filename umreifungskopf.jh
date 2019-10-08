@@ -97,9 +97,10 @@ entity ItemProperty {
     uom String
 }
 
-entity Rank {
+entity PropPosition {
     timestamp Instant required,
-    prioValue Integer unique min(1) max(10) required
+    posValue Integer min(1) max(10) required,
+    description String
 }
 
 entity Language {
@@ -156,17 +157,15 @@ relationship ManyToMany {
     Item{substNo(no)} to ItemSubstitution{item(no) required}
 }
 
+relationship ManyToOne {
+    ItemProperty{itemproperty(description)} to PropPosition
+}
+
 relationship OneToMany {
     Item to ItemReference,
     Item to ExtendedTextHeader,
     Language{language(name)} to ExtendedTextHeader{header},
     ExtendedTextHeader to ExtendedTextLine{textline(lineNo)}
-}
-
-relationship OneToOne {
-    ItemSubstitution{substitution(substituteNo)} to Rank{subsRank},
-    ItemReference{reference(crossReferenceNo)} to Rank{refRank},
-    ItemProperty{itemproperty(prioValue)} to Rank{shcodeRank}
 }
 
 paginate * with pagination

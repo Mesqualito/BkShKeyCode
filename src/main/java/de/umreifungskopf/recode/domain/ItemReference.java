@@ -52,10 +52,6 @@ public class ItemReference implements Serializable {
     @Column(name = "qualifier")
     private String qualifier;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Rank reference;
-
     @ManyToOne
     @JsonIgnoreProperties("itemReferences")
     private Item item;
@@ -158,19 +154,6 @@ public class ItemReference implements Serializable {
 
     public void setQualifier(String qualifier) {
         this.qualifier = qualifier;
-    }
-
-    public Rank getReference() {
-        return reference;
-    }
-
-    public ItemReference reference(Rank rank) {
-        this.reference = rank;
-        return this;
-    }
-
-    public void setReference(Rank rank) {
-        this.reference = rank;
     }
 
     public Item getItem() {

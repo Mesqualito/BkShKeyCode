@@ -27,7 +27,6 @@
             <th jhiSortBy="relationsLevel"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.relationsLevel">Relations Level</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="isCheckedToOriginal"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.isCheckedToOriginal">Is Checked To Original</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="origCheckDate"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.origCheckDate">Orig Check Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="substitution.substituteNo"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.substitution">Substitution</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -43,11 +42,6 @@
                 <td>{{itemSubstitution.relationsLevel}}</td>
                 <td>{{itemSubstitution.isCheckedToOriginal}}</td>
                 <td>{{itemSubstitution.origCheckDate | date:'medium'}}</td>
-                <td>
-                    <div *ngIf="itemSubstitution.substitution">
-                        <a [routerLink]="['/rank', itemSubstitution.substitution?.id, 'view' ]" >{{itemSubstitution.substitution?.substituteNo}}</a>
-                    </div>
-                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

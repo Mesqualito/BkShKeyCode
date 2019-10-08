@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -11,8 +11,6 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IItemReference, ItemReference } from 'app/shared/model/item-reference.model';
 import { ItemReferenceService } from './item-reference.service';
-import { IRank } from 'app/shared/model/rank.model';
-import { RankService } from 'app/entities/rank/rank.service';
 import { IItem } from 'app/shared/model/item.model';
 import { ItemService } from 'app/entities/item/item.service';
 
@@ -22,8 +20,6 @@ import { ItemService } from 'app/entities/item/item.service';
 })
 export class ItemReferenceUpdateComponent implements OnInit {
   isSaving: boolean;
-
-  references: IRank[];
 
   items: IItem[];
 
@@ -36,14 +32,12 @@ export class ItemReferenceUpdateComponent implements OnInit {
     crossReferenceNo: [null, [Validators.required]],
     description: [],
     qualifier: [],
-    reference: [],
     item: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected itemReferenceService: ItemReferenceService,
-    protected rankService: RankService,
     protected itemService: ItemService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -54,31 +48,6 @@ export class ItemReferenceUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ itemReference }) => {
       this.updateForm(itemReference);
     });
-    this.rankService
-      .query({ filter: 'refrank-is-null' })
-      .pipe(
-        filter((mayBeOk: HttpResponse<IRank[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IRank[]>) => response.body)
-      )
-      .subscribe(
-        (res: IRank[]) => {
-          if (!this.editForm.get('reference').value || !this.editForm.get('reference').value.id) {
-            this.references = res;
-          } else {
-            this.rankService
-              .find(this.editForm.get('reference').value.id)
-              .pipe(
-                filter((subResMayBeOk: HttpResponse<IRank>) => subResMayBeOk.ok),
-                map((subResponse: HttpResponse<IRank>) => subResponse.body)
-              )
-              .subscribe(
-                (subRes: IRank) => (this.references = [subRes].concat(res)),
-                (subRes: HttpErrorResponse) => this.onError(subRes.message)
-              );
-          }
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
     this.itemService
       .query()
       .pipe(
@@ -98,7 +67,6 @@ export class ItemReferenceUpdateComponent implements OnInit {
       crossReferenceNo: itemReference.crossReferenceNo,
       description: itemReference.description,
       qualifier: itemReference.qualifier,
-      reference: itemReference.reference,
       item: itemReference.item
     });
   }
@@ -129,7 +97,6 @@ export class ItemReferenceUpdateComponent implements OnInit {
       crossReferenceNo: this.editForm.get(['crossReferenceNo']).value,
       description: this.editForm.get(['description']).value,
       qualifier: this.editForm.get(['qualifier']).value,
-      reference: this.editForm.get(['reference']).value,
       item: this.editForm.get(['item']).value
     };
   }
@@ -148,10 +115,6 @@ export class ItemReferenceUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
-  }
-
-  trackRankById(index: number, item: IRank) {
-    return item.id;
   }
 
   trackItemById(index: number, item: IItem) {

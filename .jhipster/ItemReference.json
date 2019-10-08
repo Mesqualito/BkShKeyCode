@@ -39,14 +39,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "rank",
-            "otherEntityRelationshipName": "refRank",
-            "relationshipName": "reference",
-            "otherEntityField": "crossReferenceNo",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "many-to-one",
             "otherEntityName": "item",
             "otherEntityRelationshipName": "itemReference",
@@ -54,7 +46,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20191008094047",
+    "changelogDate": "20191008110040",
     "entityTableName": "item_reference",
     "dto": "no",
     "pagination": "pagination",

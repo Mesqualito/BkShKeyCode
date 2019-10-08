@@ -1,5 +1,4 @@
 import { Moment } from 'moment';
-import { IRank } from 'app/shared/model/rank.model';
 import { IItem } from 'app/shared/model/item.model';
 
 export interface IItemSubstitution {
@@ -13,7 +12,6 @@ export interface IItemSubstitution {
   relationsLevel?: number;
   isCheckedToOriginal?: boolean;
   origCheckDate?: Moment;
-  substitution?: IRank;
   items?: IItem[];
 }
 
@@ -29,7 +27,6 @@ export class ItemSubstitution implements IItemSubstitution {
     public relationsLevel?: number,
     public isCheckedToOriginal?: boolean,
     public origCheckDate?: Moment,
-    public substitution?: IRank,
     public items?: IItem[]
   ) {
     this.isInterchangeable = this.isInterchangeable || false;

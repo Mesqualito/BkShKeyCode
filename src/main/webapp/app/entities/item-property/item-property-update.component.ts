@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -11,8 +11,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IItemProperty, ItemProperty } from 'app/shared/model/item-property.model';
 import { ItemPropertyService } from './item-property.service';
-import { IRank } from 'app/shared/model/rank.model';
-import { RankService } from 'app/entities/rank/rank.service';
+import { IPropPosition } from 'app/shared/model/prop-position.model';
+import { PropPositionService } from 'app/entities/prop-position/prop-position.service';
 
 @Component({
   selector: 'jhi-item-property-update',
@@ -21,7 +21,7 @@ import { RankService } from 'app/entities/rank/rank.service';
 export class ItemPropertyUpdateComponent implements OnInit {
   isSaving: boolean;
 
-  itemproperties: IRank[];
+  proppositions: IPropPosition[];
 
   editForm = this.fb.group({
     id: [],
@@ -36,7 +36,7 @@ export class ItemPropertyUpdateComponent implements OnInit {
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected itemPropertyService: ItemPropertyService,
-    protected rankService: RankService,
+    protected propPositionService: PropPositionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -46,31 +46,13 @@ export class ItemPropertyUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ itemProperty }) => {
       this.updateForm(itemProperty);
     });
-    this.rankService
-      .query({ filter: 'shcoderank-is-null' })
+    this.propPositionService
+      .query()
       .pipe(
-        filter((mayBeOk: HttpResponse<IRank[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IRank[]>) => response.body)
+        filter((mayBeOk: HttpResponse<IPropPosition[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IPropPosition[]>) => response.body)
       )
-      .subscribe(
-        (res: IRank[]) => {
-          if (!this.editForm.get('itemproperty').value || !this.editForm.get('itemproperty').value.id) {
-            this.itemproperties = res;
-          } else {
-            this.rankService
-              .find(this.editForm.get('itemproperty').value.id)
-              .pipe(
-                filter((subResMayBeOk: HttpResponse<IRank>) => subResMayBeOk.ok),
-                map((subResponse: HttpResponse<IRank>) => subResponse.body)
-              )
-              .subscribe(
-                (subRes: IRank) => (this.itemproperties = [subRes].concat(res)),
-                (subRes: HttpErrorResponse) => this.onError(subRes.message)
-              );
-          }
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
+      .subscribe((res: IPropPosition[]) => (this.proppositions = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(itemProperty: IItemProperty) {
@@ -132,7 +114,7 @@ export class ItemPropertyUpdateComponent implements OnInit {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  trackRankById(index: number, item: IRank) {
+  trackPropPositionById(index: number, item: IPropPosition) {
     return item.id;
   }
 }

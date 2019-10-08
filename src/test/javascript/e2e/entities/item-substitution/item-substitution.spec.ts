@@ -1,12 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
+import { browser, ExpectedConditions as ec } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import {
-  ItemSubstitutionComponentsPage,
-  /* ItemSubstitutionDeleteDialog, */ ItemSubstitutionUpdatePage
-} from './item-substitution.page-object';
+import { ItemSubstitutionComponentsPage, ItemSubstitutionUpdatePage } from './item-substitution.page-object';
 
 const expect = chai.expect;
 
@@ -51,7 +47,6 @@ describe('ItemSubstitution e2e test', () => {
             itemSubstitutionUpdatePage.setDescriptionInput('description'),
             itemSubstitutionUpdatePage.setRelationsLevelInput('5'),
             itemSubstitutionUpdatePage.setOrigCheckDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-            itemSubstitutionUpdatePage.substitutionSelectLastOption(),
         ]);
         expect(await itemSubstitutionUpdatePage.getTimestampInput()).to.contain('2001-01-01T02:30', 'Expected timestamp value to be equals to 2000-12-31');
         expect(await itemSubstitutionUpdatePage.getTypeInput()).to.eq('type', 'Expected Type value to be equals to type');

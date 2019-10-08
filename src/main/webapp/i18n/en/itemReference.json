@@ -23,7 +23,6 @@
       "crossReferenceNo": "Cross Reference No",
       "description": "Description",
       "qualifier": "Qualifier",
-      "reference": "Reference",
       "item": "Item",
       "help": {
         "uom": "unit of measure"

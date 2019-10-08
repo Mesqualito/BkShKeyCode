@@ -85,13 +85,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.substitution" for="field_substitution">Substitution</label>
-                    <select class="form-control" id="field_substitution" name="substitution" formControlName="substitution">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="rankOption.id === editForm.get('substitution').value?.id ? editForm.get('substitution').value : rankOption" *ngFor="let rankOption of substitutions; trackBy: trackRankById">{{rankOption.substituteNo}}</option>
-                    </select>
-                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

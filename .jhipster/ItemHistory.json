@@ -18,7 +18,7 @@
         }
     ],
     "relationships": [],
-    "changelogDate": "20191008094040",
+    "changelogDate": "20191008110033",
     "entityTableName": "item_history",
     "dto": "no",
     "pagination": "pagination",

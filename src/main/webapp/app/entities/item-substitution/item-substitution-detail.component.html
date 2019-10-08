@@ -41,12 +41,6 @@
                 <dd>
                     <span>{{itemSubstitution.origCheckDate}}</span>
                 </dd>
-                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.substitution">Substitution</span></dt>
-                <dd>
-                    <div *ngIf="itemSubstitution.substitution">
-                        <a [routerLink]="['/rank', itemSubstitution.substitution?.id, 'view']">{{itemSubstitution.substitution?.substituteNo}}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

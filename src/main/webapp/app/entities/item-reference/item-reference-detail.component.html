@@ -33,12 +33,6 @@
                 <dd>
                     <span>{{itemReference.qualifier}}</span>
                 </dd>
-                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.reference">Reference</span></dt>
-                <dd>
-                    <div *ngIf="itemReference.reference">
-                        <a [routerLink]="['/rank', itemReference.reference?.id, 'view']">{{itemReference.reference?.crossReferenceNo}}</a>
-                    </div>
-                </dd>
                 <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.item">Item</span></dt>
                 <dd>
                     <div *ngIf="itemReference.item">

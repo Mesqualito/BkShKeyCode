@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -11,8 +11,6 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IItemSubstitution, ItemSubstitution } from 'app/shared/model/item-substitution.model';
 import { ItemSubstitutionService } from './item-substitution.service';
-import { IRank } from 'app/shared/model/rank.model';
-import { RankService } from 'app/entities/rank/rank.service';
 import { IItem } from 'app/shared/model/item.model';
 import { ItemService } from 'app/entities/item/item.service';
 
@@ -22,8 +20,6 @@ import { ItemService } from 'app/entities/item/item.service';
 })
 export class ItemSubstitutionUpdateComponent implements OnInit {
   isSaving: boolean;
-
-  substitutions: IRank[];
 
   items: IItem[];
 
@@ -37,14 +33,12 @@ export class ItemSubstitutionUpdateComponent implements OnInit {
     isInterchangeable: [],
     relationsLevel: [],
     isCheckedToOriginal: [],
-    origCheckDate: [],
-    substitution: []
+    origCheckDate: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected itemSubstitutionService: ItemSubstitutionService,
-    protected rankService: RankService,
     protected itemService: ItemService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -55,31 +49,6 @@ export class ItemSubstitutionUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ itemSubstitution }) => {
       this.updateForm(itemSubstitution);
     });
-    this.rankService
-      .query({ filter: 'subsrank-is-null' })
-      .pipe(
-        filter((mayBeOk: HttpResponse<IRank[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IRank[]>) => response.body)
-      )
-      .subscribe(
-        (res: IRank[]) => {
-          if (!this.editForm.get('substitution').value || !this.editForm.get('substitution').value.id) {
-            this.substitutions = res;
-          } else {
-            this.rankService
-              .find(this.editForm.get('substitution').value.id)
-              .pipe(
-                filter((subResMayBeOk: HttpResponse<IRank>) => subResMayBeOk.ok),
-                map((subResponse: HttpResponse<IRank>) => subResponse.body)
-              )
-              .subscribe(
-                (subRes: IRank) => (this.substitutions = [subRes].concat(res)),
-                (subRes: HttpErrorResponse) => this.onError(subRes.message)
-              );
-          }
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
     this.itemService
       .query()
       .pipe(
@@ -100,8 +69,7 @@ export class ItemSubstitutionUpdateComponent implements OnInit {
       isInterchangeable: itemSubstitution.isInterchangeable,
       relationsLevel: itemSubstitution.relationsLevel,
       isCheckedToOriginal: itemSubstitution.isCheckedToOriginal,
-      origCheckDate: itemSubstitution.origCheckDate != null ? itemSubstitution.origCheckDate.format(DATE_TIME_FORMAT) : null,
-      substitution: itemSubstitution.substitution
+      origCheckDate: itemSubstitution.origCheckDate != null ? itemSubstitution.origCheckDate.format(DATE_TIME_FORMAT) : null
     });
   }
 
@@ -135,8 +103,7 @@ export class ItemSubstitutionUpdateComponent implements OnInit {
       origCheckDate:
         this.editForm.get(['origCheckDate']).value != null
           ? moment(this.editForm.get(['origCheckDate']).value, DATE_TIME_FORMAT)
-          : undefined,
-      substitution: this.editForm.get(['substitution']).value
+          : undefined
     };
   }
 
@@ -154,10 +121,6 @@ export class ItemSubstitutionUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
-  }
-
-  trackRankById(index: number, item: IRank) {
-    return item.id;
   }
 
   trackItemById(index: number, item: IItem) {

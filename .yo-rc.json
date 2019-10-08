@@ -6,10 +6,7 @@
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
     "jhiPrefix": "jhi",
-    "languages": [
-      "de",
-      "en"
-    ],
+    "languages": ["de", "en"],
     "messageBroker": false,
     "nativeLanguage": "de",
     "packageName": "de.umreifungskopf.recode",
@@ -19,9 +16,7 @@
     "serviceDiscoveryType": false,
     "skipClient": false,
     "skipServer": false,
-    "testFrameworks": [
-      "protractor"
-    ],
+    "testFrameworks": ["protractor"],
     "websocket": "spring-websocket",
     "applicationType": "monolith",
     "baseName": "BkShKeyCode",
@@ -36,7 +31,7 @@
     "jhipsterVersion": "6.3.1",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "jwtSecretKey": "MmYzYWUwZjU0NGVjMTc2N2I5MzBkYjVjNmVhZTEwMTU1MTliOTQzZWVhZGZlYTNlMzE3YjZlNzQyMTU1MzBhMjkyOGVmZTFhZTFjYzQ3MzJhNzQwOThkMDNhOTZlYzQ5YWU4MGE2MzI0Yzg0MjM0ODE0ZTRhYTliZjY1ZmNlZjE=",
+    "jwtSecretKey": "NTUwZWMyMTdmMmMyNmRjZTgzMjM4NGMzMTY1M2Y0MjMxM2EyNTBiYjFhNjkwMjAxODc5OGUxN2NlZTliYjNiZTA2ODUxMDM3MzM1NjgyYWI4NWU4MzE2MzY4ZGQ4ZmUxZTEwOGUwNjZhNWFjMWEwMTE4YTVlYzZkMmFhNzU1OTI=",
     "embeddableLaunchScript": false,
     "entitySuffix": "",
     "dtoSuffix": "DTO",
@@ -48,7 +43,7 @@
     "ItemHistory",
     "Item",
     "ItemProperty",
-    "Rank",
+    "PropPosition",
     "Language",
     "ExtendedTextHeader",
     "ExtendedTextLine",

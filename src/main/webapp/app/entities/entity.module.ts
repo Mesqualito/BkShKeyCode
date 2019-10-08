@@ -21,8 +21,8 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./item-property/item-property.module').then(m => m.BkShKeyCodeItemPropertyModule)
       },
       {
-        path: 'rank',
-        loadChildren: () => import('./rank/rank.module').then(m => m.BkShKeyCodeRankModule)
+        path: 'prop-position',
+        loadChildren: () => import('./prop-position/prop-position.module').then(m => m.BkShKeyCodePropPositionModule)
       },
       {
         path: 'language',

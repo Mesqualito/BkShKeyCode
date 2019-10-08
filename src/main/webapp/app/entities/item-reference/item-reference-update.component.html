@@ -63,13 +63,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemReference.reference" for="field_reference">Reference</label>
-                    <select class="form-control" id="field_reference" name="reference" formControlName="reference">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="rankOption.id === editForm.get('reference').value?.id ? editForm.get('reference').value : rankOption" *ngFor="let rankOption of references; trackBy: trackRankById">{{rankOption.crossReferenceNo}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemReference.item" for="field_item">Item</label>
                     <select class="form-control" id="field_item" name="item" formControlName="item">
                         <option [ngValue]="null"></option>

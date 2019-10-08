@@ -48,7 +48,7 @@
             "relationshipName": "language"
         }
     ],
-    "changelogDate": "20191008094044",
+    "changelogDate": "20191008110037",
     "entityTableName": "language",
     "dto": "no",
     "pagination": "pagination",

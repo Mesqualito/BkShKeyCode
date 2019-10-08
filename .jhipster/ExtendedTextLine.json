@@ -50,7 +50,7 @@
             "otherEntityField": "lineNo"
         }
     ],
-    "changelogDate": "20191008094046",
+    "changelogDate": "20191008110039",
     "entityTableName": "extended_text_line",
     "dto": "no",
     "pagination": "pagination",

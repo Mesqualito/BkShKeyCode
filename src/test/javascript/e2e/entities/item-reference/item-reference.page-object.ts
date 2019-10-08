@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class ItemReferenceComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -33,7 +33,6 @@ export class ItemReferenceUpdatePage {
   crossReferenceNoInput = element(by.id('field_crossReferenceNo'));
   descriptionInput = element(by.id('field_description'));
   qualifierInput = element(by.id('field_qualifier'));
-  referenceSelect = element(by.id('field_reference'));
   itemSelect = element(by.id('field_item'));
 
   async getPageTitle() {
@@ -94,25 +93,6 @@ export class ItemReferenceUpdatePage {
 
   async getQualifierInput() {
     return await this.qualifierInput.getAttribute('value');
-  }
-
-  async referenceSelectLastOption(timeout?: number) {
-    await this.referenceSelect
-      .all(by.tagName('option'))
-      .last()
-      .click();
-  }
-
-  async referenceSelectOption(option) {
-    await this.referenceSelect.sendKeys(option);
-  }
-
-  getReferenceSelect(): ElementFinder {
-    return this.referenceSelect;
-  }
-
-  async getReferenceSelectedOption() {
-    return await this.referenceSelect.element(by.css('option:checked')).getText();
   }
 
   async itemSelectLastOption(timeout?: number) {

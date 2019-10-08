@@ -28,7 +28,7 @@
                 <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.itemproperty">Itemproperty</span></dt>
                 <dd>
                     <div *ngIf="itemProperty.itemproperty">
-                        <a [routerLink]="['/rank', itemProperty.itemproperty?.id, 'view']">{{itemProperty.itemproperty?.prioValue}}</a>
+                        <a [routerLink]="['/prop-position', itemProperty.itemproperty?.id, 'view']">{{itemProperty.itemproperty?.description}}</a>
                     </div>
                 </dd>
             </dl>

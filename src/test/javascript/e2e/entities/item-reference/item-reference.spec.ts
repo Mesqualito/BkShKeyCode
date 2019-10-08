@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, promise, protractor } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ItemReferenceComponentsPage, ItemReferenceDeleteDialog, ItemReferenceUpdatePage } from './item-reference.page-object';
 
@@ -48,7 +47,6 @@ describe('ItemReference e2e test', () => {
       itemReferenceUpdatePage.setCrossReferenceNoInput('crossReferenceNo'),
       itemReferenceUpdatePage.setDescriptionInput('description'),
       itemReferenceUpdatePage.setQualifierInput('qualifier'),
-      itemReferenceUpdatePage.referenceSelectLastOption(),
       itemReferenceUpdatePage.itemSelectLastOption()
     ]);
     expect(await itemReferenceUpdatePage.getTimestampInput()).to.contain(

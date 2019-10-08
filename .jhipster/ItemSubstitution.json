@@ -52,14 +52,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "rank",
-            "otherEntityRelationshipName": "subsRank",
-            "relationshipName": "substitution",
-            "otherEntityField": "substituteNo",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "many-to-many",
             "otherEntityName": "item",
             "otherEntityRelationshipName": "substNo",
@@ -69,7 +61,7 @@
             "ownerSide": false
         }
     ],
-    "changelogDate": "20191008094048",
+    "changelogDate": "20191008110041",
     "entityTableName": "item_substitution",
     "dto": "no",
     "pagination": "pagination",

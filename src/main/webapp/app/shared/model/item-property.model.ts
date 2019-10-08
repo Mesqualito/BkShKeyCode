@@ -1,5 +1,5 @@
 import { Moment } from 'moment';
-import { IRank } from 'app/shared/model/rank.model';
+import { IPropPosition } from 'app/shared/model/prop-position.model';
 
 export interface IItemProperty {
   id?: number;
@@ -8,7 +8,7 @@ export interface IItemProperty {
   code?: string;
   description?: string;
   uom?: string;
-  itemproperty?: IRank;
+  itemproperty?: IPropPosition;
 }
 
 export class ItemProperty implements IItemProperty {
@@ -19,6 +19,6 @@ export class ItemProperty implements IItemProperty {
     public code?: string,
     public description?: string,
     public uom?: string,
-    public itemproperty?: IRank
+    public itemproperty?: IPropPosition
   ) {}
 }
