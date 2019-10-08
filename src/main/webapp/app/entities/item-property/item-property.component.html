@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bkShKeyCodeApp.itemProperty.home.title">Item Properties</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-item-property" [routerLink]="['/item-property/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="bkShKeyCodeApp.itemProperty.home.createLabel">
+            Create a new Item Property
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="itemProperties?.length === 0">
+        <span jhiTranslate="bkShKeyCodeApp.itemProperty.home.notFound">No itemProperties found</span>
+    </div>
+    <div class="table-responsive" *ngIf="itemProperties?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="timestamp"><span jhiTranslate="bkShKeyCodeApp.itemProperty.timestamp">Timestamp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modificationDate"><span jhiTranslate="bkShKeyCodeApp.itemProperty.modificationDate">Modification Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="code"><span jhiTranslate="bkShKeyCodeApp.itemProperty.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="description"><span jhiTranslate="bkShKeyCodeApp.itemProperty.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="uom"><span jhiTranslate="bkShKeyCodeApp.itemProperty.uom">Uom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="itemproperty.propertyNo"><span jhiTranslate="bkShKeyCodeApp.itemProperty.itemproperty">Itemproperty</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let itemProperty of itemProperties ;trackBy: trackId">
+                <td><a [routerLink]="['/item-property', itemProperty.id, 'view' ]">{{itemProperty.id}}</a></td>
+                <td>{{itemProperty.timestamp | date:'medium'}}</td>
+                <td>{{itemProperty.modificationDate | date:'medium'}}</td>
+                <td>{{itemProperty.code}}</td>
+                <td>{{itemProperty.description}}</td>
+                <td>{{itemProperty.uom}}</td>
+                <td>
+                    <div *ngIf="itemProperty.itemproperty">
+                        <a [routerLink]="['/rank', itemProperty.itemproperty?.id, 'view' ]" >{{itemProperty.itemproperty?.propertyNo}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/item-property', itemProperty.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/item-property', itemProperty.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/item-property', { outlets: { popup: itemProperty.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="itemProperties?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

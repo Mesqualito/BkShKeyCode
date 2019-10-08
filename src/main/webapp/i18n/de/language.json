@@ -1,0 +1,27 @@
+{
+  "bkShKeyCodeApp": {
+    "language": {
+      "home": {
+        "title": "Languages",
+        "createLabel": "Language erstellen",
+        "createOrEditLabel": "Language erstellen oder bearbeiten",
+        "notFound": "No Languages found"
+      },
+      "created": "Language erstellt mit ID {{ param }}",
+      "updated": "Language aktualisiert mit ID {{ param }}",
+      "deleted": "Language gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Language {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Language"
+      },
+      "timestamp": "Timestamp",
+      "code": "Code",
+      "name": "Name",
+      "iso3166Alpha2": "Iso 3166 Alpha 2",
+      "iso3166Alpha3": "Iso 3166 Alpha 3",
+      "language": "Language"
+    }
+  }
+}

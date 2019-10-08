@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="itemReference">
+            <h2><span jhiTranslate="bkShKeyCodeApp.itemReference.detail.title">Item Reference</span> {{itemReference.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{itemReference.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.uom" [ngbTooltip]="'bkShKeyCodeApp.itemReference.help.uom' | translate">Uom</span></dt>
+                <dd>
+                    <span>{{itemReference.uom}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.crossReferenceType">Cross Reference Type</span></dt>
+                <dd>
+                    <span>{{itemReference.crossReferenceType}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.crossReferenceTypeNo">Cross Reference Type No</span></dt>
+                <dd>
+                    <span>{{itemReference.crossReferenceTypeNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.crossReferenceNo">Cross Reference No</span></dt>
+                <dd>
+                    <span>{{itemReference.crossReferenceNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.description">Description</span></dt>
+                <dd>
+                    <span>{{itemReference.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.qualifier">Qualifier</span></dt>
+                <dd>
+                    <span>{{itemReference.qualifier}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.reference">Reference</span></dt>
+                <dd>
+                    <div *ngIf="itemReference.reference">
+                        <a [routerLink]="['/rank', itemReference.reference?.id, 'view']">{{itemReference.reference?.crossReferenceNo}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.item">Item</span></dt>
+                <dd>
+                    <div *ngIf="itemReference.item">
+                        <a [routerLink]="['/item', itemReference.item?.id, 'view']">{{itemReference.item?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/item-reference', itemReference.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

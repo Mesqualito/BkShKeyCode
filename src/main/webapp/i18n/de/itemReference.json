@@ -1,0 +1,33 @@
+{
+  "bkShKeyCodeApp": {
+    "itemReference": {
+      "home": {
+        "title": "Item References",
+        "createLabel": "Item Reference erstellen",
+        "createOrEditLabel": "Item Reference erstellen oder bearbeiten",
+        "notFound": "No Item References found"
+      },
+      "created": "Item Reference erstellt mit ID {{ param }}",
+      "updated": "Item Reference aktualisiert mit ID {{ param }}",
+      "deleted": "Item Reference gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Item Reference {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Item Reference"
+      },
+      "timestamp": "Timestamp",
+      "uom": "Uom",
+      "crossReferenceType": "Cross Reference Type",
+      "crossReferenceTypeNo": "Cross Reference Type No",
+      "crossReferenceNo": "Cross Reference No",
+      "description": "Description",
+      "qualifier": "Qualifier",
+      "reference": "Reference",
+      "item": "Item",
+      "help": {
+        "uom": "unit of measure"
+      }
+    }
+  }
+}

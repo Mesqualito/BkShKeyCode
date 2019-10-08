@@ -1,0 +1,28 @@
+{
+  "bkShKeyCodeApp": {
+    "extendedTextLine": {
+      "home": {
+        "title": "Extended Text Lines",
+        "createLabel": "Create a new Extended Text Line",
+        "createOrEditLabel": "Create or edit a Extended Text Line",
+        "notFound": "No Extended Text Lines found"
+      },
+      "created": "A new Extended Text Line is created with identifier {{ param }}",
+      "updated": "A Extended Text Line is updated with identifier {{ param }}",
+      "deleted": "A Extended Text Line is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Extended Text Line {{ id }}?"
+      },
+      "detail": {
+        "title": "Extended Text Line"
+      },
+      "timestamp": "Timestamp",
+      "tableName": "Table Name",
+      "no": "No",
+      "textNo": "Text No",
+      "lineNo": "Line No",
+      "text": "Text",
+      "textline": "Textline"
+    }
+  }
+}

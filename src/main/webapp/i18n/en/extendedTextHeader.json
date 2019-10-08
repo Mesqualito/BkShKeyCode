@@ -1,0 +1,31 @@
+{
+  "bkShKeyCodeApp": {
+    "extendedTextHeader": {
+      "home": {
+        "title": "Extended Text Headers",
+        "createLabel": "Create a new Extended Text Header",
+        "createOrEditLabel": "Create or edit a Extended Text Header",
+        "notFound": "No Extended Text Headers found"
+      },
+      "created": "A new Extended Text Header is created with identifier {{ param }}",
+      "updated": "A Extended Text Header is updated with identifier {{ param }}",
+      "deleted": "A Extended Text Header is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Extended Text Header {{ id }}?"
+      },
+      "detail": {
+        "title": "Extended Text Header"
+      },
+      "timestamp": "Timestamp",
+      "tableName": "Table Name",
+      "no": "No",
+      "startingDate": "Starting Date",
+      "endingDate": "Ending Date",
+      "textNo": "Text No",
+      "description": "Description",
+      "extendedTextLine": "Extended Text Line",
+      "item": "Item",
+      "header": "Header"
+    }
+  }
+}

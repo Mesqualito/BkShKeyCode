@@ -1,0 +1,198 @@
+{
+    "name": "Item",
+    "fields": [
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modificationDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "no",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "no2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "buom",
+            "javadoc": "base unit of measure",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unitPrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "netWeight",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "hsNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hsDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hsComment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isBlocked",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "suom",
+            "javadoc": "sales unit of measure",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "itemCategoryCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "productGroupCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wsCategory3Code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isGTIN",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isOnlySpareparts",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isUsedForWebshop",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "applicationKind",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "strapType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sealType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "driveType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "strapTensionMax",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "strapWidth",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "strappingsPerDay",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "akkuType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "akkuBrand",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "akkuCapacitiy",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "akkuVoltage",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "sealFixity",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "speed",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "motors",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "strapThicknessMin",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "strapThicknessMax",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "isInProductFinder",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isFullyAutomaticTension",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isWeldingByButton",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "itemReference",
+            "otherEntityRelationshipName": "item",
+            "relationshipName": "itemReference"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "extendedTextHeader",
+            "otherEntityRelationshipName": "item",
+            "relationshipName": "extendedTextHeader"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "itemSubstitution",
+            "otherEntityRelationshipName": "item",
+            "relationshipName": "substNo",
+            "otherEntityField": "no",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191008094041",
+    "entityTableName": "item",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "BkShKeyCode"
+    ]
+}

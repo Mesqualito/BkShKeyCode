@@ -1,0 +1,26 @@
+{
+  "bkShKeyCodeApp": {
+    "rank": {
+      "home": {
+        "title": "Ranks",
+        "createLabel": "Rank erstellen",
+        "createOrEditLabel": "Rank erstellen oder bearbeiten",
+        "notFound": "No Ranks found"
+      },
+      "created": "Rank erstellt mit ID {{ param }}",
+      "updated": "Rank aktualisiert mit ID {{ param }}",
+      "deleted": "Rank gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Rank {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Rank"
+      },
+      "timestamp": "Timestamp",
+      "prioValue": "Prio Value",
+      "subsRank": "Subs Rank",
+      "refRank": "Ref Rank",
+      "shcodeRank": "Shcode Rank"
+    }
+  }
+}

@@ -1,0 +1,178 @@
+application {
+  config {
+    databaseType sql
+    devDatabaseType h2Disk
+    enableHibernateCache true
+    enableSwaggerCodegen false
+    enableTranslation true
+    jhiPrefix jhi
+    languages [de, en]
+    messageBroker false
+    nativeLanguage de
+    packageName de.umreifungskopf.recode
+    prodDatabaseType postgresql
+    searchEngine false
+    serviceDiscoveryType false
+    skipClient false
+    skipServer false
+    testFrameworks [protractor]
+    websocket spring-websocket
+    applicationType monolith
+    baseName BkShKeyCode
+    serverPort 8080
+    authenticationType jwt
+    cacheProvider ehcache
+    buildTool maven
+    useSass true
+    clientPackageManager npm
+    clientFramework angularX
+    skipUserManagement false
+  }
+
+  entities *
+}
+
+/**
+ * @author Jochen Gebsattel
+ */
+
+entity ItemStaging {
+    timestamp Instant required
+}
+
+entity ItemHistory {
+    timestamp Instant required,
+    modificationDate Instant,
+    modified Boolean
+}
+
+entity Item {
+    timestamp Instant required,
+    modificationDate Instant,
+    no String required,
+    no2 String,
+    name String,
+    /** base unit of measure */
+    buom String,
+    unitPrice Float,
+    netWeight Float,
+    hsNo String,
+    hsDescription String,
+    hsComment String,
+    isBlocked Boolean,
+    /** sales unit of measure */
+    suom String,
+    itemCategoryCode String,
+    productGroupCode String,
+    wsCategory3Code String,
+    isGTIN Boolean,
+    isOnlySpareparts Boolean,
+    isUsedForWebshop Boolean,
+    applicationKind String,
+    strapType String,
+    sealType String,
+    driveType String,
+    strapTensionMax Integer,
+    strapWidth String,
+    strappingsPerDay Integer,
+    akkuType String,
+    akkuBrand String,
+    akkuCapacitiy Integer,
+    akkuVoltage Float,
+    sealFixity Float,
+    speed Float,
+    motors Integer,
+    strapThicknessMin Float,
+    strapThicknessMax Float,
+    isInProductFinder Boolean,
+    isFullyAutomaticTension Boolean,
+    isWeldingByButton Boolean
+}
+
+entity ItemProperty {
+    timestamp Instant required,
+    modificationDate Instant,
+    code String required,
+    description String required,
+    uom String
+}
+
+entity Rank {
+    timestamp Instant required,
+    prioValue Integer min(1) max(10) required
+}
+
+entity Language {
+    timestamp Instant required,
+    code String required,
+    name String required,
+    iso3166Alpha2 String maxlength(2) required,
+    iso3166Alpha3 String maxlength(3)
+}
+
+entity ExtendedTextHeader {
+    timestamp Instant required,
+    tableName String required,
+    no String required,
+    startingDate Instant,
+    endingDate Instant,
+    textNo Integer required,
+    description String
+}
+
+entity ExtendedTextLine {
+    timestamp Instant required,
+    tableName String required,
+    no String required,
+    textNo Integer required,
+    lineNo Integer required,
+    text String
+}
+
+entity ItemReference {
+    timestamp Instant required,
+    /** unit of measure */
+    uom String,
+    crossReferenceType String,
+    crossReferenceTypeNo String,
+    crossReferenceNo String required,
+    description String,
+    qualifier String
+}
+
+entity ItemSubstitution {
+    timestamp Instant required,
+    type String required,
+    substituteType String required,
+    substituteNo String required,
+    description String,
+    isInterchangeable Boolean,
+    relationsLevel Integer,
+    isCheckedToOriginal Boolean,
+    origCheckDate Instant
+}
+
+relationship ManyToMany {
+    Item{substNo(no)} to ItemSubstitution{item(no) required}
+}
+
+relationship OneToMany {
+    Item to ItemReference,
+    Item to ExtendedTextHeader,
+    Language{language(name)} to ExtendedTextHeader{header},
+    ExtendedTextHeader to ExtendedTextLine{textline(lineNo)}
+}
+
+relationship OneToOne {
+    ItemSubstitution{substitution(substituteNo)} to Rank{subsRank},
+    ItemReference{reference(crossReferenceNo)} to Rank{refRank},
+    ItemProperty{itemproperty(propertyNo)} to Rank{shcodeRank}
+}
+
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all
+service all with serviceImpl

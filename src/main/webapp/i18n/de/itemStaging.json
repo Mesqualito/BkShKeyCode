@@ -1,0 +1,22 @@
+{
+  "bkShKeyCodeApp": {
+    "itemStaging": {
+      "home": {
+        "title": "Item Stagings",
+        "createLabel": "Item Staging erstellen",
+        "createOrEditLabel": "Item Staging erstellen oder bearbeiten",
+        "notFound": "No Item Stagings found"
+      },
+      "created": "Item Staging erstellt mit ID {{ param }}",
+      "updated": "Item Staging aktualisiert mit ID {{ param }}",
+      "deleted": "Item Staging gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Item Staging {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Item Staging"
+      },
+      "timestamp": "Timestamp"
+    }
+  }
+}

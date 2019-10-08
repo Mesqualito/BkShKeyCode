@@ -1,0 +1,24 @@
+{
+  "bkShKeyCodeApp": {
+    "itemHistory": {
+      "home": {
+        "title": "Item Histories",
+        "createLabel": "Item History erstellen",
+        "createOrEditLabel": "Item History erstellen oder bearbeiten",
+        "notFound": "No Item Histories found"
+      },
+      "created": "Item History erstellt mit ID {{ param }}",
+      "updated": "Item History aktualisiert mit ID {{ param }}",
+      "deleted": "Item History gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Item History {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Item History"
+      },
+      "timestamp": "Timestamp",
+      "modificationDate": "Modification Date",
+      "modified": "Modified"
+    }
+  }
+}

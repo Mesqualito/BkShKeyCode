@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-extended-text-header-heading" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.home.createOrEditLabel">Create or edit a Extended Text Header</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.timestamp" for="field_timestamp">Timestamp</label>
+                    <div class="d-flex">
+                        <input id="field_timestamp" type="datetime-local" class="form-control" name="timestamp" formControlName="timestamp" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('timestamp').invalid && (editForm.get('timestamp').dirty || editForm.get('timestamp').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('timestamp').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('timestamp').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.tableName" for="field_tableName">Table Name</label>
+                    <input type="text" class="form-control" name="tableName" id="field_tableName"
+                           formControlName="tableName"/>
+                    <div *ngIf="editForm.get('tableName').invalid && (editForm.get('tableName').dirty || editForm.get('tableName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('tableName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.no" for="field_no">No</label>
+                    <input type="text" class="form-control" name="no" id="field_no"
+                           formControlName="no"/>
+                    <div *ngIf="editForm.get('no').invalid && (editForm.get('no').dirty || editForm.get('no').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('no').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.startingDate" for="field_startingDate">Starting Date</label>
+                    <div class="d-flex">
+                        <input id="field_startingDate" type="datetime-local" class="form-control" name="startingDate" formControlName="startingDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.endingDate" for="field_endingDate">Ending Date</label>
+                    <div class="d-flex">
+                        <input id="field_endingDate" type="datetime-local" class="form-control" name="endingDate" formControlName="endingDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.textNo" for="field_textNo">Text No</label>
+                    <input type="number" class="form-control" name="textNo" id="field_textNo"
+                           formControlName="textNo"/>
+                    <div *ngIf="editForm.get('textNo').invalid && (editForm.get('textNo').dirty || editForm.get('textNo').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('textNo').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('textNo')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.item" for="field_item">Item</label>
+                    <select class="form-control" id="field_item" name="item" formControlName="item">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="itemOption.id === editForm.get('item').value?.id ? editForm.get('item').value : itemOption" *ngFor="let itemOption of items; trackBy: trackItemById">{{itemOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.extendedTextHeader.header" for="field_header">Header</label>
+                    <select class="form-control" id="field_header" name="header" formControlName="header">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="languageOption.id === editForm.get('header').value?.id ? editForm.get('header').value : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
