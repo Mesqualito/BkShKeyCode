@@ -3,26 +3,38 @@
     {
       "id": 0,
       "label": "SSH32 PAR",
-      "status": true,
+      "status": false,
       "position": 1
     },
     {
       "label": "Marone",
-      "status": true,
+      "status": false,
       "position": 1,
       "id": 5
     },
     {
       "label": "Mach mir Nudelsalat",
       "status": true,
-      "position": 1,
+      "position": 2,
       "id": 6
     },
     {
       "label": "Walsen Oder Brot",
-      "status": false,
-      "position": 1,
+      "status": true,
+      "position": 4,
       "id": 7
+    },
+    {
+      "label": "SSH32 PEAL",
+      "status": false,
+      "position": 3,
+      "id": 8
+    },
+    {
+      "label": "fvdsg",
+      "status": false,
+      "position": 4,
+      "id": 9
     }
   ]
 }
