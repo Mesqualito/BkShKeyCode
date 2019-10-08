@@ -1,0 +1,60 @@
+Format: SH1-234S67891
+
+1. Modell
+mögliche Werte:
+SSH = 1
+PSH = 4
+
+2. Bandbreite
+mögliche Werte:
+32mm = 3
+25mm = 4
+19mm = 5
+
+3. Spannmotor
+mögliche Werte:
+E (elektrisch) = 1
+P (pneumatisch) = 4
+ohne Spannmotor = 9
+
+4. Transportmotor
+mögliche Werte:
+E (elektrisch) = 1
+P (pneumatisch) = 4
+ohne Transportmotor = 9
+
+5. Gehäuse
+mögliche Werte:
+A (Aluminiumgehäuse) = A
+S (Stahlgehäuse) = S
+
+6. Verschließerantrieb (und andere Motoren/Ventile)
+mögliche Werte:
+E (elektrisch) = 1
+P (pneumatisch) = 4
+
+7. Verschlussart
+mögliche Werte:
+Kerbverschluss hülsenlos (Stahl) = 1
+mit Hülse (Stahl/Kunststoff)= 2
+Punkt-Schweißverschluss (Stahl/Kunststoff) = 4
+WIG-Schweißverschluss (Stahl) = 5
+Reibschweißverschluss (Kunststoff) = 7
+Heizkeilverschluss (Kunststoff) = 8
+Ultraschallverschluss (Kunststoff) = 9
+
+
+8. frei
+mögliche Werte:
+"0"
+
+9. Ausrichung (Antrieb links/rechts/ohne)
+mögliche Werte:
+R (Antriebseinheit rechts) = R
+L (Antriebseinheit links) = L
+
+10. Zusatzoptionen
+mögliche Werte:
+ohne Sicherheitskerbe = 1
+SK (mit Sicherheitskerbe) = 3
+Typ AM (Typ Amova) = T
