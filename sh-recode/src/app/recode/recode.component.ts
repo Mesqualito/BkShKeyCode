@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Dictionary } from './dictionary';
 
 
@@ -22,20 +22,22 @@ export class RecodeComponent implements OnInit {
   ausrichtung = new Dictionary();
   zusatzoptionen = new Dictionary();
 
-  fgCode = new FormGroup({
-    fcModell: new FormControl(''),
-    fcBandbreite: new FormControl(''),
-    fcSpannmotor: new FormControl(''),
-    fcTransportmotor: new FormControl(''),
-    fcGehaeuse: new FormControl(''),
-    fcVerschliesserantrieb: new FormControl(''),
-    fcVerschlussart: new FormControl(''),
-    fcFrei: new FormControl(''),
-    fcAusrichtung: new FormControl(''),
-    fcZusatzoptionen: new FormControl('')
-  });
+  shForm : FormGroup;
 
-  constructor() {}
+  constructor() {
+    this.shForm = new FormGroup({
+      fcModell: new FormControl({value: this.codes.get('1').get('SSH'), disabled : true},Validators.required),
+      fcBandbreite: new FormControl({value:'', disabled : true},Validators.required),
+      fcSpannmotor: new FormControl({value:'', disabled : true},Validators.required),
+      fcTransportmotor: new FormControl({value:'', disabled : true},Validators.required),
+      fcGehaeuse: new FormControl({value:'', disabled : true},Validators.required),
+      fcVerschliesserantrieb: new FormControl({value:'', disabled : true},Validators.required),
+      fcVerschlussart: new FormControl({value:'', disabled : true},Validators.required),
+      fcFrei: new FormControl({value:'', disabled : true},Validators.required),
+      fcAusrichtung: new FormControl({value:'', disabled : true},Validators.required),
+      fcZusatzoptionen: new FormControl({value:'', disabled : true},Validators.required)
+    });
+  }
 
   ngOnInit() {
     this.modell.set('SSH', '1');
