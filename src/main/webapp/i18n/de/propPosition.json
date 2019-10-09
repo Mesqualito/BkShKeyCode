@@ -1,0 +1,24 @@
+{
+  "bkShKeyCodeApp": {
+    "propPosition": {
+      "home": {
+        "title": "Prop Positions",
+        "createLabel": "Prop Position erstellen",
+        "createOrEditLabel": "Prop Position erstellen oder bearbeiten",
+        "notFound": "No Prop Positions found"
+      },
+      "created": "Prop Position erstellt mit ID {{ param }}",
+      "updated": "Prop Position aktualisiert mit ID {{ param }}",
+      "deleted": "Prop Position gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Prop Position {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Prop Position"
+      },
+      "timestamp": "Timestamp",
+      "posValue": "Pos Value",
+      "description": "Description"
+    }
+  }
+}

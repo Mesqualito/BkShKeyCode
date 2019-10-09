@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-item-substitution-heading" jhiTranslate="bkShKeyCodeApp.itemSubstitution.home.createOrEditLabel">Create or edit a Item Substitution</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.timestamp" for="field_timestamp">Timestamp</label>
+                    <div class="d-flex">
+                        <input id="field_timestamp" type="datetime-local" class="form-control" name="timestamp" formControlName="timestamp" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('timestamp').invalid && (editForm.get('timestamp').dirty || editForm.get('timestamp').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('timestamp').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('timestamp').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.type" for="field_type">Type</label>
+                    <input type="text" class="form-control" name="type" id="field_type"
+                           formControlName="type"/>
+                    <div *ngIf="editForm.get('type').invalid && (editForm.get('type').dirty || editForm.get('type').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('type').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.substituteType" for="field_substituteType">Substitute Type</label>
+                    <input type="text" class="form-control" name="substituteType" id="field_substituteType"
+                           formControlName="substituteType"/>
+                    <div *ngIf="editForm.get('substituteType').invalid && (editForm.get('substituteType').dirty || editForm.get('substituteType').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('substituteType').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.substituteNo" for="field_substituteNo">Substitute No</label>
+                    <input type="text" class="form-control" name="substituteNo" id="field_substituteNo"
+                           formControlName="substituteNo"/>
+                    <div *ngIf="editForm.get('substituteNo').invalid && (editForm.get('substituteNo').dirty || editForm.get('substituteNo').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('substituteNo').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.isInterchangeable" for="field_isInterchangeable">Is Interchangeable</label>
+                    <input type="checkbox" class="form-control" name="isInterchangeable" id="field_isInterchangeable"
+                           formControlName="isInterchangeable"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.relationsLevel" for="field_relationsLevel">Relations Level</label>
+                    <input type="number" class="form-control" name="relationsLevel" id="field_relationsLevel"
+                           formControlName="relationsLevel"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.isCheckedToOriginal" for="field_isCheckedToOriginal">Is Checked To Original</label>
+                    <input type="checkbox" class="form-control" name="isCheckedToOriginal" id="field_isCheckedToOriginal"
+                           formControlName="isCheckedToOriginal"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemSubstitution.origCheckDate" for="field_origCheckDate">Orig Check Date</label>
+                    <div class="d-flex">
+                        <input id="field_origCheckDate" type="datetime-local" class="form-control" name="origCheckDate" formControlName="origCheckDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "bkShKeyCodeApp": {
+    "itemStaging": {
+      "home": {
+        "title": "Item Stagings",
+        "createLabel": "Create a new Item Staging",
+        "createOrEditLabel": "Create or edit a Item Staging",
+        "notFound": "No Item Stagings found"
+      },
+      "created": "A new Item Staging is created with identifier {{ param }}",
+      "updated": "A Item Staging is updated with identifier {{ param }}",
+      "deleted": "A Item Staging is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Item Staging {{ id }}?"
+      },
+      "detail": {
+        "title": "Item Staging"
+      },
+      "timestamp": "Timestamp"
+    }
+  }
+}

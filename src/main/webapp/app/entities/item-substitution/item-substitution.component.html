@@ -1,0 +1,81 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bkShKeyCodeApp.itemSubstitution.home.title">Item Substitutions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-item-substitution" [routerLink]="['/item-substitution/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="bkShKeyCodeApp.itemSubstitution.home.createLabel">
+            Create a new Item Substitution
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="itemSubstitutions?.length === 0">
+        <span jhiTranslate="bkShKeyCodeApp.itemSubstitution.home.notFound">No itemSubstitutions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="itemSubstitutions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="timestamp"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.timestamp">Timestamp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="type"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="substituteType"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.substituteType">Substitute Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="substituteNo"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.substituteNo">Substitute No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="description"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="isInterchangeable"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.isInterchangeable">Is Interchangeable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="relationsLevel"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.relationsLevel">Relations Level</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="isCheckedToOriginal"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.isCheckedToOriginal">Is Checked To Original</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="origCheckDate"><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.origCheckDate">Orig Check Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let itemSubstitution of itemSubstitutions ;trackBy: trackId">
+                <td><a [routerLink]="['/item-substitution', itemSubstitution.id, 'view' ]">{{itemSubstitution.id}}</a></td>
+                <td>{{itemSubstitution.timestamp | date:'medium'}}</td>
+                <td>{{itemSubstitution.type}}</td>
+                <td>{{itemSubstitution.substituteType}}</td>
+                <td>{{itemSubstitution.substituteNo}}</td>
+                <td>{{itemSubstitution.description}}</td>
+                <td>{{itemSubstitution.isInterchangeable}}</td>
+                <td>{{itemSubstitution.relationsLevel}}</td>
+                <td>{{itemSubstitution.isCheckedToOriginal}}</td>
+                <td>{{itemSubstitution.origCheckDate | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/item-substitution', itemSubstitution.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/item-substitution', itemSubstitution.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/item-substitution', { outlets: { popup: itemSubstitution.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="itemSubstitutions?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

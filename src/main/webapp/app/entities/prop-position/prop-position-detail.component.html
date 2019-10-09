@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="propPosition">
+            <h2><span jhiTranslate="bkShKeyCodeApp.propPosition.detail.title">Prop Position</span> {{propPosition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bkShKeyCodeApp.propPosition.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{propPosition.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.propPosition.posValue">Pos Value</span></dt>
+                <dd>
+                    <span>{{propPosition.posValue}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.propPosition.description">Description</span></dt>
+                <dd>
+                    <span>{{propPosition.description}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/prop-position', propPosition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

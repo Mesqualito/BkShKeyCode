@@ -1,0 +1,75 @@
+{
+    "name": "ItemSubstitution",
+    "fields": [
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "substituteType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "substituteNo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isInterchangeable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "relationsLevel",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "isCheckedToOriginal",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "origCheckDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "substNo",
+            "relationshipValidateRules": "required",
+            "relationshipName": "item",
+            "otherEntityField": "no",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191008110041",
+    "entityTableName": "item_substitution",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "BkShKeyCode"
+    ]
+}

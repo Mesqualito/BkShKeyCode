@@ -1,0 +1,32 @@
+{
+    "name": "ItemHistory",
+    "fields": [
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modificationDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "modified",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191008110033",
+    "entityTableName": "item_history",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "BkShKeyCode"
+    ]
+}

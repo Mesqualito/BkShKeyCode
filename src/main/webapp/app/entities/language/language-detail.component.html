@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="language">
+            <h2><span jhiTranslate="bkShKeyCodeApp.language.detail.title">Language</span> {{language.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bkShKeyCodeApp.language.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{language.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.language.code">Code</span></dt>
+                <dd>
+                    <span>{{language.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.language.name">Name</span></dt>
+                <dd>
+                    <span>{{language.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.language.iso3166Alpha2">Iso 3166 Alpha 2</span></dt>
+                <dd>
+                    <span>{{language.iso3166Alpha2}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.language.iso3166Alpha3">Iso 3166 Alpha 3</span></dt>
+                <dd>
+                    <span>{{language.iso3166Alpha3}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/language', language.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

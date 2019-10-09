@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="itemProperty">
+            <h2><span jhiTranslate="bkShKeyCodeApp.itemProperty.detail.title">Item Property</span> {{itemProperty.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{itemProperty.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.modificationDate">Modification Date</span></dt>
+                <dd>
+                    <span>{{itemProperty.modificationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.code">Code</span></dt>
+                <dd>
+                    <span>{{itemProperty.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.description">Description</span></dt>
+                <dd>
+                    <span>{{itemProperty.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.uom">Uom</span></dt>
+                <dd>
+                    <span>{{itemProperty.uom}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.itemproperty">Itemproperty</span></dt>
+                <dd>
+                    <div *ngIf="itemProperty.itemproperty">
+                        <a [routerLink]="['/prop-position', itemProperty.itemproperty?.id, 'view']">{{itemProperty.itemproperty?.description}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/item-property', itemProperty.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

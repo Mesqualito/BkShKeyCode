@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="itemSubstitution">
+            <h2><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.detail.title">Item Substitution</span> {{itemSubstitution.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.type">Type</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.substituteType">Substitute Type</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.substituteType}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.substituteNo">Substitute No</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.substituteNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.description">Description</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.isInterchangeable">Is Interchangeable</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.isInterchangeable}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.relationsLevel">Relations Level</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.relationsLevel}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.isCheckedToOriginal">Is Checked To Original</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.isCheckedToOriginal}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemSubstitution.origCheckDate">Orig Check Date</span></dt>
+                <dd>
+                    <span>{{itemSubstitution.origCheckDate}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/item-substitution', itemSubstitution.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

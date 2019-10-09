@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="extendedTextHeader">
+            <h2><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.detail.title">Extended Text Header</span> {{extendedTextHeader.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{extendedTextHeader.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.tableName">Table Name</span></dt>
+                <dd>
+                    <span>{{extendedTextHeader.tableName}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.no">No</span></dt>
+                <dd>
+                    <span>{{extendedTextHeader.no}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.startingDate">Starting Date</span></dt>
+                <dd>
+                    <span>{{extendedTextHeader.startingDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.endingDate">Ending Date</span></dt>
+                <dd>
+                    <span>{{extendedTextHeader.endingDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.textNo">Text No</span></dt>
+                <dd>
+                    <span>{{extendedTextHeader.textNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.description">Description</span></dt>
+                <dd>
+                    <span>{{extendedTextHeader.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.item">Item</span></dt>
+                <dd>
+                    <div *ngIf="extendedTextHeader.item">
+                        <a [routerLink]="['/item', extendedTextHeader.item?.id, 'view']">{{extendedTextHeader.item?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.extendedTextHeader.header">Header</span></dt>
+                <dd>
+                    <div *ngIf="extendedTextHeader.header">
+                        <a [routerLink]="['/language', extendedTextHeader.header?.id, 'view']">{{extendedTextHeader.header?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/extended-text-header', extendedTextHeader.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

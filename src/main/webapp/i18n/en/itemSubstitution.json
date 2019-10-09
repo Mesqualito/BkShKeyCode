@@ -1,0 +1,31 @@
+{
+  "bkShKeyCodeApp": {
+    "itemSubstitution": {
+      "home": {
+        "title": "Item Substitutions",
+        "createLabel": "Create a new Item Substitution",
+        "createOrEditLabel": "Create or edit a Item Substitution",
+        "notFound": "No Item Substitutions found"
+      },
+      "created": "A new Item Substitution is created with identifier {{ param }}",
+      "updated": "A Item Substitution is updated with identifier {{ param }}",
+      "deleted": "A Item Substitution is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Item Substitution {{ id }}?"
+      },
+      "detail": {
+        "title": "Item Substitution"
+      },
+      "timestamp": "Timestamp",
+      "type": "Type",
+      "substituteType": "Substitute Type",
+      "substituteNo": "Substitute No",
+      "description": "Description",
+      "isInterchangeable": "Is Interchangeable",
+      "relationsLevel": "Relations Level",
+      "isCheckedToOriginal": "Is Checked To Original",
+      "origCheckDate": "Orig Check Date",
+      "item": "Item"
+    }
+  }
+}

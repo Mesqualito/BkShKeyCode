@@ -1,0 +1,81 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bkShKeyCodeApp.extendedTextLine.home.title">Extended Text Lines</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-extended-text-line" [routerLink]="['/extended-text-line/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="bkShKeyCodeApp.extendedTextLine.home.createLabel">
+            Create a new Extended Text Line
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="extendedTextLines?.length === 0">
+        <span jhiTranslate="bkShKeyCodeApp.extendedTextLine.home.notFound">No extendedTextLines found</span>
+    </div>
+    <div class="table-responsive" *ngIf="extendedTextLines?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="timestamp"><span jhiTranslate="bkShKeyCodeApp.extendedTextLine.timestamp">Timestamp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tableName"><span jhiTranslate="bkShKeyCodeApp.extendedTextLine.tableName">Table Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="no"><span jhiTranslate="bkShKeyCodeApp.extendedTextLine.no">No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="textNo"><span jhiTranslate="bkShKeyCodeApp.extendedTextLine.textNo">Text No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lineNo"><span jhiTranslate="bkShKeyCodeApp.extendedTextLine.lineNo">Line No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="text"><span jhiTranslate="bkShKeyCodeApp.extendedTextLine.text">Text</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="textline.lineNo"><span jhiTranslate="bkShKeyCodeApp.extendedTextLine.textline">Textline</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let extendedTextLine of extendedTextLines ;trackBy: trackId">
+                <td><a [routerLink]="['/extended-text-line', extendedTextLine.id, 'view' ]">{{extendedTextLine.id}}</a></td>
+                <td>{{extendedTextLine.timestamp | date:'medium'}}</td>
+                <td>{{extendedTextLine.tableName}}</td>
+                <td>{{extendedTextLine.no}}</td>
+                <td>{{extendedTextLine.textNo}}</td>
+                <td>{{extendedTextLine.lineNo}}</td>
+                <td>{{extendedTextLine.text}}</td>
+                <td>
+                    <div *ngIf="extendedTextLine.textline">
+                        <a [routerLink]="['/extended-text-header', extendedTextLine.textline?.id, 'view' ]" >{{extendedTextLine.textline?.lineNo}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/extended-text-line', extendedTextLine.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/extended-text-line', extendedTextLine.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/extended-text-line', { outlets: { popup: extendedTextLine.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="extendedTextLines?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

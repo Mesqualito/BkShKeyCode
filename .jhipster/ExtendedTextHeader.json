@@ -1,0 +1,78 @@
+{
+    "name": "ExtendedTextHeader",
+    "fields": [
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tableName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "no",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "startingDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "endingDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "textNo",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "extendedTextLine",
+            "otherEntityRelationshipName": "textline",
+            "relationshipName": "extendedTextLine"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "extendedTextHeader",
+            "relationshipName": "item",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "language",
+            "otherEntityRelationshipName": "language",
+            "relationshipName": "header",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191008110038",
+    "entityTableName": "extended_text_header",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "BkShKeyCode"
+    ]
+}

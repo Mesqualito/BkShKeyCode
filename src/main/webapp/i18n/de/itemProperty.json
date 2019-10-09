@@ -1,0 +1,27 @@
+{
+  "bkShKeyCodeApp": {
+    "itemProperty": {
+      "home": {
+        "title": "Item Properties",
+        "createLabel": "Item Property erstellen",
+        "createOrEditLabel": "Item Property erstellen oder bearbeiten",
+        "notFound": "No Item Properties found"
+      },
+      "created": "Item Property erstellt mit ID {{ param }}",
+      "updated": "Item Property aktualisiert mit ID {{ param }}",
+      "deleted": "Item Property gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Item Property {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Item Property"
+      },
+      "timestamp": "Timestamp",
+      "modificationDate": "Modification Date",
+      "code": "Code",
+      "description": "Description",
+      "uom": "Uom",
+      "itemproperty": "Itemproperty"
+    }
+  }
+}

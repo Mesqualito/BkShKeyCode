@@ -1,0 +1,54 @@
+{
+    "name": "ItemProperty",
+    "fields": [
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modificationDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "uom",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "propPosition",
+            "otherEntityRelationshipName": "itemProperty",
+            "relationshipName": "itemproperty",
+            "otherEntityField": "description"
+        }
+    ],
+    "changelogDate": "20191008110035",
+    "entityTableName": "item_property",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "BkShKeyCode"
+    ]
+}

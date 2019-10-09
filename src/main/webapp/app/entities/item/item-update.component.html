@@ -1,0 +1,238 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-item-heading" jhiTranslate="bkShKeyCodeApp.item.home.createOrEditLabel">Create or edit a Item</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.timestamp" for="field_timestamp">Timestamp</label>
+                    <div class="d-flex">
+                        <input id="field_timestamp" type="datetime-local" class="form-control" name="timestamp" formControlName="timestamp" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('timestamp').invalid && (editForm.get('timestamp').dirty || editForm.get('timestamp').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('timestamp').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('timestamp').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.modificationDate" for="field_modificationDate">Modification Date</label>
+                    <div class="d-flex">
+                        <input id="field_modificationDate" type="datetime-local" class="form-control" name="modificationDate" formControlName="modificationDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.no" for="field_no">No</label>
+                    <input type="text" class="form-control" name="no" id="field_no"
+                           formControlName="no"/>
+                    <div *ngIf="editForm.get('no').invalid && (editForm.get('no').dirty || editForm.get('no').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('no').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.no2" for="field_no2">No 2</label>
+                    <input type="text" class="form-control" name="no2" id="field_no2"
+                           formControlName="no2"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.buom" for="field_buom" [ngbTooltip]="'bkShKeyCodeApp.item.help.buom' | translate">Buom</label>
+                    <input type="text" class="form-control" name="buom" id="field_buom"
+                           formControlName="buom"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.unitPrice" for="field_unitPrice">Unit Price</label>
+                    <input type="number" class="form-control" name="unitPrice" id="field_unitPrice"
+                           formControlName="unitPrice"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.netWeight" for="field_netWeight">Net Weight</label>
+                    <input type="number" class="form-control" name="netWeight" id="field_netWeight"
+                           formControlName="netWeight"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.hsNo" for="field_hsNo">Hs No</label>
+                    <input type="text" class="form-control" name="hsNo" id="field_hsNo"
+                           formControlName="hsNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.hsDescription" for="field_hsDescription">Hs Description</label>
+                    <input type="text" class="form-control" name="hsDescription" id="field_hsDescription"
+                           formControlName="hsDescription"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.hsComment" for="field_hsComment">Hs Comment</label>
+                    <input type="text" class="form-control" name="hsComment" id="field_hsComment"
+                           formControlName="hsComment"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.isBlocked" for="field_isBlocked">Is Blocked</label>
+                    <input type="checkbox" class="form-control" name="isBlocked" id="field_isBlocked"
+                           formControlName="isBlocked"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.suom" for="field_suom" [ngbTooltip]="'bkShKeyCodeApp.item.help.suom' | translate">Suom</label>
+                    <input type="text" class="form-control" name="suom" id="field_suom"
+                           formControlName="suom"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.itemCategoryCode" for="field_itemCategoryCode">Item Category Code</label>
+                    <input type="text" class="form-control" name="itemCategoryCode" id="field_itemCategoryCode"
+                           formControlName="itemCategoryCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.productGroupCode" for="field_productGroupCode">Product Group Code</label>
+                    <input type="text" class="form-control" name="productGroupCode" id="field_productGroupCode"
+                           formControlName="productGroupCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.wsCategory3Code" for="field_wsCategory3Code">Ws Category 3 Code</label>
+                    <input type="text" class="form-control" name="wsCategory3Code" id="field_wsCategory3Code"
+                           formControlName="wsCategory3Code"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.isGTIN" for="field_isGTIN">Is GTIN</label>
+                    <input type="checkbox" class="form-control" name="isGTIN" id="field_isGTIN"
+                           formControlName="isGTIN"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.isOnlySpareparts" for="field_isOnlySpareparts">Is Only Spareparts</label>
+                    <input type="checkbox" class="form-control" name="isOnlySpareparts" id="field_isOnlySpareparts"
+                           formControlName="isOnlySpareparts"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.isUsedForWebshop" for="field_isUsedForWebshop">Is Used For Webshop</label>
+                    <input type="checkbox" class="form-control" name="isUsedForWebshop" id="field_isUsedForWebshop"
+                           formControlName="isUsedForWebshop"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.applicationKind" for="field_applicationKind">Application Kind</label>
+                    <input type="text" class="form-control" name="applicationKind" id="field_applicationKind"
+                           formControlName="applicationKind"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.strapType" for="field_strapType">Strap Type</label>
+                    <input type="text" class="form-control" name="strapType" id="field_strapType"
+                           formControlName="strapType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.sealType" for="field_sealType">Seal Type</label>
+                    <input type="text" class="form-control" name="sealType" id="field_sealType"
+                           formControlName="sealType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.driveType" for="field_driveType">Drive Type</label>
+                    <input type="text" class="form-control" name="driveType" id="field_driveType"
+                           formControlName="driveType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.strapTensionMax" for="field_strapTensionMax">Strap Tension Max</label>
+                    <input type="number" class="form-control" name="strapTensionMax" id="field_strapTensionMax"
+                           formControlName="strapTensionMax"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.strapWidth" for="field_strapWidth">Strap Width</label>
+                    <input type="text" class="form-control" name="strapWidth" id="field_strapWidth"
+                           formControlName="strapWidth"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.strappingsPerDay" for="field_strappingsPerDay">Strappings Per Day</label>
+                    <input type="number" class="form-control" name="strappingsPerDay" id="field_strappingsPerDay"
+                           formControlName="strappingsPerDay"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.akkuType" for="field_akkuType">Akku Type</label>
+                    <input type="text" class="form-control" name="akkuType" id="field_akkuType"
+                           formControlName="akkuType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.akkuBrand" for="field_akkuBrand">Akku Brand</label>
+                    <input type="text" class="form-control" name="akkuBrand" id="field_akkuBrand"
+                           formControlName="akkuBrand"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.akkuCapacitiy" for="field_akkuCapacitiy">Akku Capacitiy</label>
+                    <input type="number" class="form-control" name="akkuCapacitiy" id="field_akkuCapacitiy"
+                           formControlName="akkuCapacitiy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.akkuVoltage" for="field_akkuVoltage">Akku Voltage</label>
+                    <input type="number" class="form-control" name="akkuVoltage" id="field_akkuVoltage"
+                           formControlName="akkuVoltage"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.sealFixity" for="field_sealFixity">Seal Fixity</label>
+                    <input type="number" class="form-control" name="sealFixity" id="field_sealFixity"
+                           formControlName="sealFixity"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.speed" for="field_speed">Speed</label>
+                    <input type="number" class="form-control" name="speed" id="field_speed"
+                           formControlName="speed"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.motors" for="field_motors">Motors</label>
+                    <input type="number" class="form-control" name="motors" id="field_motors"
+                           formControlName="motors"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.strapThicknessMin" for="field_strapThicknessMin">Strap Thickness Min</label>
+                    <input type="number" class="form-control" name="strapThicknessMin" id="field_strapThicknessMin"
+                           formControlName="strapThicknessMin"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.strapThicknessMax" for="field_strapThicknessMax">Strap Thickness Max</label>
+                    <input type="number" class="form-control" name="strapThicknessMax" id="field_strapThicknessMax"
+                           formControlName="strapThicknessMax"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.isInProductFinder" for="field_isInProductFinder">Is In Product Finder</label>
+                    <input type="checkbox" class="form-control" name="isInProductFinder" id="field_isInProductFinder"
+                           formControlName="isInProductFinder"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.isFullyAutomaticTension" for="field_isFullyAutomaticTension">Is Fully Automatic Tension</label>
+                    <input type="checkbox" class="form-control" name="isFullyAutomaticTension" id="field_isFullyAutomaticTension"
+                           formControlName="isFullyAutomaticTension"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.isWeldingByButton" for="field_isWeldingByButton">Is Welding By Button</label>
+                    <input type="checkbox" class="form-control" name="isWeldingByButton" id="field_isWeldingByButton"
+                           formControlName="isWeldingByButton"/>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="bkShKeyCodeApp.item.substNo" for="field_substNos">Subst No</label>
+                    <select class="form-control" id="field_substNos" multiple name="substNos" formControlName="substNos">
+                        <option [ngValue]="getSelected(editForm.get('substNos').value, itemSubstitutionOption)" *ngFor="let itemSubstitutionOption of itemsubstitutions; trackBy: trackItemSubstitutionById">{{itemSubstitutionOption.no}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

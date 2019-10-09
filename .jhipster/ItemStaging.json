@@ -1,0 +1,25 @@
+{
+    "name": "ItemStaging",
+    "fields": [
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20191008110032",
+    "javadoc": "@author Jochen Gebsattel",
+    "entityTableName": "item_staging",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "BkShKeyCode"
+    ]
+}

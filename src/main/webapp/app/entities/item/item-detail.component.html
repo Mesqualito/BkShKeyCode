@@ -1,0 +1,181 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="item">
+            <h2><span jhiTranslate="bkShKeyCodeApp.item.detail.title">Item</span> {{item.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{item.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.modificationDate">Modification Date</span></dt>
+                <dd>
+                    <span>{{item.modificationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.no">No</span></dt>
+                <dd>
+                    <span>{{item.no}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.no2">No 2</span></dt>
+                <dd>
+                    <span>{{item.no2}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.name">Name</span></dt>
+                <dd>
+                    <span>{{item.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.buom" [ngbTooltip]="'bkShKeyCodeApp.item.help.buom' | translate">Buom</span></dt>
+                <dd>
+                    <span>{{item.buom}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.unitPrice">Unit Price</span></dt>
+                <dd>
+                    <span>{{item.unitPrice}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.netWeight">Net Weight</span></dt>
+                <dd>
+                    <span>{{item.netWeight}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.hsNo">Hs No</span></dt>
+                <dd>
+                    <span>{{item.hsNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.hsDescription">Hs Description</span></dt>
+                <dd>
+                    <span>{{item.hsDescription}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.hsComment">Hs Comment</span></dt>
+                <dd>
+                    <span>{{item.hsComment}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.isBlocked">Is Blocked</span></dt>
+                <dd>
+                    <span>{{item.isBlocked}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.suom" [ngbTooltip]="'bkShKeyCodeApp.item.help.suom' | translate">Suom</span></dt>
+                <dd>
+                    <span>{{item.suom}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.itemCategoryCode">Item Category Code</span></dt>
+                <dd>
+                    <span>{{item.itemCategoryCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.productGroupCode">Product Group Code</span></dt>
+                <dd>
+                    <span>{{item.productGroupCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.wsCategory3Code">Ws Category 3 Code</span></dt>
+                <dd>
+                    <span>{{item.wsCategory3Code}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.isGTIN">Is GTIN</span></dt>
+                <dd>
+                    <span>{{item.isGTIN}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.isOnlySpareparts">Is Only Spareparts</span></dt>
+                <dd>
+                    <span>{{item.isOnlySpareparts}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.isUsedForWebshop">Is Used For Webshop</span></dt>
+                <dd>
+                    <span>{{item.isUsedForWebshop}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.applicationKind">Application Kind</span></dt>
+                <dd>
+                    <span>{{item.applicationKind}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.strapType">Strap Type</span></dt>
+                <dd>
+                    <span>{{item.strapType}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.sealType">Seal Type</span></dt>
+                <dd>
+                    <span>{{item.sealType}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.driveType">Drive Type</span></dt>
+                <dd>
+                    <span>{{item.driveType}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.strapTensionMax">Strap Tension Max</span></dt>
+                <dd>
+                    <span>{{item.strapTensionMax}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.strapWidth">Strap Width</span></dt>
+                <dd>
+                    <span>{{item.strapWidth}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.strappingsPerDay">Strappings Per Day</span></dt>
+                <dd>
+                    <span>{{item.strappingsPerDay}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.akkuType">Akku Type</span></dt>
+                <dd>
+                    <span>{{item.akkuType}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.akkuBrand">Akku Brand</span></dt>
+                <dd>
+                    <span>{{item.akkuBrand}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.akkuCapacitiy">Akku Capacitiy</span></dt>
+                <dd>
+                    <span>{{item.akkuCapacitiy}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.akkuVoltage">Akku Voltage</span></dt>
+                <dd>
+                    <span>{{item.akkuVoltage}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.sealFixity">Seal Fixity</span></dt>
+                <dd>
+                    <span>{{item.sealFixity}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.speed">Speed</span></dt>
+                <dd>
+                    <span>{{item.speed}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.motors">Motors</span></dt>
+                <dd>
+                    <span>{{item.motors}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.strapThicknessMin">Strap Thickness Min</span></dt>
+                <dd>
+                    <span>{{item.strapThicknessMin}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.strapThicknessMax">Strap Thickness Max</span></dt>
+                <dd>
+                    <span>{{item.strapThicknessMax}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.isInProductFinder">Is In Product Finder</span></dt>
+                <dd>
+                    <span>{{item.isInProductFinder}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.isFullyAutomaticTension">Is Fully Automatic Tension</span></dt>
+                <dd>
+                    <span>{{item.isFullyAutomaticTension}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.isWeldingByButton">Is Welding By Button</span></dt>
+                <dd>
+                    <span>{{item.isWeldingByButton}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.substNo">Subst No</span></dt>
+                <dd>
+                    <span *ngFor="let substNo of item.substNos; let last = last">
+                        <a [routerLink]="['/item-substitution', substNo?.id, 'view' ]">{{substNo.no}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/item', item.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
