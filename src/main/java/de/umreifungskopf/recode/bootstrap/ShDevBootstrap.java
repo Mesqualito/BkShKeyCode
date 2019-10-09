@@ -50,6 +50,10 @@ public class ShDevBootstrap implements ApplicationListener<ContextRefreshedEvent
         // Property-Position - clear fake-data:
         Page<PropPosition> allPositions = propPositionExtendedService.findAll(wholePage);
         for (PropPosition propPosition : allPositions) {
+            itemPropertyExtendedService.findByCoderank(wholePage, propPosition.getId())
+                .forEach(itemProperty -> {itemProperty.setCoderank(null);
+                itemPropertyExtendedService.save(itemProperty);
+            });
             propPositionExtendedService.delete(propPosition.getId());
         }
 

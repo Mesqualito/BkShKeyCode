@@ -8,4 +8,5 @@ public interface ItemPropertyExtendedService extends ItemPropertyService {
 
     Page<ItemProperty> findByCode(Pageable pageable, String code);
 
+    Page<ItemProperty> findByCoderank(Pageable pageable, Long propertyId);
 }

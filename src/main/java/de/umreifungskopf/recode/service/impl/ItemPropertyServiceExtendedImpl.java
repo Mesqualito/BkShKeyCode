@@ -1,6 +1,8 @@
 package de.umreifungskopf.recode.service.impl;
 
+import de.umreifungskopf.recode.domain.ItemProperty;
 import de.umreifungskopf.recode.repository.ItemPropertyExtendedRepository;
+import de.umreifungskopf.recode.repository.PropPositionExtendedRepository;
 import de.umreifungskopf.recode.service.ItemPropertyExtendedService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,11 +20,13 @@ public class ItemPropertyServiceExtendedImpl extends ItemPropertyServiceImpl imp
     private final Logger log = LoggerFactory.getLogger(ItemPropertyServiceExtendedImpl.class);
 
     private final ItemPropertyExtendedRepository itemPropertyExtendedRepository;
+    private final PropPositionExtendedRepository propPositionExtendedRepository;
 
 
-    public ItemPropertyServiceExtendedImpl(ItemPropertyExtendedRepository itemPropertyExtendedRepository) {
+    public ItemPropertyServiceExtendedImpl(ItemPropertyExtendedRepository itemPropertyExtendedRepository, PropPositionExtendedRepository propPositionExtendedRepository) {
         super(itemPropertyExtendedRepository);
         this.itemPropertyExtendedRepository = itemPropertyExtendedRepository;
+        this.propPositionExtendedRepository = propPositionExtendedRepository;
     }
 
     @Override
@@ -31,5 +35,14 @@ public class ItemPropertyServiceExtendedImpl extends ItemPropertyServiceImpl imp
         log.debug("Request to get all ItemProperties with Code : {}", code);
 
         return itemPropertyExtendedRepository.findByCode(pageable, code);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ItemProperty> findByCoderank(Pageable pageable, Long propertyId) {
+        log.debug("Request to get all ItemProperties with Property-ID : {}", propertyId);
+
+        return itemPropertyExtendedRepository.findByCoderank(pageable,
+            propPositionExtendedRepository.findById(propertyId).get());
     }
 }
