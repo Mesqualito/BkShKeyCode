@@ -18,7 +18,8 @@
       },
       "timestamp": "Timestamp",
       "modificationDate": "Modification Date",
-      "modified": "Modified"
+      "modified": "Modified",
+      "item": "Item"
     }
   }
 }

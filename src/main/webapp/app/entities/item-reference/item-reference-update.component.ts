@@ -11,6 +11,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IItemReference, ItemReference } from 'app/shared/model/item-reference.model';
 import { ItemReferenceService } from './item-reference.service';
+import { IUom } from 'app/shared/model/uom.model';
+import { UomService } from 'app/entities/uom/uom.service';
 import { IItem } from 'app/shared/model/item.model';
 import { ItemService } from 'app/entities/item/item.service';
 
@@ -21,23 +23,26 @@ import { ItemService } from 'app/entities/item/item.service';
 export class ItemReferenceUpdateComponent implements OnInit {
   isSaving: boolean;
 
+  uoms: IUom[];
+
   items: IItem[];
 
   editForm = this.fb.group({
     id: [],
     timestamp: [null, [Validators.required]],
-    uom: [],
     crossReferenceType: [],
     crossReferenceTypeNo: [],
     crossReferenceNo: [null, [Validators.required]],
     description: [],
     qualifier: [],
+    uom: [],
     item: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected itemReferenceService: ItemReferenceService,
+    protected uomService: UomService,
     protected itemService: ItemService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -48,6 +53,28 @@ export class ItemReferenceUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ itemReference }) => {
       this.updateForm(itemReference);
     });
+    this.uomService
+      .query({ filter: 'refuom-is-null' })
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUom[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUom[]>) => response.body)
+      )
+      .subscribe(
+        (res: IUom[]) => {
+          if (!this.editForm.get('uom').value || !this.editForm.get('uom').value.id) {
+            this.uoms = res;
+          } else {
+            this.uomService
+              .find(this.editForm.get('uom').value.id)
+              .pipe(
+                filter((subResMayBeOk: HttpResponse<IUom>) => subResMayBeOk.ok),
+                map((subResponse: HttpResponse<IUom>) => subResponse.body)
+              )
+              .subscribe((subRes: IUom) => (this.uoms = [subRes].concat(res)), (subRes: HttpErrorResponse) => this.onError(subRes.message));
+          }
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.itemService
       .query()
       .pipe(
@@ -61,12 +88,12 @@ export class ItemReferenceUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: itemReference.id,
       timestamp: itemReference.timestamp != null ? itemReference.timestamp.format(DATE_TIME_FORMAT) : null,
-      uom: itemReference.uom,
       crossReferenceType: itemReference.crossReferenceType,
       crossReferenceTypeNo: itemReference.crossReferenceTypeNo,
       crossReferenceNo: itemReference.crossReferenceNo,
       description: itemReference.description,
       qualifier: itemReference.qualifier,
+      uom: itemReference.uom,
       item: itemReference.item
     });
   }
@@ -91,12 +118,12 @@ export class ItemReferenceUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       timestamp:
         this.editForm.get(['timestamp']).value != null ? moment(this.editForm.get(['timestamp']).value, DATE_TIME_FORMAT) : undefined,
-      uom: this.editForm.get(['uom']).value,
       crossReferenceType: this.editForm.get(['crossReferenceType']).value,
       crossReferenceTypeNo: this.editForm.get(['crossReferenceTypeNo']).value,
       crossReferenceNo: this.editForm.get(['crossReferenceNo']).value,
       description: this.editForm.get(['description']).value,
       qualifier: this.editForm.get(['qualifier']).value,
+      uom: this.editForm.get(['uom']).value,
       item: this.editForm.get(['item']).value
     };
   }
@@ -115,6 +142,10 @@ export class ItemReferenceUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackUomById(index: number, item: IUom) {
+    return item.id;
   }
 
   trackItemById(index: number, item: IItem) {

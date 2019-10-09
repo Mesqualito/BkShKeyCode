@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IUom } from 'app/shared/model/uom.model';
 import { IPropPosition } from 'app/shared/model/prop-position.model';
 
 export interface IItemProperty {
@@ -7,8 +8,8 @@ export interface IItemProperty {
   modificationDate?: Moment;
   code?: string;
   description?: string;
-  uom?: string;
-  itemproperty?: IPropPosition;
+  uom?: IUom;
+  coderank?: IPropPosition;
 }
 
 export class ItemProperty implements IItemProperty {
@@ -18,7 +19,7 @@ export class ItemProperty implements IItemProperty {
     public modificationDate?: Moment,
     public code?: string,
     public description?: string,
-    public uom?: string,
-    public itemproperty?: IPropPosition
+    public uom?: IUom,
+    public coderank?: IPropPosition
   ) {}
 }

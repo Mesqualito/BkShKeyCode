@@ -1,0 +1,80 @@
+{
+    "name": "Uom",
+    "fields": [
+        {
+            "fieldName": "timestamp",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modificationDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "rank",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "factor",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "itemProperty",
+            "otherEntityRelationshipName": "uom",
+            "relationshipName": "propPosition",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "buom",
+            "relationshipName": "itemBuom",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "suom",
+            "relationshipName": "itemSuom",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "itemReference",
+            "otherEntityRelationshipName": "uom",
+            "relationshipName": "refUom",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191009071849",
+    "javadoc": "unit of measure",
+    "entityTableName": "uom",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "BkShKeyCode"
+    ]
+}

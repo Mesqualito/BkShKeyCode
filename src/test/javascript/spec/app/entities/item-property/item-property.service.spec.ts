@@ -1,6 +1,6 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { take, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ItemPropertyService } from 'app/entities/item-property/item-property.service';
@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new ItemProperty(0, currentDate, currentDate, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new ItemProperty(0, currentDate, currentDate, 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -77,8 +77,7 @@ describe('Service Tests', () => {
             timestamp: currentDate.format(DATE_TIME_FORMAT),
             modificationDate: currentDate.format(DATE_TIME_FORMAT),
             code: 'BBBBBB',
-            description: 'BBBBBB',
-            uom: 'BBBBBB'
+            description: 'BBBBBB'
           },
           elemDefault
         );
@@ -105,8 +104,7 @@ describe('Service Tests', () => {
             timestamp: currentDate.format(DATE_TIME_FORMAT),
             modificationDate: currentDate.format(DATE_TIME_FORMAT),
             code: 'BBBBBB',
-            description: 'BBBBBB',
-            uom: 'BBBBBB'
+            description: 'BBBBBB'
           },
           elemDefault
         );

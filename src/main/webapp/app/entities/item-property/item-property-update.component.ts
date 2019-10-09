@@ -11,6 +11,8 @@ import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IItemProperty, ItemProperty } from 'app/shared/model/item-property.model';
 import { ItemPropertyService } from './item-property.service';
+import { IUom } from 'app/shared/model/uom.model';
+import { UomService } from 'app/entities/uom/uom.service';
 import { IPropPosition } from 'app/shared/model/prop-position.model';
 import { PropPositionService } from 'app/entities/prop-position/prop-position.service';
 
@@ -21,6 +23,8 @@ import { PropPositionService } from 'app/entities/prop-position/prop-position.se
 export class ItemPropertyUpdateComponent implements OnInit {
   isSaving: boolean;
 
+  uoms: IUom[];
+
   proppositions: IPropPosition[];
 
   editForm = this.fb.group({
@@ -30,12 +34,13 @@ export class ItemPropertyUpdateComponent implements OnInit {
     code: [null, [Validators.required]],
     description: [null, [Validators.required]],
     uom: [],
-    itemproperty: []
+    coderank: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected itemPropertyService: ItemPropertyService,
+    protected uomService: UomService,
     protected propPositionService: PropPositionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -46,6 +51,28 @@ export class ItemPropertyUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ itemProperty }) => {
       this.updateForm(itemProperty);
     });
+    this.uomService
+      .query({ filter: 'propposition-is-null' })
+      .pipe(
+        filter((mayBeOk: HttpResponse<IUom[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IUom[]>) => response.body)
+      )
+      .subscribe(
+        (res: IUom[]) => {
+          if (!this.editForm.get('uom').value || !this.editForm.get('uom').value.id) {
+            this.uoms = res;
+          } else {
+            this.uomService
+              .find(this.editForm.get('uom').value.id)
+              .pipe(
+                filter((subResMayBeOk: HttpResponse<IUom>) => subResMayBeOk.ok),
+                map((subResponse: HttpResponse<IUom>) => subResponse.body)
+              )
+              .subscribe((subRes: IUom) => (this.uoms = [subRes].concat(res)), (subRes: HttpErrorResponse) => this.onError(subRes.message));
+          }
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
     this.propPositionService
       .query()
       .pipe(
@@ -63,7 +90,7 @@ export class ItemPropertyUpdateComponent implements OnInit {
       code: itemProperty.code,
       description: itemProperty.description,
       uom: itemProperty.uom,
-      itemproperty: itemProperty.itemproperty
+      coderank: itemProperty.coderank
     });
   }
 
@@ -94,7 +121,7 @@ export class ItemPropertyUpdateComponent implements OnInit {
       code: this.editForm.get(['code']).value,
       description: this.editForm.get(['description']).value,
       uom: this.editForm.get(['uom']).value,
-      itemproperty: this.editForm.get(['itemproperty']).value
+      coderank: this.editForm.get(['coderank']).value
     };
   }
 
@@ -112,6 +139,10 @@ export class ItemPropertyUpdateComponent implements OnInit {
   }
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackUomById(index: number, item: IUom) {
+    return item.id;
   }
 
   trackPropPositionById(index: number, item: IPropPosition) {

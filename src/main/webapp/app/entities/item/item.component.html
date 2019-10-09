@@ -23,14 +23,12 @@
             <th jhiSortBy="no"><span jhiTranslate="bkShKeyCodeApp.item.no">No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="no2"><span jhiTranslate="bkShKeyCodeApp.item.no2">No 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="name"><span jhiTranslate="bkShKeyCodeApp.item.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="buom"><span jhiTranslate="bkShKeyCodeApp.item.buom">Buom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="unitPrice"><span jhiTranslate="bkShKeyCodeApp.item.unitPrice">Unit Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="netWeight"><span jhiTranslate="bkShKeyCodeApp.item.netWeight">Net Weight</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="hsNo"><span jhiTranslate="bkShKeyCodeApp.item.hsNo">Hs No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="hsDescription"><span jhiTranslate="bkShKeyCodeApp.item.hsDescription">Hs Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="hsComment"><span jhiTranslate="bkShKeyCodeApp.item.hsComment">Hs Comment</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="isBlocked"><span jhiTranslate="bkShKeyCodeApp.item.isBlocked">Is Blocked</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="suom"><span jhiTranslate="bkShKeyCodeApp.item.suom">Suom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="itemCategoryCode"><span jhiTranslate="bkShKeyCodeApp.item.itemCategoryCode">Item Category Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="productGroupCode"><span jhiTranslate="bkShKeyCodeApp.item.productGroupCode">Product Group Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="wsCategory3Code"><span jhiTranslate="bkShKeyCodeApp.item.wsCategory3Code">Ws Category 3 Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -56,6 +54,8 @@
             <th jhiSortBy="isInProductFinder"><span jhiTranslate="bkShKeyCodeApp.item.isInProductFinder">Is In Product Finder</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="isFullyAutomaticTension"><span jhiTranslate="bkShKeyCodeApp.item.isFullyAutomaticTension">Is Fully Automatic Tension</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="isWeldingByButton"><span jhiTranslate="bkShKeyCodeApp.item.isWeldingByButton">Is Welding By Button</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="buom.description"><span jhiTranslate="bkShKeyCodeApp.item.buom">Buom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="suom.description"><span jhiTranslate="bkShKeyCodeApp.item.suom">Suom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -67,14 +67,12 @@
                 <td>{{item.no}}</td>
                 <td>{{item.no2}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item.buom}}</td>
                 <td>{{item.unitPrice}}</td>
                 <td>{{item.netWeight}}</td>
                 <td>{{item.hsNo}}</td>
                 <td>{{item.hsDescription}}</td>
                 <td>{{item.hsComment}}</td>
                 <td>{{item.isBlocked}}</td>
-                <td>{{item.suom}}</td>
                 <td>{{item.itemCategoryCode}}</td>
                 <td>{{item.productGroupCode}}</td>
                 <td>{{item.wsCategory3Code}}</td>
@@ -100,6 +98,16 @@
                 <td>{{item.isInProductFinder}}</td>
                 <td>{{item.isFullyAutomaticTension}}</td>
                 <td>{{item.isWeldingByButton}}</td>
+                <td>
+                    <div *ngIf="item.buom">
+                        <a [routerLink]="['/uom', item.buom?.id, 'view' ]" >{{item.buom?.description}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="item.suom">
+                        <a [routerLink]="['/uom', item.suom?.id, 'view' ]" >{{item.suom?.description}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

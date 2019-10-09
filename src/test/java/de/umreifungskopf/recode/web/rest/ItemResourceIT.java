@@ -5,7 +5,6 @@ import de.umreifungskopf.recode.domain.Item;
 import de.umreifungskopf.recode.repository.ItemRepository;
 import de.umreifungskopf.recode.service.ItemService;
 import de.umreifungskopf.recode.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -13,7 +12,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -58,9 +56,6 @@ public class ItemResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_BUOM = "AAAAAAAAAA";
-    private static final String UPDATED_BUOM = "BBBBBBBBBB";
-
     private static final Float DEFAULT_UNIT_PRICE = 1F;
     private static final Float UPDATED_UNIT_PRICE = 2F;
     private static final Float SMALLER_UNIT_PRICE = 1F - 1F;
@@ -80,9 +75,6 @@ public class ItemResourceIT {
 
     private static final Boolean DEFAULT_IS_BLOCKED = false;
     private static final Boolean UPDATED_IS_BLOCKED = true;
-
-    private static final String DEFAULT_SUOM = "AAAAAAAAAA";
-    private static final String UPDATED_SUOM = "BBBBBBBBBB";
 
     private static final String DEFAULT_ITEM_CATEGORY_CODE = "AAAAAAAAAA";
     private static final String UPDATED_ITEM_CATEGORY_CODE = "BBBBBBBBBB";
@@ -224,14 +216,12 @@ public class ItemResourceIT {
             .no(DEFAULT_NO)
             .no2(DEFAULT_NO_2)
             .name(DEFAULT_NAME)
-            .buom(DEFAULT_BUOM)
             .unitPrice(DEFAULT_UNIT_PRICE)
             .netWeight(DEFAULT_NET_WEIGHT)
             .hsNo(DEFAULT_HS_NO)
             .hsDescription(DEFAULT_HS_DESCRIPTION)
             .hsComment(DEFAULT_HS_COMMENT)
             .isBlocked(DEFAULT_IS_BLOCKED)
-            .suom(DEFAULT_SUOM)
             .itemCategoryCode(DEFAULT_ITEM_CATEGORY_CODE)
             .productGroupCode(DEFAULT_PRODUCT_GROUP_CODE)
             .wsCategory3Code(DEFAULT_WS_CATEGORY_3_CODE)
@@ -272,14 +262,12 @@ public class ItemResourceIT {
             .no(UPDATED_NO)
             .no2(UPDATED_NO_2)
             .name(UPDATED_NAME)
-            .buom(UPDATED_BUOM)
             .unitPrice(UPDATED_UNIT_PRICE)
             .netWeight(UPDATED_NET_WEIGHT)
             .hsNo(UPDATED_HS_NO)
             .hsDescription(UPDATED_HS_DESCRIPTION)
             .hsComment(UPDATED_HS_COMMENT)
             .isBlocked(UPDATED_IS_BLOCKED)
-            .suom(UPDATED_SUOM)
             .itemCategoryCode(UPDATED_ITEM_CATEGORY_CODE)
             .productGroupCode(UPDATED_PRODUCT_GROUP_CODE)
             .wsCategory3Code(UPDATED_WS_CATEGORY_3_CODE)
@@ -333,14 +321,12 @@ public class ItemResourceIT {
         assertThat(testItem.getNo()).isEqualTo(DEFAULT_NO);
         assertThat(testItem.getNo2()).isEqualTo(DEFAULT_NO_2);
         assertThat(testItem.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testItem.getBuom()).isEqualTo(DEFAULT_BUOM);
         assertThat(testItem.getUnitPrice()).isEqualTo(DEFAULT_UNIT_PRICE);
         assertThat(testItem.getNetWeight()).isEqualTo(DEFAULT_NET_WEIGHT);
         assertThat(testItem.getHsNo()).isEqualTo(DEFAULT_HS_NO);
         assertThat(testItem.getHsDescription()).isEqualTo(DEFAULT_HS_DESCRIPTION);
         assertThat(testItem.getHsComment()).isEqualTo(DEFAULT_HS_COMMENT);
         assertThat(testItem.isIsBlocked()).isEqualTo(DEFAULT_IS_BLOCKED);
-        assertThat(testItem.getSuom()).isEqualTo(DEFAULT_SUOM);
         assertThat(testItem.getItemCategoryCode()).isEqualTo(DEFAULT_ITEM_CATEGORY_CODE);
         assertThat(testItem.getProductGroupCode()).isEqualTo(DEFAULT_PRODUCT_GROUP_CODE);
         assertThat(testItem.getWsCategory3Code()).isEqualTo(DEFAULT_WS_CATEGORY_3_CODE);
@@ -440,14 +426,12 @@ public class ItemResourceIT {
             .andExpect(jsonPath("$.[*].no").value(hasItem(DEFAULT_NO.toString())))
             .andExpect(jsonPath("$.[*].no2").value(hasItem(DEFAULT_NO_2.toString())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].buom").value(hasItem(DEFAULT_BUOM.toString())))
             .andExpect(jsonPath("$.[*].unitPrice").value(hasItem(DEFAULT_UNIT_PRICE.doubleValue())))
             .andExpect(jsonPath("$.[*].netWeight").value(hasItem(DEFAULT_NET_WEIGHT.doubleValue())))
             .andExpect(jsonPath("$.[*].hsNo").value(hasItem(DEFAULT_HS_NO.toString())))
             .andExpect(jsonPath("$.[*].hsDescription").value(hasItem(DEFAULT_HS_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].hsComment").value(hasItem(DEFAULT_HS_COMMENT.toString())))
             .andExpect(jsonPath("$.[*].isBlocked").value(hasItem(DEFAULT_IS_BLOCKED.booleanValue())))
-            .andExpect(jsonPath("$.[*].suom").value(hasItem(DEFAULT_SUOM.toString())))
             .andExpect(jsonPath("$.[*].itemCategoryCode").value(hasItem(DEFAULT_ITEM_CATEGORY_CODE.toString())))
             .andExpect(jsonPath("$.[*].productGroupCode").value(hasItem(DEFAULT_PRODUCT_GROUP_CODE.toString())))
             .andExpect(jsonPath("$.[*].wsCategory3Code").value(hasItem(DEFAULT_WS_CATEGORY_3_CODE.toString())))
@@ -474,7 +458,7 @@ public class ItemResourceIT {
             .andExpect(jsonPath("$.[*].isFullyAutomaticTension").value(hasItem(DEFAULT_IS_FULLY_AUTOMATIC_TENSION.booleanValue())))
             .andExpect(jsonPath("$.[*].isWeldingByButton").value(hasItem(DEFAULT_IS_WELDING_BY_BUTTON.booleanValue())));
     }
-    
+
     @SuppressWarnings({"unchecked"})
     public void getAllItemsWithEagerRelationshipsIsEnabled() throws Exception {
         ItemResource itemResource = new ItemResource(itemServiceMock);
@@ -524,14 +508,12 @@ public class ItemResourceIT {
             .andExpect(jsonPath("$.no").value(DEFAULT_NO.toString()))
             .andExpect(jsonPath("$.no2").value(DEFAULT_NO_2.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.buom").value(DEFAULT_BUOM.toString()))
             .andExpect(jsonPath("$.unitPrice").value(DEFAULT_UNIT_PRICE.doubleValue()))
             .andExpect(jsonPath("$.netWeight").value(DEFAULT_NET_WEIGHT.doubleValue()))
             .andExpect(jsonPath("$.hsNo").value(DEFAULT_HS_NO.toString()))
             .andExpect(jsonPath("$.hsDescription").value(DEFAULT_HS_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.hsComment").value(DEFAULT_HS_COMMENT.toString()))
             .andExpect(jsonPath("$.isBlocked").value(DEFAULT_IS_BLOCKED.booleanValue()))
-            .andExpect(jsonPath("$.suom").value(DEFAULT_SUOM.toString()))
             .andExpect(jsonPath("$.itemCategoryCode").value(DEFAULT_ITEM_CATEGORY_CODE.toString()))
             .andExpect(jsonPath("$.productGroupCode").value(DEFAULT_PRODUCT_GROUP_CODE.toString()))
             .andExpect(jsonPath("$.wsCategory3Code").value(DEFAULT_WS_CATEGORY_3_CODE.toString()))
@@ -585,14 +567,12 @@ public class ItemResourceIT {
             .no(UPDATED_NO)
             .no2(UPDATED_NO_2)
             .name(UPDATED_NAME)
-            .buom(UPDATED_BUOM)
             .unitPrice(UPDATED_UNIT_PRICE)
             .netWeight(UPDATED_NET_WEIGHT)
             .hsNo(UPDATED_HS_NO)
             .hsDescription(UPDATED_HS_DESCRIPTION)
             .hsComment(UPDATED_HS_COMMENT)
             .isBlocked(UPDATED_IS_BLOCKED)
-            .suom(UPDATED_SUOM)
             .itemCategoryCode(UPDATED_ITEM_CATEGORY_CODE)
             .productGroupCode(UPDATED_PRODUCT_GROUP_CODE)
             .wsCategory3Code(UPDATED_WS_CATEGORY_3_CODE)
@@ -633,14 +613,12 @@ public class ItemResourceIT {
         assertThat(testItem.getNo()).isEqualTo(UPDATED_NO);
         assertThat(testItem.getNo2()).isEqualTo(UPDATED_NO_2);
         assertThat(testItem.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testItem.getBuom()).isEqualTo(UPDATED_BUOM);
         assertThat(testItem.getUnitPrice()).isEqualTo(UPDATED_UNIT_PRICE);
         assertThat(testItem.getNetWeight()).isEqualTo(UPDATED_NET_WEIGHT);
         assertThat(testItem.getHsNo()).isEqualTo(UPDATED_HS_NO);
         assertThat(testItem.getHsDescription()).isEqualTo(UPDATED_HS_DESCRIPTION);
         assertThat(testItem.getHsComment()).isEqualTo(UPDATED_HS_COMMENT);
         assertThat(testItem.isIsBlocked()).isEqualTo(UPDATED_IS_BLOCKED);
-        assertThat(testItem.getSuom()).isEqualTo(UPDATED_SUOM);
         assertThat(testItem.getItemCategoryCode()).isEqualTo(UPDATED_ITEM_CATEGORY_CODE);
         assertThat(testItem.getProductGroupCode()).isEqualTo(UPDATED_PRODUCT_GROUP_CODE);
         assertThat(testItem.getWsCategory3Code()).isEqualTo(UPDATED_WS_CATEGORY_3_CODE);

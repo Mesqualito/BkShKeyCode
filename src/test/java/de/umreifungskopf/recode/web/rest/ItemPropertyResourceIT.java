@@ -5,7 +5,6 @@ import de.umreifungskopf.recode.domain.ItemProperty;
 import de.umreifungskopf.recode.repository.ItemPropertyRepository;
 import de.umreifungskopf.recode.service.ItemPropertyService;
 import de.umreifungskopf.recode.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -49,9 +48,6 @@ public class ItemPropertyResourceIT {
 
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
-
-    private static final String DEFAULT_UOM = "AAAAAAAAAA";
-    private static final String UPDATED_UOM = "BBBBBBBBBB";
 
     @Autowired
     private ItemPropertyRepository itemPropertyRepository;
@@ -101,8 +97,7 @@ public class ItemPropertyResourceIT {
             .timestamp(DEFAULT_TIMESTAMP)
             .modificationDate(DEFAULT_MODIFICATION_DATE)
             .code(DEFAULT_CODE)
-            .description(DEFAULT_DESCRIPTION)
-            .uom(DEFAULT_UOM);
+            .description(DEFAULT_DESCRIPTION);
         return itemProperty;
     }
     /**
@@ -116,8 +111,7 @@ public class ItemPropertyResourceIT {
             .timestamp(UPDATED_TIMESTAMP)
             .modificationDate(UPDATED_MODIFICATION_DATE)
             .code(UPDATED_CODE)
-            .description(UPDATED_DESCRIPTION)
-            .uom(UPDATED_UOM);
+            .description(UPDATED_DESCRIPTION);
         return itemProperty;
     }
 
@@ -145,7 +139,6 @@ public class ItemPropertyResourceIT {
         assertThat(testItemProperty.getModificationDate()).isEqualTo(DEFAULT_MODIFICATION_DATE);
         assertThat(testItemProperty.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testItemProperty.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testItemProperty.getUom()).isEqualTo(DEFAULT_UOM);
     }
 
     @Test
@@ -236,10 +229,9 @@ public class ItemPropertyResourceIT {
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.toString())))
             .andExpect(jsonPath("$.[*].modificationDate").value(hasItem(DEFAULT_MODIFICATION_DATE.toString())))
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].uom").value(hasItem(DEFAULT_UOM.toString())));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getItemProperty() throws Exception {
@@ -254,8 +246,7 @@ public class ItemPropertyResourceIT {
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP.toString()))
             .andExpect(jsonPath("$.modificationDate").value(DEFAULT_MODIFICATION_DATE.toString()))
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.uom").value(DEFAULT_UOM.toString()));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
 
     @Test
@@ -282,8 +273,7 @@ public class ItemPropertyResourceIT {
             .timestamp(UPDATED_TIMESTAMP)
             .modificationDate(UPDATED_MODIFICATION_DATE)
             .code(UPDATED_CODE)
-            .description(UPDATED_DESCRIPTION)
-            .uom(UPDATED_UOM);
+            .description(UPDATED_DESCRIPTION);
 
         restItemPropertyMockMvc.perform(put("/api/item-properties")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -298,7 +288,6 @@ public class ItemPropertyResourceIT {
         assertThat(testItemProperty.getModificationDate()).isEqualTo(UPDATED_MODIFICATION_DATE);
         assertThat(testItemProperty.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testItemProperty.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testItemProperty.getUom()).isEqualTo(UPDATED_UOM);
     }
 
     @Test

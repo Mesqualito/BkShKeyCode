@@ -9,7 +9,15 @@
             ]
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "item",
+            "otherEntityRelationshipName": "itemStaging",
+            "relationshipName": "item",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20191008110032",
     "javadoc": "@author Jochen Gebsattel",
     "entityTableName": "item_staging",

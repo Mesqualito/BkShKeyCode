@@ -24,7 +24,10 @@
     <include file="config/liquibase/changelog/20191008110039_added_entity_ExtendedTextLine.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191008110040_added_entity_ItemReference.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191008110041_added_entity_ItemSubstitution.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191009071849_added_entity_Uom.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20191008110032_added_entity_constraints_ItemStaging.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20191008110033_added_entity_constraints_ItemHistory.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191008110034_added_entity_constraints_Item.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191008110035_added_entity_constraints_ItemProperty.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191008110038_added_entity_constraints_ExtendedTextHeader.xml" relativeToChangelogFile="false"/>

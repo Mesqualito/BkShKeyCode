@@ -9,10 +9,6 @@
                 <dd>
                     <span>{{itemReference.timestamp}}</span>
                 </dd>
-                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.uom" [ngbTooltip]="'bkShKeyCodeApp.itemReference.help.uom' | translate">Uom</span></dt>
-                <dd>
-                    <span>{{itemReference.uom}}</span>
-                </dd>
                 <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.crossReferenceType">Cross Reference Type</span></dt>
                 <dd>
                     <span>{{itemReference.crossReferenceType}}</span>
@@ -32,6 +28,12 @@
                 <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.qualifier">Qualifier</span></dt>
                 <dd>
                     <span>{{itemReference.qualifier}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.uom">Uom</span></dt>
+                <dd>
+                    <div *ngIf="itemReference.uom">
+                        <a [routerLink]="['/uom', itemReference.uom?.id, 'view']">{{itemReference.uom?.description}}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="bkShKeyCodeApp.itemReference.item">Item</span></dt>
                 <dd>

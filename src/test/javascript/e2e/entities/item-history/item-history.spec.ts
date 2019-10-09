@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, promise, protractor } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ItemHistoryComponentsPage, ItemHistoryDeleteDialog, ItemHistoryUpdatePage } from './item-history.page-object';
 
@@ -42,7 +41,8 @@ describe('ItemHistory e2e test', () => {
     await itemHistoryComponentsPage.clickOnCreateButton();
     await promise.all([
       itemHistoryUpdatePage.setTimestampInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      itemHistoryUpdatePage.setModificationDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM')
+      itemHistoryUpdatePage.setModificationDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      itemHistoryUpdatePage.itemSelectLastOption()
     ]);
     expect(await itemHistoryUpdatePage.getTimestampInput()).to.contain(
       '2001-01-01T02:30',

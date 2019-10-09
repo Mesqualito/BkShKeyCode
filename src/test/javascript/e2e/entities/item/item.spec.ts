@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, promise, protractor } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ItemComponentsPage, ItemDeleteDialog, ItemUpdatePage } from './item.page-object';
 
@@ -46,13 +45,11 @@ describe('Item e2e test', () => {
       itemUpdatePage.setNoInput('no'),
       itemUpdatePage.setNo2Input('no2'),
       itemUpdatePage.setNameInput('name'),
-      itemUpdatePage.setBuomInput('buom'),
       itemUpdatePage.setUnitPriceInput('5'),
       itemUpdatePage.setNetWeightInput('5'),
       itemUpdatePage.setHsNoInput('hsNo'),
       itemUpdatePage.setHsDescriptionInput('hsDescription'),
       itemUpdatePage.setHsCommentInput('hsComment'),
-      itemUpdatePage.setSuomInput('suom'),
       itemUpdatePage.setItemCategoryCodeInput('itemCategoryCode'),
       itemUpdatePage.setProductGroupCodeInput('productGroupCode'),
       itemUpdatePage.setWsCategory3CodeInput('wsCategory3Code'),
@@ -71,7 +68,9 @@ describe('Item e2e test', () => {
       itemUpdatePage.setSpeedInput('5'),
       itemUpdatePage.setMotorsInput('5'),
       itemUpdatePage.setStrapThicknessMinInput('5'),
-      itemUpdatePage.setStrapThicknessMaxInput('5')
+      itemUpdatePage.setStrapThicknessMaxInput('5'),
+      itemUpdatePage.buomSelectLastOption(),
+      itemUpdatePage.suomSelectLastOption()
       // itemUpdatePage.substNoSelectLastOption(),
     ]);
     expect(await itemUpdatePage.getTimestampInput()).to.contain('2001-01-01T02:30', 'Expected timestamp value to be equals to 2000-12-31');
@@ -82,7 +81,6 @@ describe('Item e2e test', () => {
     expect(await itemUpdatePage.getNoInput()).to.eq('no', 'Expected No value to be equals to no');
     expect(await itemUpdatePage.getNo2Input()).to.eq('no2', 'Expected No2 value to be equals to no2');
     expect(await itemUpdatePage.getNameInput()).to.eq('name', 'Expected Name value to be equals to name');
-    expect(await itemUpdatePage.getBuomInput()).to.eq('buom', 'Expected Buom value to be equals to buom');
     expect(await itemUpdatePage.getUnitPriceInput()).to.eq('5', 'Expected unitPrice value to be equals to 5');
     expect(await itemUpdatePage.getNetWeightInput()).to.eq('5', 'Expected netWeight value to be equals to 5');
     expect(await itemUpdatePage.getHsNoInput()).to.eq('hsNo', 'Expected HsNo value to be equals to hsNo');
@@ -99,7 +97,6 @@ describe('Item e2e test', () => {
       await itemUpdatePage.getIsBlockedInput().click();
       expect(await itemUpdatePage.getIsBlockedInput().isSelected(), 'Expected isBlocked to be selected').to.be.true;
     }
-    expect(await itemUpdatePage.getSuomInput()).to.eq('suom', 'Expected Suom value to be equals to suom');
     expect(await itemUpdatePage.getItemCategoryCodeInput()).to.eq(
       'itemCategoryCode',
       'Expected ItemCategoryCode value to be equals to itemCategoryCode'

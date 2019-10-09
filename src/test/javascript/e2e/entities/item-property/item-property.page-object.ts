@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class ItemPropertyComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -30,8 +30,8 @@ export class ItemPropertyUpdatePage {
   modificationDateInput = element(by.id('field_modificationDate'));
   codeInput = element(by.id('field_code'));
   descriptionInput = element(by.id('field_description'));
-  uomInput = element(by.id('field_uom'));
-  itempropertySelect = element(by.id('field_itemproperty'));
+  uomSelect = element(by.id('field_uom'));
+  coderankSelect = element(by.id('field_coderank'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -69,31 +69,42 @@ export class ItemPropertyUpdatePage {
     return await this.descriptionInput.getAttribute('value');
   }
 
-  async setUomInput(uom) {
-    await this.uomInput.sendKeys(uom);
-  }
-
-  async getUomInput() {
-    return await this.uomInput.getAttribute('value');
-  }
-
-  async itempropertySelectLastOption(timeout?: number) {
-    await this.itempropertySelect
+  async uomSelectLastOption(timeout?: number) {
+    await this.uomSelect
       .all(by.tagName('option'))
       .last()
       .click();
   }
 
-  async itempropertySelectOption(option) {
-    await this.itempropertySelect.sendKeys(option);
+  async uomSelectOption(option) {
+    await this.uomSelect.sendKeys(option);
   }
 
-  getItempropertySelect(): ElementFinder {
-    return this.itempropertySelect;
+  getUomSelect(): ElementFinder {
+    return this.uomSelect;
   }
 
-  async getItempropertySelectedOption() {
-    return await this.itempropertySelect.element(by.css('option:checked')).getText();
+  async getUomSelectedOption() {
+    return await this.uomSelect.element(by.css('option:checked')).getText();
+  }
+
+  async coderankSelectLastOption(timeout?: number) {
+    await this.coderankSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async coderankSelectOption(option) {
+    await this.coderankSelect.sendKeys(option);
+  }
+
+  getCoderankSelect(): ElementFinder {
+    return this.coderankSelect;
+  }
+
+  async getCoderankSelectedOption() {
+    return await this.coderankSelect.element(by.css('option:checked')).getText();
   }
 
   async save(timeout?: number) {

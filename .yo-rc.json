@@ -42,6 +42,7 @@
     "ItemStaging",
     "ItemHistory",
     "Item",
+    "Uom",
     "ItemProperty",
     "PropPosition",
     "Language",

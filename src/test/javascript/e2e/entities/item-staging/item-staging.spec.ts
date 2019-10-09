@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, promise, protractor } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ItemStagingComponentsPage, ItemStagingDeleteDialog, ItemStagingUpdatePage } from './item-staging.page-object';
 
@@ -40,7 +39,10 @@ describe('ItemStaging e2e test', () => {
     const nbButtonsBeforeCreate = await itemStagingComponentsPage.countDeleteButtons();
 
     await itemStagingComponentsPage.clickOnCreateButton();
-    await promise.all([itemStagingUpdatePage.setTimestampInput('01/01/2001' + protractor.Key.TAB + '02:30AM')]);
+    await promise.all([
+      itemStagingUpdatePage.setTimestampInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      itemStagingUpdatePage.itemSelectLastOption()
+    ]);
     expect(await itemStagingUpdatePage.getTimestampInput()).to.contain(
       '2001-01-01T02:30',
       'Expected timestamp value to be equals to 2000-12-31'

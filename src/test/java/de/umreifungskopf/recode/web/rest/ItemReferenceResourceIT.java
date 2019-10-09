@@ -5,7 +5,6 @@ import de.umreifungskopf.recode.domain.ItemReference;
 import de.umreifungskopf.recode.repository.ItemReferenceRepository;
 import de.umreifungskopf.recode.service.ItemReferenceService;
 import de.umreifungskopf.recode.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
@@ -39,9 +38,6 @@ public class ItemReferenceResourceIT {
     private static final Instant DEFAULT_TIMESTAMP = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_TIMESTAMP = Instant.now().truncatedTo(ChronoUnit.MILLIS);
     private static final Instant SMALLER_TIMESTAMP = Instant.ofEpochMilli(-1L);
-
-    private static final String DEFAULT_UOM = "AAAAAAAAAA";
-    private static final String UPDATED_UOM = "BBBBBBBBBB";
 
     private static final String DEFAULT_CROSS_REFERENCE_TYPE = "AAAAAAAAAA";
     private static final String UPDATED_CROSS_REFERENCE_TYPE = "BBBBBBBBBB";
@@ -104,7 +100,6 @@ public class ItemReferenceResourceIT {
     public static ItemReference createEntity(EntityManager em) {
         ItemReference itemReference = new ItemReference()
             .timestamp(DEFAULT_TIMESTAMP)
-            .uom(DEFAULT_UOM)
             .crossReferenceType(DEFAULT_CROSS_REFERENCE_TYPE)
             .crossReferenceTypeNo(DEFAULT_CROSS_REFERENCE_TYPE_NO)
             .crossReferenceNo(DEFAULT_CROSS_REFERENCE_NO)
@@ -121,7 +116,6 @@ public class ItemReferenceResourceIT {
     public static ItemReference createUpdatedEntity(EntityManager em) {
         ItemReference itemReference = new ItemReference()
             .timestamp(UPDATED_TIMESTAMP)
-            .uom(UPDATED_UOM)
             .crossReferenceType(UPDATED_CROSS_REFERENCE_TYPE)
             .crossReferenceTypeNo(UPDATED_CROSS_REFERENCE_TYPE_NO)
             .crossReferenceNo(UPDATED_CROSS_REFERENCE_NO)
@@ -151,7 +145,6 @@ public class ItemReferenceResourceIT {
         assertThat(itemReferenceList).hasSize(databaseSizeBeforeCreate + 1);
         ItemReference testItemReference = itemReferenceList.get(itemReferenceList.size() - 1);
         assertThat(testItemReference.getTimestamp()).isEqualTo(DEFAULT_TIMESTAMP);
-        assertThat(testItemReference.getUom()).isEqualTo(DEFAULT_UOM);
         assertThat(testItemReference.getCrossReferenceType()).isEqualTo(DEFAULT_CROSS_REFERENCE_TYPE);
         assertThat(testItemReference.getCrossReferenceTypeNo()).isEqualTo(DEFAULT_CROSS_REFERENCE_TYPE_NO);
         assertThat(testItemReference.getCrossReferenceNo()).isEqualTo(DEFAULT_CROSS_REFERENCE_NO);
@@ -227,14 +220,13 @@ public class ItemReferenceResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(itemReference.getId().intValue())))
             .andExpect(jsonPath("$.[*].timestamp").value(hasItem(DEFAULT_TIMESTAMP.toString())))
-            .andExpect(jsonPath("$.[*].uom").value(hasItem(DEFAULT_UOM.toString())))
             .andExpect(jsonPath("$.[*].crossReferenceType").value(hasItem(DEFAULT_CROSS_REFERENCE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].crossReferenceTypeNo").value(hasItem(DEFAULT_CROSS_REFERENCE_TYPE_NO.toString())))
             .andExpect(jsonPath("$.[*].crossReferenceNo").value(hasItem(DEFAULT_CROSS_REFERENCE_NO.toString())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].qualifier").value(hasItem(DEFAULT_QUALIFIER.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getItemReference() throws Exception {
@@ -247,7 +239,6 @@ public class ItemReferenceResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(itemReference.getId().intValue()))
             .andExpect(jsonPath("$.timestamp").value(DEFAULT_TIMESTAMP.toString()))
-            .andExpect(jsonPath("$.uom").value(DEFAULT_UOM.toString()))
             .andExpect(jsonPath("$.crossReferenceType").value(DEFAULT_CROSS_REFERENCE_TYPE.toString()))
             .andExpect(jsonPath("$.crossReferenceTypeNo").value(DEFAULT_CROSS_REFERENCE_TYPE_NO.toString()))
             .andExpect(jsonPath("$.crossReferenceNo").value(DEFAULT_CROSS_REFERENCE_NO.toString()))
@@ -277,7 +268,6 @@ public class ItemReferenceResourceIT {
         em.detach(updatedItemReference);
         updatedItemReference
             .timestamp(UPDATED_TIMESTAMP)
-            .uom(UPDATED_UOM)
             .crossReferenceType(UPDATED_CROSS_REFERENCE_TYPE)
             .crossReferenceTypeNo(UPDATED_CROSS_REFERENCE_TYPE_NO)
             .crossReferenceNo(UPDATED_CROSS_REFERENCE_NO)
@@ -294,7 +284,6 @@ public class ItemReferenceResourceIT {
         assertThat(itemReferenceList).hasSize(databaseSizeBeforeUpdate);
         ItemReference testItemReference = itemReferenceList.get(itemReferenceList.size() - 1);
         assertThat(testItemReference.getTimestamp()).isEqualTo(UPDATED_TIMESTAMP);
-        assertThat(testItemReference.getUom()).isEqualTo(UPDATED_UOM);
         assertThat(testItemReference.getCrossReferenceType()).isEqualTo(UPDATED_CROSS_REFERENCE_TYPE);
         assertThat(testItemReference.getCrossReferenceTypeNo()).isEqualTo(UPDATED_CROSS_REFERENCE_TYPE_NO);
         assertThat(testItemReference.getCrossReferenceNo()).isEqualTo(UPDATED_CROSS_REFERENCE_NO);

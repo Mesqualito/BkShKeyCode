@@ -53,11 +53,6 @@
                            formControlName="name"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.buom" for="field_buom" [ngbTooltip]="'bkShKeyCodeApp.item.help.buom' | translate">Buom</label>
-                    <input type="text" class="form-control" name="buom" id="field_buom"
-                           formControlName="buom"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.unitPrice" for="field_unitPrice">Unit Price</label>
                     <input type="number" class="form-control" name="unitPrice" id="field_unitPrice"
                            formControlName="unitPrice"/>
@@ -86,11 +81,6 @@
                     <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.isBlocked" for="field_isBlocked">Is Blocked</label>
                     <input type="checkbox" class="form-control" name="isBlocked" id="field_isBlocked"
                            formControlName="isBlocked"/>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.suom" for="field_suom" [ngbTooltip]="'bkShKeyCodeApp.item.help.suom' | translate">Suom</label>
-                    <input type="text" class="form-control" name="suom" id="field_suom"
-                           formControlName="suom"/>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.itemCategoryCode" for="field_itemCategoryCode">Item Category Code</label>
@@ -218,6 +208,20 @@
                            formControlName="isWeldingByButton"/>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.buom" for="field_buom">Buom</label>
+                    <select class="form-control" id="field_buom" name="buom" formControlName="buom">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="uomOption.id === editForm.get('buom').value?.id ? editForm.get('buom').value : uomOption" *ngFor="let uomOption of buoms; trackBy: trackUomById">{{uomOption.description}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.item.suom" for="field_suom">Suom</label>
+                    <select class="form-control" id="field_suom" name="suom" formControlName="suom">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="uomOption.id === editForm.get('suom').value?.id ? editForm.get('suom').value : uomOption" *ngFor="let uomOption of suoms; trackBy: trackUomById">{{uomOption.description}}</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label jhiTranslate="bkShKeyCodeApp.item.substNo" for="field_substNos">Subst No</label>
                     <select class="form-control" id="field_substNos" multiple name="substNos" formControlName="substNos">

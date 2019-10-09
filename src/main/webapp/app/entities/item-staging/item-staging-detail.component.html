@@ -9,6 +9,12 @@
                 <dd>
                     <span>{{itemStaging.timestamp}}</span>
                 </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemStaging.item">Item</span></dt>
+                <dd>
+                    <div *ngIf="itemStaging.item">
+                        <a [routerLink]="['/item', itemStaging.item?.id, 'view']">{{itemStaging.item?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

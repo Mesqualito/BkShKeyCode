@@ -1,6 +1,6 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { take, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ItemService } from 'app/entities/item/item.service';
@@ -31,14 +31,12 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
-        'AAAAAAA',
         0,
         0,
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
         false,
-        'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA',
@@ -119,14 +117,12 @@ describe('Service Tests', () => {
             no: 'BBBBBB',
             no2: 'BBBBBB',
             name: 'BBBBBB',
-            buom: 'BBBBBB',
             unitPrice: 1,
             netWeight: 1,
             hsNo: 'BBBBBB',
             hsDescription: 'BBBBBB',
             hsComment: 'BBBBBB',
             isBlocked: true,
-            suom: 'BBBBBB',
             itemCategoryCode: 'BBBBBB',
             productGroupCode: 'BBBBBB',
             wsCategory3Code: 'BBBBBB',
@@ -180,14 +176,12 @@ describe('Service Tests', () => {
             no: 'BBBBBB',
             no2: 'BBBBBB',
             name: 'BBBBBB',
-            buom: 'BBBBBB',
             unitPrice: 1,
             netWeight: 1,
             hsNo: 'BBBBBB',
             hsDescription: 'BBBBBB',
             hsComment: 'BBBBBB',
             isBlocked: true,
-            suom: 'BBBBBB',
             itemCategoryCode: 'BBBBBB',
             productGroupCode: 'BBBBBB',
             wsCategory3Code: 'BBBBBB',

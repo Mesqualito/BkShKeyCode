@@ -1,7 +1,10 @@
 import { Moment } from 'moment';
+import { IUom } from 'app/shared/model/uom.model';
 import { IItemReference } from 'app/shared/model/item-reference.model';
 import { IExtendedTextHeader } from 'app/shared/model/extended-text-header.model';
 import { IItemSubstitution } from 'app/shared/model/item-substitution.model';
+import { IItemStaging } from 'app/shared/model/item-staging.model';
+import { IItemHistory } from 'app/shared/model/item-history.model';
 
 export interface IItem {
   id?: number;
@@ -10,14 +13,12 @@ export interface IItem {
   no?: string;
   no2?: string;
   name?: string;
-  buom?: string;
   unitPrice?: number;
   netWeight?: number;
   hsNo?: string;
   hsDescription?: string;
   hsComment?: string;
   isBlocked?: boolean;
-  suom?: string;
   itemCategoryCode?: string;
   productGroupCode?: string;
   wsCategory3Code?: string;
@@ -43,9 +44,13 @@ export interface IItem {
   isInProductFinder?: boolean;
   isFullyAutomaticTension?: boolean;
   isWeldingByButton?: boolean;
+  buom?: IUom;
+  suom?: IUom;
   itemReferences?: IItemReference[];
   extendedTextHeaders?: IExtendedTextHeader[];
   substNos?: IItemSubstitution[];
+  itemStagings?: IItemStaging[];
+  itemHistories?: IItemHistory[];
 }
 
 export class Item implements IItem {
@@ -56,14 +61,12 @@ export class Item implements IItem {
     public no?: string,
     public no2?: string,
     public name?: string,
-    public buom?: string,
     public unitPrice?: number,
     public netWeight?: number,
     public hsNo?: string,
     public hsDescription?: string,
     public hsComment?: string,
     public isBlocked?: boolean,
-    public suom?: string,
     public itemCategoryCode?: string,
     public productGroupCode?: string,
     public wsCategory3Code?: string,
@@ -89,9 +92,13 @@ export class Item implements IItem {
     public isInProductFinder?: boolean,
     public isFullyAutomaticTension?: boolean,
     public isWeldingByButton?: boolean,
+    public buom?: IUom,
+    public suom?: IUom,
     public itemReferences?: IItemReference[],
     public extendedTextHeaders?: IExtendedTextHeader[],
-    public substNos?: IItemSubstitution[]
+    public substNos?: IItemSubstitution[],
+    public itemStagings?: IItemStaging[],
+    public itemHistories?: IItemHistory[]
   ) {
     this.isBlocked = this.isBlocked || false;
     this.isGTIN = this.isGTIN || false;

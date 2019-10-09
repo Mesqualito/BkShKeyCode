@@ -26,11 +26,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemReference.uom" for="field_uom" [ngbTooltip]="'bkShKeyCodeApp.itemReference.help.uom' | translate">Uom</label>
-                    <input type="text" class="form-control" name="uom" id="field_uom"
-                           formControlName="uom"/>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemReference.crossReferenceType" for="field_crossReferenceType">Cross Reference Type</label>
                     <input type="text" class="form-control" name="crossReferenceType" id="field_crossReferenceType"
                            formControlName="crossReferenceType"/>
@@ -62,6 +57,13 @@
                            formControlName="qualifier"/>
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemReference.uom" for="field_uom">Uom</label>
+                    <select class="form-control" id="field_uom" name="uom" formControlName="uom">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="uomOption.id === editForm.get('uom').value?.id ? editForm.get('uom').value : uomOption" *ngFor="let uomOption of uoms; trackBy: trackUomById">{{uomOption.description}}</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="bkShKeyCodeApp.itemReference.item" for="field_item">Item</label>
                     <select class="form-control" id="field_item" name="item" formControlName="item">

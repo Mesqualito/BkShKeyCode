@@ -19,12 +19,12 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="timestamp"><span jhiTranslate="bkShKeyCodeApp.itemReference.timestamp">Timestamp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="uom"><span jhiTranslate="bkShKeyCodeApp.itemReference.uom">Uom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="crossReferenceType"><span jhiTranslate="bkShKeyCodeApp.itemReference.crossReferenceType">Cross Reference Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="crossReferenceTypeNo"><span jhiTranslate="bkShKeyCodeApp.itemReference.crossReferenceTypeNo">Cross Reference Type No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="crossReferenceNo"><span jhiTranslate="bkShKeyCodeApp.itemReference.crossReferenceNo">Cross Reference No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="description"><span jhiTranslate="bkShKeyCodeApp.itemReference.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="qualifier"><span jhiTranslate="bkShKeyCodeApp.itemReference.qualifier">Qualifier</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="uom.description"><span jhiTranslate="bkShKeyCodeApp.itemReference.uom">Uom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="item.id"><span jhiTranslate="bkShKeyCodeApp.itemReference.item">Item</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -33,12 +33,16 @@
             <tr *ngFor="let itemReference of itemReferences ;trackBy: trackId">
                 <td><a [routerLink]="['/item-reference', itemReference.id, 'view' ]">{{itemReference.id}}</a></td>
                 <td>{{itemReference.timestamp | date:'medium'}}</td>
-                <td>{{itemReference.uom}}</td>
                 <td>{{itemReference.crossReferenceType}}</td>
                 <td>{{itemReference.crossReferenceTypeNo}}</td>
                 <td>{{itemReference.crossReferenceNo}}</td>
                 <td>{{itemReference.description}}</td>
                 <td>{{itemReference.qualifier}}</td>
+                <td>
+                    <div *ngIf="itemReference.uom">
+                        <a [routerLink]="['/uom', itemReference.uom?.id, 'view' ]" >{{itemReference.uom?.description}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="itemReference.item">
                         <a [routerLink]="['/item', itemReference.item?.id, 'view' ]" >{{itemReference.item?.id}}</a>

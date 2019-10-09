@@ -16,9 +16,6 @@
             <column name="timestamp" type="datetime">
                 <constraints nullable="false" />
             </column>
-            <column name="uom" type="varchar(255)" remarks="unit of measure">
-                <constraints nullable="true" />
-            </column>
             <column name="cross_reference_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -33,6 +30,9 @@
             </column>
             <column name="qualifier" type="varchar(255)">
                 <constraints nullable="true" />
+            </column>
+            <column name="uom_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_item_reference_uom_id" />
             </column>
             <column name="item_id" type="bigint">
                 <constraints nullable="true" />
@@ -62,7 +62,6 @@
                   tableName="item_reference">
             <column name="id" type="numeric"/>
             <column name="timestamp" type="datetime"/>
-            <column name="uom" type="string"/>
             <column name="cross_reference_type" type="string"/>
             <column name="cross_reference_type_no" type="string"/>
             <column name="cross_reference_no" type="string"/>

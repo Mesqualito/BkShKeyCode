@@ -28,9 +28,6 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="buom" type="varchar(255)" remarks="base unit of measure">
-                <constraints nullable="true" />
-            </column>
             <column name="unit_price" type="${floatType}">
                 <constraints nullable="true" />
             </column>
@@ -47,9 +44,6 @@
                 <constraints nullable="true" />
             </column>
             <column name="is_blocked" type="boolean">
-                <constraints nullable="true" />
-            </column>
-            <column name="suom" type="varchar(255)" remarks="sales unit of measure">
                 <constraints nullable="true" />
             </column>
             <column name="item_category_code" type="varchar(255)">
@@ -127,6 +121,12 @@
             <column name="is_welding_by_button" type="boolean">
                 <constraints nullable="true" />
             </column>
+            <column name="buom_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_item_buom_id" />
+            </column>
+            <column name="suom_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_item_suom_id" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="item" columnName="timestamp" columnDataType="datetime"/>
@@ -168,14 +168,12 @@
             <column name="no" type="string"/>
             <column name="no_2" type="string"/>
             <column name="name" type="string"/>
-            <column name="buom" type="string"/>
             <column name="unit_price" type="numeric"/>
             <column name="net_weight" type="numeric"/>
             <column name="hs_no" type="string"/>
             <column name="hs_description" type="string"/>
             <column name="hs_comment" type="string"/>
             <column name="is_blocked" type="boolean"/>
-            <column name="suom" type="string"/>
             <column name="item_category_code" type="string"/>
             <column name="product_group_code" type="string"/>
             <column name="ws_category_3_code" type="string"/>

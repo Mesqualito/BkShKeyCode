@@ -39,12 +39,13 @@ public class ItemProperty implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "uom")
-    private String uom;
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Uom uom;
 
     @ManyToOne
     @JsonIgnoreProperties("itemProperties")
-    private PropPosition itemproperty;
+    private PropPosition coderank;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -107,30 +108,30 @@ public class ItemProperty implements Serializable {
         this.description = description;
     }
 
-    public String getUom() {
+    public Uom getUom() {
         return uom;
     }
 
-    public ItemProperty uom(String uom) {
+    public ItemProperty uom(Uom uom) {
         this.uom = uom;
         return this;
     }
 
-    public void setUom(String uom) {
+    public void setUom(Uom uom) {
         this.uom = uom;
     }
 
-    public PropPosition getItemproperty() {
-        return itemproperty;
+    public PropPosition getCoderank() {
+        return coderank;
     }
 
-    public ItemProperty itemproperty(PropPosition propPosition) {
-        this.itemproperty = propPosition;
+    public ItemProperty coderank(PropPosition propPosition) {
+        this.coderank = propPosition;
         return this;
     }
 
-    public void setItemproperty(PropPosition propPosition) {
-        this.itemproperty = propPosition;
+    public void setCoderank(PropPosition propPosition) {
+        this.coderank = propPosition;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -158,7 +159,6 @@ public class ItemProperty implements Serializable {
             ", modificationDate='" + getModificationDate() + "'" +
             ", code='" + getCode() + "'" +
             ", description='" + getDescription() + "'" +
-            ", uom='" + getUom() + "'" +
             "}";
     }
 }
