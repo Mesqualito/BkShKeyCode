@@ -41,19 +41,18 @@ describe('ItemReference e2e test', () => {
     await itemReferenceComponentsPage.clickOnCreateButton();
     await promise.all([
       itemReferenceUpdatePage.setTimestampInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
-      itemReferenceUpdatePage.setUomInput('uom'),
       itemReferenceUpdatePage.setCrossReferenceTypeInput('crossReferenceType'),
       itemReferenceUpdatePage.setCrossReferenceTypeNoInput('crossReferenceTypeNo'),
       itemReferenceUpdatePage.setCrossReferenceNoInput('crossReferenceNo'),
       itemReferenceUpdatePage.setDescriptionInput('description'),
       itemReferenceUpdatePage.setQualifierInput('qualifier'),
+      itemReferenceUpdatePage.uomSelectLastOption(),
       itemReferenceUpdatePage.itemSelectLastOption()
     ]);
     expect(await itemReferenceUpdatePage.getTimestampInput()).to.contain(
       '2001-01-01T02:30',
       'Expected timestamp value to be equals to 2000-12-31'
     );
-    expect(await itemReferenceUpdatePage.getUomInput()).to.eq('uom', 'Expected Uom value to be equals to uom');
     expect(await itemReferenceUpdatePage.getCrossReferenceTypeInput()).to.eq(
       'crossReferenceType',
       'Expected CrossReferenceType value to be equals to crossReferenceType'

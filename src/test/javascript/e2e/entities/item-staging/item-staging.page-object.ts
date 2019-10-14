@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class ItemStagingComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -27,6 +27,7 @@ export class ItemStagingUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
   timestampInput = element(by.id('field_timestamp'));
+  itemSelect = element(by.id('field_item'));
 
   async getPageTitle() {
     return this.pageTitle.getAttribute('jhiTranslate');
@@ -38,6 +39,25 @@ export class ItemStagingUpdatePage {
 
   async getTimestampInput() {
     return await this.timestampInput.getAttribute('value');
+  }
+
+  async itemSelectLastOption(timeout?: number) {
+    await this.itemSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async itemSelectOption(option) {
+    await this.itemSelect.sendKeys(option);
+  }
+
+  getItemSelect(): ElementFinder {
+    return this.itemSelect;
+  }
+
+  async getItemSelectedOption() {
+    return await this.itemSelect.element(by.css('option:checked')).getText();
   }
 
   async save(timeout?: number) {

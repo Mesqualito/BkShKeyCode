@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { JhiAlertService } from 'ng-jhipster';
 import { IItemHistory, ItemHistory } from 'app/shared/model/item-history.model';
 import { ItemHistoryService } from './item-history.service';
+import { IItem } from 'app/shared/model/item.model';
+import { ItemService } from 'app/entities/item/item.service';
 
 @Component({
   selector: 'jhi-item-history-update',
@@ -17,20 +21,36 @@ import { ItemHistoryService } from './item-history.service';
 export class ItemHistoryUpdateComponent implements OnInit {
   isSaving: boolean;
 
+  items: IItem[];
+
   editForm = this.fb.group({
     id: [],
     timestamp: [null, [Validators.required]],
     modificationDate: [],
-    modified: []
+    modified: [],
+    item: []
   });
 
-  constructor(protected itemHistoryService: ItemHistoryService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected jhiAlertService: JhiAlertService,
+    protected itemHistoryService: ItemHistoryService,
+    protected itemService: ItemService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ itemHistory }) => {
       this.updateForm(itemHistory);
     });
+    this.itemService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<IItem[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IItem[]>) => response.body)
+      )
+      .subscribe((res: IItem[]) => (this.items = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(itemHistory: IItemHistory) {
@@ -38,7 +58,8 @@ export class ItemHistoryUpdateComponent implements OnInit {
       id: itemHistory.id,
       timestamp: itemHistory.timestamp != null ? itemHistory.timestamp.format(DATE_TIME_FORMAT) : null,
       modificationDate: itemHistory.modificationDate != null ? itemHistory.modificationDate.format(DATE_TIME_FORMAT) : null,
-      modified: itemHistory.modified
+      modified: itemHistory.modified,
+      item: itemHistory.item
     });
   }
 
@@ -66,7 +87,8 @@ export class ItemHistoryUpdateComponent implements OnInit {
         this.editForm.get(['modificationDate']).value != null
           ? moment(this.editForm.get(['modificationDate']).value, DATE_TIME_FORMAT)
           : undefined,
-      modified: this.editForm.get(['modified']).value
+      modified: this.editForm.get(['modified']).value,
+      item: this.editForm.get(['item']).value
     };
   }
 
@@ -81,5 +103,12 @@ export class ItemHistoryUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
+  }
+  protected onError(errorMessage: string) {
+    this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackItemById(index: number, item: IItem) {
+    return item.id;
   }
 }

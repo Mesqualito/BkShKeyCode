@@ -9,11 +9,6 @@
             ]
         },
         {
-            "fieldName": "uom",
-            "javadoc": "unit of measure",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "crossReferenceType",
             "fieldType": "String"
         },
@@ -38,6 +33,14 @@
         }
     ],
     "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "uom",
+            "otherEntityRelationshipName": "refUom",
+            "relationshipName": "uom",
+            "otherEntityField": "description",
+            "ownerSide": true
+        },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "item",

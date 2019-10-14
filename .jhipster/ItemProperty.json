@@ -25,18 +25,22 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "uom",
-            "fieldType": "String"
         }
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "uom",
+            "otherEntityRelationshipName": "propPosition",
+            "relationshipName": "uom",
+            "otherEntityField": "description",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "many-to-one",
             "otherEntityName": "propPosition",
             "otherEntityRelationshipName": "itemProperty",
-            "relationshipName": "itemproperty",
+            "relationshipName": "coderank",
             "otherEntityField": "description"
         }
     ],

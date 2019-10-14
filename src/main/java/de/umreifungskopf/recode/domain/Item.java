@@ -43,13 +43,6 @@ public class Item implements Serializable {
     @Column(name = "name")
     private String name;
 
-    /**
-     * base unit of measure
-     */
-    @ApiModelProperty(value = "base unit of measure")
-    @Column(name = "buom")
-    private String buom;
-
     @Column(name = "unit_price")
     private Float unitPrice;
 
@@ -67,13 +60,6 @@ public class Item implements Serializable {
 
     @Column(name = "is_blocked")
     private Boolean isBlocked;
-
-    /**
-     * sales unit of measure
-     */
-    @ApiModelProperty(value = "sales unit of measure")
-    @Column(name = "suom")
-    private String suom;
 
     @Column(name = "item_category_code")
     private String itemCategoryCode;
@@ -150,6 +136,22 @@ public class Item implements Serializable {
     @Column(name = "is_welding_by_button")
     private Boolean isWeldingByButton;
 
+    /**
+     * base unit of measure
+     */
+    @ApiModelProperty(value = "base unit of measure")
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Uom buom;
+
+    /**
+     * sales unit of measure
+     */
+    @ApiModelProperty(value = "sales unit of measure")
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Uom suom;
+
     @OneToMany(mappedBy = "item")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ItemReference> itemReferences = new HashSet<>();
@@ -164,6 +166,14 @@ public class Item implements Serializable {
                joinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "subst_no_id", referencedColumnName = "id"))
     private Set<ItemSubstitution> substNos = new HashSet<>();
+
+    @OneToMany(mappedBy = "item")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ItemStaging> itemStagings = new HashSet<>();
+
+    @OneToMany(mappedBy = "item")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ItemHistory> itemHistories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -237,19 +247,6 @@ public class Item implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getBuom() {
-        return buom;
-    }
-
-    public Item buom(String buom) {
-        this.buom = buom;
-        return this;
-    }
-
-    public void setBuom(String buom) {
-        this.buom = buom;
     }
 
     public Float getUnitPrice() {
@@ -328,19 +325,6 @@ public class Item implements Serializable {
 
     public void setIsBlocked(Boolean isBlocked) {
         this.isBlocked = isBlocked;
-    }
-
-    public String getSuom() {
-        return suom;
-    }
-
-    public Item suom(String suom) {
-        this.suom = suom;
-        return this;
-    }
-
-    public void setSuom(String suom) {
-        this.suom = suom;
     }
 
     public String getItemCategoryCode() {
@@ -668,6 +652,32 @@ public class Item implements Serializable {
         this.isWeldingByButton = isWeldingByButton;
     }
 
+    public Uom getBuom() {
+        return buom;
+    }
+
+    public Item buom(Uom uom) {
+        this.buom = uom;
+        return this;
+    }
+
+    public void setBuom(Uom uom) {
+        this.buom = uom;
+    }
+
+    public Uom getSuom() {
+        return suom;
+    }
+
+    public Item suom(Uom uom) {
+        this.suom = uom;
+        return this;
+    }
+
+    public void setSuom(Uom uom) {
+        this.suom = uom;
+    }
+
     public Set<ItemReference> getItemReferences() {
         return itemReferences;
     }
@@ -742,6 +752,56 @@ public class Item implements Serializable {
     public void setSubstNos(Set<ItemSubstitution> itemSubstitutions) {
         this.substNos = itemSubstitutions;
     }
+
+    public Set<ItemStaging> getItemStagings() {
+        return itemStagings;
+    }
+
+    public Item itemStagings(Set<ItemStaging> itemStagings) {
+        this.itemStagings = itemStagings;
+        return this;
+    }
+
+    public Item addItemStaging(ItemStaging itemStaging) {
+        this.itemStagings.add(itemStaging);
+        itemStaging.setItem(this);
+        return this;
+    }
+
+    public Item removeItemStaging(ItemStaging itemStaging) {
+        this.itemStagings.remove(itemStaging);
+        itemStaging.setItem(null);
+        return this;
+    }
+
+    public void setItemStagings(Set<ItemStaging> itemStagings) {
+        this.itemStagings = itemStagings;
+    }
+
+    public Set<ItemHistory> getItemHistories() {
+        return itemHistories;
+    }
+
+    public Item itemHistories(Set<ItemHistory> itemHistories) {
+        this.itemHistories = itemHistories;
+        return this;
+    }
+
+    public Item addItemHistory(ItemHistory itemHistory) {
+        this.itemHistories.add(itemHistory);
+        itemHistory.setItem(this);
+        return this;
+    }
+
+    public Item removeItemHistory(ItemHistory itemHistory) {
+        this.itemHistories.remove(itemHistory);
+        itemHistory.setItem(null);
+        return this;
+    }
+
+    public void setItemHistories(Set<ItemHistory> itemHistories) {
+        this.itemHistories = itemHistories;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -769,14 +829,12 @@ public class Item implements Serializable {
             ", no='" + getNo() + "'" +
             ", no2='" + getNo2() + "'" +
             ", name='" + getName() + "'" +
-            ", buom='" + getBuom() + "'" +
             ", unitPrice=" + getUnitPrice() +
             ", netWeight=" + getNetWeight() +
             ", hsNo='" + getHsNo() + "'" +
             ", hsDescription='" + getHsDescription() + "'" +
             ", hsComment='" + getHsComment() + "'" +
             ", isBlocked='" + isIsBlocked() + "'" +
-            ", suom='" + getSuom() + "'" +
             ", itemCategoryCode='" + getItemCategoryCode() + "'" +
             ", productGroupCode='" + getProductGroupCode() + "'" +
             ", wsCategory3Code='" + getWsCategory3Code() + "'" +

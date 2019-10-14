@@ -28,11 +28,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "buom",
-            "javadoc": "base unit of measure",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "unitPrice",
             "fieldType": "Float"
         },
@@ -55,11 +50,6 @@
         {
             "fieldName": "isBlocked",
             "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "suom",
-            "javadoc": "sales unit of measure",
-            "fieldType": "String"
         },
         {
             "fieldName": "itemCategoryCode",
@@ -164,6 +154,24 @@
     ],
     "relationships": [
         {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "uom",
+            "otherEntityRelationshipName": "itemBuom",
+            "javadoc": "base unit of measure",
+            "relationshipName": "buom",
+            "otherEntityField": "description",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "uom",
+            "otherEntityRelationshipName": "itemSuom",
+            "javadoc": "sales unit of measure",
+            "relationshipName": "suom",
+            "otherEntityField": "description",
+            "ownerSide": true
+        },
+        {
             "relationshipType": "one-to-many",
             "otherEntityName": "itemReference",
             "otherEntityRelationshipName": "item",
@@ -182,6 +190,18 @@
             "relationshipName": "substNo",
             "otherEntityField": "no",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "itemStaging",
+            "otherEntityRelationshipName": "item",
+            "relationshipName": "itemStaging"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "itemHistory",
+            "otherEntityRelationshipName": "item",
+            "relationshipName": "itemHistory"
         }
     ],
     "changelogDate": "20191008110034",

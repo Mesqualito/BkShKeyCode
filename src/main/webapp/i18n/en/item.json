@@ -21,14 +21,12 @@
       "no": "No",
       "no2": "No 2",
       "name": "Name",
-      "buom": "Buom",
       "unitPrice": "Unit Price",
       "netWeight": "Net Weight",
       "hsNo": "Hs No",
       "hsDescription": "Hs Description",
       "hsComment": "Hs Comment",
       "isBlocked": "Is Blocked",
-      "suom": "Suom",
       "itemCategoryCode": "Item Category Code",
       "productGroupCode": "Product Group Code",
       "wsCategory3Code": "Ws Category 3 Code",
@@ -54,13 +52,13 @@
       "isInProductFinder": "Is In Product Finder",
       "isFullyAutomaticTension": "Is Fully Automatic Tension",
       "isWeldingByButton": "Is Welding By Button",
+      "buom": "Buom",
+      "suom": "Suom",
       "itemReference": "Item Reference",
       "extendedTextHeader": "Extended Text Header",
       "substNo": "Subst No",
-      "help": {
-        "buom": "base unit of measure",
-        "suom": "sales unit of measure"
-      }
+      "itemStaging": "Item Staging",
+      "itemHistory": "Item History"
     }
   }
 }

@@ -16,7 +16,8 @@
       "detail": {
         "title": "Item Staging"
       },
-      "timestamp": "Timestamp"
+      "timestamp": "Timestamp",
+      "item": "Item"
     }
   }
 }

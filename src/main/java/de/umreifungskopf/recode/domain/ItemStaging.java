@@ -1,5 +1,6 @@
 package de.umreifungskopf.recode.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -29,6 +30,10 @@ public class ItemStaging implements Serializable {
     @Column(name = "timestamp", nullable = false)
     private Instant timestamp;
 
+    @ManyToOne
+    @JsonIgnoreProperties("itemStagings")
+    private Item item;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -49,6 +54,19 @@ public class ItemStaging implements Serializable {
 
     public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public ItemStaging item(Item item) {
+        this.item = item;
+        return this;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

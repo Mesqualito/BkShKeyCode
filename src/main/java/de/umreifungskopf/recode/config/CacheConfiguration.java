@@ -49,6 +49,8 @@ public class CacheConfiguration {
             createCache(cm, de.umreifungskopf.recode.domain.Item.class.getName() + ".itemReferences");
             createCache(cm, de.umreifungskopf.recode.domain.Item.class.getName() + ".extendedTextHeaders");
             createCache(cm, de.umreifungskopf.recode.domain.Item.class.getName() + ".substNos");
+            createCache(cm, de.umreifungskopf.recode.domain.Item.class.getName() + ".itemStagings");
+            createCache(cm, de.umreifungskopf.recode.domain.Item.class.getName() + ".itemHistories");
             createCache(cm, de.umreifungskopf.recode.domain.ItemProperty.class.getName());
             createCache(cm, de.umreifungskopf.recode.domain.PropPosition.class.getName());
             createCache(cm, de.umreifungskopf.recode.domain.Language.class.getName());
@@ -59,6 +61,7 @@ public class CacheConfiguration {
             createCache(cm, de.umreifungskopf.recode.domain.ItemReference.class.getName());
             createCache(cm, de.umreifungskopf.recode.domain.ItemSubstitution.class.getName());
             createCache(cm, de.umreifungskopf.recode.domain.ItemSubstitution.class.getName() + ".items");
+            createCache(cm, de.umreifungskopf.recode.domain.Uom.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

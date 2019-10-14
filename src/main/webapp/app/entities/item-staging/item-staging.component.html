@@ -19,6 +19,7 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="timestamp"><span jhiTranslate="bkShKeyCodeApp.itemStaging.timestamp">Timestamp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="item.id"><span jhiTranslate="bkShKeyCodeApp.itemStaging.item">Item</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -26,6 +27,11 @@
             <tr *ngFor="let itemStaging of itemStagings ;trackBy: trackId">
                 <td><a [routerLink]="['/item-staging', itemStaging.id, 'view' ]">{{itemStaging.id}}</a></td>
                 <td>{{itemStaging.timestamp | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="itemStaging.item">
+                        <a [routerLink]="['/item', itemStaging.item?.id, 'view' ]" >{{itemStaging.item?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

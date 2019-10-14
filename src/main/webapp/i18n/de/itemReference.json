@@ -17,16 +17,13 @@
         "title": "Item Reference"
       },
       "timestamp": "Timestamp",
-      "uom": "Uom",
       "crossReferenceType": "Cross Reference Type",
       "crossReferenceTypeNo": "Cross Reference Type No",
       "crossReferenceNo": "Cross Reference No",
       "description": "Description",
       "qualifier": "Qualifier",
-      "item": "Item",
-      "help": {
-        "uom": "unit of measure"
-      }
+      "uom": "Uom",
+      "item": "Item"
     }
   }
 }

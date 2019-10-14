@@ -1,5 +1,6 @@
 package de.umreifungskopf.recode.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,6 +33,10 @@ public class ItemHistory implements Serializable {
 
     @Column(name = "modified")
     private Boolean modified;
+
+    @ManyToOne
+    @JsonIgnoreProperties("itemHistories")
+    private Item item;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -79,6 +84,19 @@ public class ItemHistory implements Serializable {
 
     public void setModified(Boolean modified) {
         this.modified = modified;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public ItemHistory item(Item item) {
+        this.item = item;
+        return this;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

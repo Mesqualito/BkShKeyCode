@@ -43,6 +43,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'item-substitution',
         loadChildren: () => import('./item-substitution/item-substitution.module').then(m => m.BkShKeyCodeItemSubstitutionModule)
+      },
+      {
+        path: 'uom',
+        loadChildren: () => import('./uom/uom.module').then(m => m.BkShKeyCodeUomModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, promise, protractor } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ItemPropertyComponentsPage, ItemPropertyDeleteDialog, ItemPropertyUpdatePage } from './item-property.page-object';
 
@@ -45,8 +44,8 @@ describe('ItemProperty e2e test', () => {
       itemPropertyUpdatePage.setModificationDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       itemPropertyUpdatePage.setCodeInput('code'),
       itemPropertyUpdatePage.setDescriptionInput('description'),
-      itemPropertyUpdatePage.setUomInput('uom'),
-      itemPropertyUpdatePage.itempropertySelectLastOption()
+      itemPropertyUpdatePage.uomSelectLastOption(),
+      itemPropertyUpdatePage.coderankSelectLastOption()
     ]);
     expect(await itemPropertyUpdatePage.getTimestampInput()).to.contain(
       '2001-01-01T02:30',
@@ -61,7 +60,6 @@ describe('ItemProperty e2e test', () => {
       'description',
       'Expected Description value to be equals to description'
     );
-    expect(await itemPropertyUpdatePage.getUomInput()).to.eq('uom', 'Expected Uom value to be equals to uom');
     await itemPropertyUpdatePage.save();
     expect(await itemPropertyUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;
 

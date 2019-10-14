@@ -23,12 +23,14 @@
                 </dd>
                 <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.uom">Uom</span></dt>
                 <dd>
-                    <span>{{itemProperty.uom}}</span>
+                    <div *ngIf="itemProperty.uom">
+                        <a [routerLink]="['/uom', itemProperty.uom?.id, 'view']">{{itemProperty.uom?.description}}</a>
+                    </div>
                 </dd>
-                <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.itemproperty">Itemproperty</span></dt>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemProperty.coderank">Coderank</span></dt>
                 <dd>
-                    <div *ngIf="itemProperty.itemproperty">
-                        <a [routerLink]="['/prop-position', itemProperty.itemproperty?.id, 'view']">{{itemProperty.itemproperty?.description}}</a>
+                    <div *ngIf="itemProperty.coderank">
+                        <a [routerLink]="['/prop-position', itemProperty.coderank?.id, 'view']">{{itemProperty.coderank?.description}}</a>
                     </div>
                 </dd>
             </dl>

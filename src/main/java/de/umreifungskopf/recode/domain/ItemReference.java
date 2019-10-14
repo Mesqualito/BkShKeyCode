@@ -1,7 +1,6 @@
 package de.umreifungskopf.recode.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -29,13 +28,6 @@ public class ItemReference implements Serializable {
     @Column(name = "timestamp", nullable = false)
     private Instant timestamp;
 
-    /**
-     * unit of measure
-     */
-    @ApiModelProperty(value = "unit of measure")
-    @Column(name = "uom")
-    private String uom;
-
     @Column(name = "cross_reference_type")
     private String crossReferenceType;
 
@@ -51,6 +43,10 @@ public class ItemReference implements Serializable {
 
     @Column(name = "qualifier")
     private String qualifier;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Uom uom;
 
     @ManyToOne
     @JsonIgnoreProperties("itemReferences")
@@ -76,19 +72,6 @@ public class ItemReference implements Serializable {
 
     public void setTimestamp(Instant timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public String getUom() {
-        return uom;
-    }
-
-    public ItemReference uom(String uom) {
-        this.uom = uom;
-        return this;
-    }
-
-    public void setUom(String uom) {
-        this.uom = uom;
     }
 
     public String getCrossReferenceType() {
@@ -156,6 +139,19 @@ public class ItemReference implements Serializable {
         this.qualifier = qualifier;
     }
 
+    public Uom getUom() {
+        return uom;
+    }
+
+    public ItemReference uom(Uom uom) {
+        this.uom = uom;
+        return this;
+    }
+
+    public void setUom(Uom uom) {
+        this.uom = uom;
+    }
+
     public Item getItem() {
         return item;
     }
@@ -191,7 +187,6 @@ public class ItemReference implements Serializable {
         return "ItemReference{" +
             "id=" + getId() +
             ", timestamp='" + getTimestamp() + "'" +
-            ", uom='" + getUom() + "'" +
             ", crossReferenceType='" + getCrossReferenceType() + "'" +
             ", crossReferenceTypeNo='" + getCrossReferenceTypeNo() + "'" +
             ", crossReferenceNo='" + getCrossReferenceNo() + "'" +

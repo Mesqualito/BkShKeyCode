@@ -22,8 +22,8 @@
             <th jhiSortBy="modificationDate"><span jhiTranslate="bkShKeyCodeApp.itemProperty.modificationDate">Modification Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="code"><span jhiTranslate="bkShKeyCodeApp.itemProperty.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="description"><span jhiTranslate="bkShKeyCodeApp.itemProperty.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="uom"><span jhiTranslate="bkShKeyCodeApp.itemProperty.uom">Uom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="itemproperty.description"><span jhiTranslate="bkShKeyCodeApp.itemProperty.itemproperty">Itemproperty</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="uom.description"><span jhiTranslate="bkShKeyCodeApp.itemProperty.uom">Uom</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="coderank.description"><span jhiTranslate="bkShKeyCodeApp.itemProperty.coderank">Coderank</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -34,10 +34,14 @@
                 <td>{{itemProperty.modificationDate | date:'medium'}}</td>
                 <td>{{itemProperty.code}}</td>
                 <td>{{itemProperty.description}}</td>
-                <td>{{itemProperty.uom}}</td>
                 <td>
-                    <div *ngIf="itemProperty.itemproperty">
-                        <a [routerLink]="['/prop-position', itemProperty.itemproperty?.id, 'view' ]" >{{itemProperty.itemproperty?.description}}</a>
+                    <div *ngIf="itemProperty.uom">
+                        <a [routerLink]="['/uom', itemProperty.uom?.id, 'view' ]" >{{itemProperty.uom?.description}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="itemProperty.coderank">
+                        <a [routerLink]="['/prop-position', itemProperty.coderank?.id, 'view' ]" >{{itemProperty.coderank?.description}}</a>
                     </div>
                 </td>
                 <td class="text-right">

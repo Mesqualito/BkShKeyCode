@@ -17,6 +17,7 @@
         "extendedTextLine": "Extended Text Line",
         "itemReference": "Item Reference",
         "itemSubstitution": "Item Substitution",
+        "uom": "Uom",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

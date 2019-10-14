@@ -1,4 +1,4 @@
-import { element, by, ElementFinder } from 'protractor';
+import { by, element, ElementFinder } from 'protractor';
 
 export class ItemComponentsPage {
   createButton = element(by.id('jh-create-entity'));
@@ -31,14 +31,12 @@ export class ItemUpdatePage {
   noInput = element(by.id('field_no'));
   no2Input = element(by.id('field_no2'));
   nameInput = element(by.id('field_name'));
-  buomInput = element(by.id('field_buom'));
   unitPriceInput = element(by.id('field_unitPrice'));
   netWeightInput = element(by.id('field_netWeight'));
   hsNoInput = element(by.id('field_hsNo'));
   hsDescriptionInput = element(by.id('field_hsDescription'));
   hsCommentInput = element(by.id('field_hsComment'));
   isBlockedInput = element(by.id('field_isBlocked'));
-  suomInput = element(by.id('field_suom'));
   itemCategoryCodeInput = element(by.id('field_itemCategoryCode'));
   productGroupCodeInput = element(by.id('field_productGroupCode'));
   wsCategory3CodeInput = element(by.id('field_wsCategory3Code'));
@@ -64,6 +62,8 @@ export class ItemUpdatePage {
   isInProductFinderInput = element(by.id('field_isInProductFinder'));
   isFullyAutomaticTensionInput = element(by.id('field_isFullyAutomaticTension'));
   isWeldingByButtonInput = element(by.id('field_isWeldingByButton'));
+  buomSelect = element(by.id('field_buom'));
+  suomSelect = element(by.id('field_suom'));
   substNoSelect = element(by.id('field_substNo'));
 
   async getPageTitle() {
@@ -110,14 +110,6 @@ export class ItemUpdatePage {
     return await this.nameInput.getAttribute('value');
   }
 
-  async setBuomInput(buom) {
-    await this.buomInput.sendKeys(buom);
-  }
-
-  async getBuomInput() {
-    return await this.buomInput.getAttribute('value');
-  }
-
   async setUnitPriceInput(unitPrice) {
     await this.unitPriceInput.sendKeys(unitPrice);
   }
@@ -161,14 +153,6 @@ export class ItemUpdatePage {
   getIsBlockedInput(timeout?: number) {
     return this.isBlockedInput;
   }
-  async setSuomInput(suom) {
-    await this.suomInput.sendKeys(suom);
-  }
-
-  async getSuomInput() {
-    return await this.suomInput.getAttribute('value');
-  }
-
   async setItemCategoryCodeInput(itemCategoryCode) {
     await this.itemCategoryCodeInput.sendKeys(itemCategoryCode);
   }
@@ -338,6 +322,44 @@ export class ItemUpdatePage {
   }
   getIsWeldingByButtonInput(timeout?: number) {
     return this.isWeldingByButtonInput;
+  }
+
+  async buomSelectLastOption(timeout?: number) {
+    await this.buomSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async buomSelectOption(option) {
+    await this.buomSelect.sendKeys(option);
+  }
+
+  getBuomSelect(): ElementFinder {
+    return this.buomSelect;
+  }
+
+  async getBuomSelectedOption() {
+    return await this.buomSelect.element(by.css('option:checked')).getText();
+  }
+
+  async suomSelectLastOption(timeout?: number) {
+    await this.suomSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async suomSelectOption(option) {
+    await this.suomSelect.sendKeys(option);
+  }
+
+  getSuomSelect(): ElementFinder {
+    return this.suomSelect;
+  }
+
+  async getSuomSelectedOption() {
+    return await this.suomSelect.element(by.css('option:checked')).getText();
   }
 
   async substNoSelectLastOption(timeout?: number) {

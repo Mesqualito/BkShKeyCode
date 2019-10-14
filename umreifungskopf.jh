@@ -52,16 +52,12 @@ entity Item {
     no String required,
     no2 String,
     name String,
-    /** base unit of measure */
-    buom String,
     unitPrice Float,
     netWeight Float,
     hsNo String,
     hsDescription String,
     hsComment String,
     isBlocked Boolean,
-    /** sales unit of measure */
-    suom String,
     itemCategoryCode String,
     productGroupCode String,
     wsCategory3Code String,
@@ -89,12 +85,21 @@ entity Item {
     isWeldingByButton Boolean
 }
 
+/** unit of measure */
+entity Uom {
+    timestamp Instant required,
+    modificationDate Instant,
+    rank Integer,
+    code String required,
+    description String required,
+    factor Float
+}
+
 entity ItemProperty {
     timestamp Instant required,
     modificationDate Instant,
     code String required,
-    description String required,
-    uom String
+    description String required
 }
 
 entity PropPosition {
@@ -132,8 +137,6 @@ entity ExtendedTextLine {
 
 entity ItemReference {
     timestamp Instant required,
-    /** unit of measure */
-    uom String,
     crossReferenceType String,
     crossReferenceTypeNo String,
     crossReferenceNo String required,
@@ -158,7 +161,9 @@ relationship ManyToMany {
 }
 
 relationship ManyToOne {
-    ItemProperty{itemproperty(description)} to PropPosition
+    ItemProperty{coderank(description)} to PropPosition
+    ItemStaging to Item,
+    ItemHistory to Item
 }
 
 relationship OneToMany {
@@ -166,6 +171,15 @@ relationship OneToMany {
     Item to ExtendedTextHeader,
     Language{language(name)} to ExtendedTextHeader{header},
     ExtendedTextHeader to ExtendedTextLine{textline(lineNo)}
+}
+
+relationship OneToOne {
+    ItemProperty{uom(description)} to Uom{propPosition(description)},
+     /** base unit of measure */
+    Item{buom(description)} to Uom{itemBuom(no)},
+    /** sales unit of measure */
+    Item{suom(description)} to Uom{itemSuom(no)},
+    ItemReference{uom(description)} to Uom{refUom(crossReferenceNo)}
 }
 
 paginate * with pagination

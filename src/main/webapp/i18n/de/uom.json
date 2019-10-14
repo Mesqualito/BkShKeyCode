@@ -1,0 +1,31 @@
+{
+  "bkShKeyCodeApp": {
+    "uom": {
+      "home": {
+        "title": "Uoms",
+        "createLabel": "Uom erstellen",
+        "createOrEditLabel": "Uom erstellen oder bearbeiten",
+        "notFound": "No Uoms found"
+      },
+      "created": "Uom erstellt mit ID {{ param }}",
+      "updated": "Uom aktualisiert mit ID {{ param }}",
+      "deleted": "Uom gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Uom {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Uom"
+      },
+      "timestamp": "Timestamp",
+      "modificationDate": "Modification Date",
+      "rank": "Rank",
+      "code": "Code",
+      "description": "Description",
+      "factor": "Factor",
+      "propPosition": "Prop Position",
+      "itemBuom": "Item Buom",
+      "itemSuom": "Item Suom",
+      "refUom": "Ref Uom"
+    }
+  }
+}

@@ -17,6 +17,12 @@
                 <dd>
                     <span>{{itemHistory.modified}}</span>
                 </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.itemHistory.item">Item</span></dt>
+                <dd>
+                    <div *ngIf="itemHistory.item">
+                        <a [routerLink]="['/item', itemHistory.item?.id, 'view']">{{itemHistory.item?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -25,10 +25,10 @@
             <column name="description" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="uom" type="varchar(255)">
-                <constraints nullable="true" />
+            <column name="uom_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_item_property_uom_id" />
             </column>
-            <column name="itemproperty_id" type="bigint">
+            <column name="coderank_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -60,7 +60,6 @@
             <column name="modification_date" type="datetime"/>
             <column name="code" type="string"/>
             <column name="description" type="string"/>
-            <column name="uom" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

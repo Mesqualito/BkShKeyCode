@@ -8,9 +8,15 @@
     -->
     <changeSet id="20191008110035-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="itemproperty_id"
+        <addForeignKeyConstraint baseColumnNames="uom_id"
                                  baseTableName="item_property"
-                                 constraintName="fk_item_property_itemproperty_id"
+                                 constraintName="fk_item_property_uom_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="uom"/>
+
+        <addForeignKeyConstraint baseColumnNames="coderank_id"
+                                 baseTableName="item_property"
+                                 constraintName="fk_item_property_coderank_id"
                                  referencedColumnNames="id"
                                  referencedTableName="prop_position"/>
 

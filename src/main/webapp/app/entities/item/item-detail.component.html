@@ -25,10 +25,6 @@
                 <dd>
                     <span>{{item.name}}</span>
                 </dd>
-                <dt><span jhiTranslate="bkShKeyCodeApp.item.buom" [ngbTooltip]="'bkShKeyCodeApp.item.help.buom' | translate">Buom</span></dt>
-                <dd>
-                    <span>{{item.buom}}</span>
-                </dd>
                 <dt><span jhiTranslate="bkShKeyCodeApp.item.unitPrice">Unit Price</span></dt>
                 <dd>
                     <span>{{item.unitPrice}}</span>
@@ -52,10 +48,6 @@
                 <dt><span jhiTranslate="bkShKeyCodeApp.item.isBlocked">Is Blocked</span></dt>
                 <dd>
                     <span>{{item.isBlocked}}</span>
-                </dd>
-                <dt><span jhiTranslate="bkShKeyCodeApp.item.suom" [ngbTooltip]="'bkShKeyCodeApp.item.help.suom' | translate">Suom</span></dt>
-                <dd>
-                    <span>{{item.suom}}</span>
                 </dd>
                 <dt><span jhiTranslate="bkShKeyCodeApp.item.itemCategoryCode">Item Category Code</span></dt>
                 <dd>
@@ -156,6 +148,18 @@
                 <dt><span jhiTranslate="bkShKeyCodeApp.item.isWeldingByButton">Is Welding By Button</span></dt>
                 <dd>
                     <span>{{item.isWeldingByButton}}</span>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.buom">Buom</span></dt>
+                <dd>
+                    <div *ngIf="item.buom">
+                        <a [routerLink]="['/uom', item.buom?.id, 'view']">{{item.buom?.description}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="bkShKeyCodeApp.item.suom">Suom</span></dt>
+                <dd>
+                    <div *ngIf="item.suom">
+                        <a [routerLink]="['/uom', item.suom?.id, 'view']">{{item.suom?.description}}</a>
+                    </div>
                 </dd>
                 <dt><span jhiTranslate="bkShKeyCodeApp.item.substNo">Subst No</span></dt>
                 <dd>

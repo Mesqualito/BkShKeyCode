@@ -21,6 +21,7 @@
             <th jhiSortBy="timestamp"><span jhiTranslate="bkShKeyCodeApp.itemHistory.timestamp">Timestamp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="modificationDate"><span jhiTranslate="bkShKeyCodeApp.itemHistory.modificationDate">Modification Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="modified"><span jhiTranslate="bkShKeyCodeApp.itemHistory.modified">Modified</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="item.id"><span jhiTranslate="bkShKeyCodeApp.itemHistory.item">Item</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -30,6 +31,11 @@
                 <td>{{itemHistory.timestamp | date:'medium'}}</td>
                 <td>{{itemHistory.modificationDate | date:'medium'}}</td>
                 <td>{{itemHistory.modified}}</td>
+                <td>
+                    <div *ngIf="itemHistory.item">
+                        <a [routerLink]="['/item', itemHistory.item?.id, 'view' ]" >{{itemHistory.item?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

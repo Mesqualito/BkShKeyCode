@@ -27,12 +27,12 @@ export class ItemReferenceUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
   timestampInput = element(by.id('field_timestamp'));
-  uomInput = element(by.id('field_uom'));
   crossReferenceTypeInput = element(by.id('field_crossReferenceType'));
   crossReferenceTypeNoInput = element(by.id('field_crossReferenceTypeNo'));
   crossReferenceNoInput = element(by.id('field_crossReferenceNo'));
   descriptionInput = element(by.id('field_description'));
   qualifierInput = element(by.id('field_qualifier'));
+  uomSelect = element(by.id('field_uom'));
   itemSelect = element(by.id('field_item'));
 
   async getPageTitle() {
@@ -45,14 +45,6 @@ export class ItemReferenceUpdatePage {
 
   async getTimestampInput() {
     return await this.timestampInput.getAttribute('value');
-  }
-
-  async setUomInput(uom) {
-    await this.uomInput.sendKeys(uom);
-  }
-
-  async getUomInput() {
-    return await this.uomInput.getAttribute('value');
   }
 
   async setCrossReferenceTypeInput(crossReferenceType) {
@@ -93,6 +85,25 @@ export class ItemReferenceUpdatePage {
 
   async getQualifierInput() {
     return await this.qualifierInput.getAttribute('value');
+  }
+
+  async uomSelectLastOption(timeout?: number) {
+    await this.uomSelect
+      .all(by.tagName('option'))
+      .last()
+      .click();
+  }
+
+  async uomSelectOption(option) {
+    await this.uomSelect.sendKeys(option);
+  }
+
+  getUomSelect(): ElementFinder {
+    return this.uomSelect;
+  }
+
+  async getUomSelectedOption() {
+    return await this.uomSelect.element(by.css('option:checked')).getText();
   }
 
   async itemSelectLastOption(timeout?: number) {

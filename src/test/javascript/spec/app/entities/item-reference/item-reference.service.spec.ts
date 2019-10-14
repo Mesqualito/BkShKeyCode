@@ -1,6 +1,6 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { take, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { ItemReferenceService } from 'app/entities/item-reference/item-reference.service';
@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new ItemReference(0, currentDate, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new ItemReference(0, currentDate, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -72,7 +72,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             timestamp: currentDate.format(DATE_TIME_FORMAT),
-            uom: 'BBBBBB',
             crossReferenceType: 'BBBBBB',
             crossReferenceTypeNo: 'BBBBBB',
             crossReferenceNo: 'BBBBBB',
@@ -101,7 +100,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             timestamp: currentDate.format(DATE_TIME_FORMAT),
-            uom: 'BBBBBB',
             crossReferenceType: 'BBBBBB',
             crossReferenceTypeNo: 'BBBBBB',
             crossReferenceNo: 'BBBBBB',
