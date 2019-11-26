@@ -1,0 +1,173 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bkShKeyCodeApp.bkencoder.home.title">Bkencoders</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-bkencoder" [routerLink]="['/bkencoder/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="bkShKeyCodeApp.bkencoder.home.createLabel">
+            Create a new Bkencoder
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="bkencoders?.length === 0">
+        <span jhiTranslate="bkShKeyCodeApp.bkencoder.home.notFound">No bkencoders found</span>
+    </div>
+    <!-- brake of original jhipster '$ jhipster entity bkencoder --skip-server' generation -->
+
+    <header class="container mt-5 text-center">
+        <h1 class="display-4">Codierprogramm für GENERICA Umreifungsköpfe</h1>
+    </header>
+    <section class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col col-md-12">
+                <div class="card card-tabs">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#modell" role="tab">Modell</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#bandbreite"
+                                                    role="bkcodetabs">Bandbreite</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#spannung" role="tab">Spannung</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#transport" role="tab">Transport</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#gehäuse" role="tab">Gehäuse</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#antriebe" role="tab">Antriebe</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#verschluss" role="tab">Verschluss</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#revision" role="tab">Revision</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ausrichtung" role="tab">Ausrichtung</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#zusätze" role="tab">Zusätze</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-block">
+                        <div class="tab-content mt-2 ml-2">
+                            <!-- first tab pane content -->
+                            <div class="tab-pane active" id="modell"><h4 class="card-title">Modell</h4>
+                                <h6 class="card-subtitle mb-2">Umreifungskopf-Modell</h6>
+                                <p class="card-text">Bitte geben Sie das Modell des Umreifungskopfes an:</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="modellRadios" id="modellRadio1" value="1"
+                                           [checked]=false>
+                                    <label class="form-check-label" for="modellRadio1">
+                                        SSH (Stahlband-Umreifungskopf)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="modellRadios" id="modellRadio2" value="4"
+                                           [checked]=false>
+                                    <label class="form-check-label" for="modellRadio2">
+                                        PSH (Kunststoffband-Umreifungskopf)
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- end of tab pane content -->
+                            <!--- next tab pane content --->
+                            <div class="tab-pane" id="bandbreite"><h4 class="card-title">Bandbreite</h4>
+                                <h6 class="card-subtitle mb-2">Umreifungskopf-Bandbreite</h6>
+                                <p class="card-text">Bitte geben Sie die Bandbreite des Umreifungskopfes an:</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="bandbreiteRadios" id="bandbreiteRadio1" value="option1"
+                                           [checked]=false>
+                                    <label class="form-check-label" for="bandbreiteRadio1">
+                                        Bandbreite 19mm
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="bandbreiteRadios" id="bandbreiteRadio2" value="option2"
+                                           [checked]=false>
+                                    <label class="form-check-label" for="bandbreiteRadio2">
+                                        Bandbreite 25mm
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="bandbreiteRadios" id="bandbreiteRadio3" value="option3"
+                                           [checked]=false>
+                                    <label class="form-check-label" for="bandbreiteRadio3">
+                                        Bandbreite 32mm
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- end of tab pane content -->
+                            <!--- next tab pane content --->
+                            <div class="tab-pane" id="spannung"><h4 class="card-title">Spannmotor</h4>
+                                <h6 class="card-subtitle mb-2">Umreifungskopf-Spannmotor</h6>
+                                <p class="card-text">Bitte geben Sie die Art des verwendeten Spannmotors an:</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="spannmotorRadios" id="spannmotorRadio1" value="option1"
+                                           [checked]=false>
+                                    <label class="form-check-label" for="spannmotorRadio1">
+                                        P (pneumatische Ausführung)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="spannmotorRadios" id="spannmotorRadio2" value="option2"
+                                           [checked]=false>
+                                    <label class="form-check-label" for="spannmotorRadio2">
+                                        E (elektrische Ausführung)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="spannmotorRadios" id="spannmotorRadio3" value="option3"
+                                           [checked]=false>
+                                    <label class="form-check-label" for="spannmotorRadio3">
+                                        ohne Spannmotor
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- end of tab pane content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <hr>
+            <div class="col col-md-12">
+                <label class="mr-2" for="bkherstartnr">GENERICA Umreifungskopf Hersteller-Artikelnummer:</label>
+                <input name="bkherstartnr" id="bkherstartnr" type="text" maxlength="10">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- continue of original jhipster '$ jhipster entity bkencoder --skip-server' generation -->
+
+    <div class="table-responsive" *ngIf="bkencoders?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bkencoder of bkencoders ;trackBy: trackId">
+                <td><a [routerLink]="['/bkencoder', bkencoder.id, 'view' ]">{{bkencoder.id}}</a></td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/bkencoder', bkencoder.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/bkencoder', bkencoder.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/bkencoder', { outlets: { popup: bkencoder.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

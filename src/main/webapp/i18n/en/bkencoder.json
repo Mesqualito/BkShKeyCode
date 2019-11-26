@@ -1,0 +1,21 @@
+{
+  "bkShKeyCodeApp": {
+    "bkencoder": {
+      "home": {
+        "title": "Bkencoders",
+        "createLabel": "Create a new Bkencoder",
+        "createOrEditLabel": "Create or edit a Bkencoder",
+        "notFound": "No Bkencoders found"
+      },
+      "created": "A new Bkencoder is created with identifier {{ param }}",
+      "updated": "A Bkencoder is updated with identifier {{ param }}",
+      "deleted": "A Bkencoder is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Bkencoder {{ id }}?"
+      },
+      "detail": {
+        "title": "Bkencoder"
+      }
+    }
+  }
+}
