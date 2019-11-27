@@ -1,18 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {Subscription} from 'rxjs';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { filter, map } from 'rxjs/operators';
-import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
+import {filter, map} from 'rxjs/operators';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 
-import { IBkencoder } from 'app/shared/model/bkencoder.model';
-import { AccountService } from 'app/core/auth/account.service';
-import { BkencoderService } from './bkencoder.service';
+import {IBkencoder} from 'app/shared/model/bkencoder.model';
+import {AccountService} from 'app/core/auth/account.service';
+import {BkencoderService} from './bkencoder.service';
 
 @Component({
   selector: 'jhi-bkencoder',
-  templateUrl: './bkencoder.component.html',
-  styleUrls: ['./bkencoder.component.sass']
+  templateUrl: './bkencoder.component.html'
 })
 export class BkencoderComponent implements OnInit, OnDestroy {
   bkencoders: IBkencoder[];
@@ -24,7 +23,8 @@ export class BkencoderComponent implements OnInit, OnDestroy {
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
     protected accountService: AccountService
-  ) {}
+  ) {
+  }
 
   loadAll() {
     this.bkencoderService
